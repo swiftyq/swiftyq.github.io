@@ -1,0 +1,81 @@
+
+#body_achievement{
+  height: 100%;
+}
+#html_achievement{
+  font-family: 'PT Sans', sans-serif;
+  height: 100%;
+}
+#header{
+  height: 8%;
+}
+#content{
+  height: 92%;
+  padding: 0;
+
+}
+#achievement_vis{
+  padding-left: 25px;
+  padding-right: 25px;
+}
+#achievement_title{
+  height: 10%;
+  display: block;
+  text-align: right;
+
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+.achievement_head{
+  font-style: italic;
+  font-size: 50px;
+}
+#achievement_title_text{
+    border-bottom: solid 5px #d6fff6;
+}
+#achievement_grid_box{
+  display:block;
+  margin-bottom: 20px;
+}
+
+#achievement_list_box{
+  background-color: #dddddd;
+  margin-right: 0;
+  right: 0;
+}
+#achievement_list_title{
+  border-top-right-radius: 30px;
+  background-color: #dddddd;
+  padding-left: 30px;
+  margin-right: 30px;
+  padding-bottom: 10px;
+}
+.grid{
+  border: solid 1px transparent;
+  border-radius: 10px;
+  margin: 2px;
+  background-color: #dddddd;
+}
+
+.achievement_entity_box{
+
+}
+.achievement_entity_sub_box{
+  background-color: #eeeeee;
+  padding-right: 0;
+  margin-right: 0;
+}
+.achievement_entity_sub_image{
+  margin: 20px;
+  border: solid 5px #9dc4c2;
+  border-radius : 20px;
+}
+.achievement_entity_exp{
+  margin-top: 20px;
+}
+.achievement_entity_head{
+  font-size: 40px;
+}
+.achievement_entity_text{
+  font-size: 30px;
+}

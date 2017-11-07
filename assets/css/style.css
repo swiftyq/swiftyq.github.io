@@ -1,0 +1,28 @@
+header .title {
+	padding-top: 150px;
+	font-family: 'Courgette', 'cursive';
+	font-size: 120px;
+}
+
+form {
+	padding-top: 50px;
+	width: 70%;
+	margin: auto;
+	font-size: 40px;
+}
+
+body {
+	font-family: 'PT Sans';
+}
+
+.group {
+	margin-top: 30px;
+}
+
+.title-lg {
+	font-size: 2rem !important;
+}
+
+.sign-up-btn {
+	cursor: pointer;
+}
