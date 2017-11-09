@@ -1,0 +1,31 @@
+.respondent {
+	font-family: 'Lato';
+}
+
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+   	color: white;
+    padding: 10px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.roundbutton{
+	background-color: white;
+	border: solid;
+	border-color: gainsboro;
+	color: none;
+	width: 20px;
+	height: 20px;
+	border-width: 2px;
+	border-radius: 2000px;
+}
+.onboard{
+	width:100px;
+	height:100px;
+	background: url(C:\Users\Hucky\Desktop\Crowd Sourcing\redfour.png) 50px 0 no-repeat;
+	background-size:cover;
+}
