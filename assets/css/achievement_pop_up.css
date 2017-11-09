@@ -1,0 +1,45 @@
+#list_sub_pop_up{
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  background-color: #b3efc7;
+}
+#achievement_title_pop_up{
+  text-align: left;
+  color: white;
+  font-family: "PT Sans", sans-serif;
+  z-index: 7;
+  font-size: 60px;
+}
+#achievement_pop_up_container{
+  position: fixed;
+  top: 500px;
+  z-index: 7;
+  right: 0px;
+}
+#achievement_pop_up_overlay{
+  visibility: visible;
+  background-color: rgba(0,0,0,0.5);
+  position: fixed;
+  width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+ /* Black background with opacity */
+    z-index: 3; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
+#achievement_orna_1{
+  z-index:-1;
+  position: fixed;
+  background-color: #1fa87c;
+  width: 70%;
+  left: 5%;
+  height: 10px;
+  top: 530px;
+}
+#close_achievement{
+  float: right;
+  font-size: 30px;
+}
