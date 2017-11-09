@@ -26,3 +26,25 @@ body {
 .sign-up-btn {
 	cursor: pointer;
 }
+
+.full-width {
+  width: 100%;
+}
+
+.dropdown-menu a.on-hover:hover {
+  background: #AEAEAE !important;
+  color: #FEFEFE !important;
+}
+
+.top-30 {
+  top: 30%;
+}
+
+.modal-content-pad {
+  padding: 10px 20px;
+}
+
+.no-deco {
+  text-decoration: inherit;
+  color: inherit;
+}

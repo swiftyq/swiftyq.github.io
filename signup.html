@@ -14,8 +14,8 @@
   <!-- https://lipis.github.io/bootstrap-social/ -->
   <link rel="stylesheet" href="./assets/css/bootstrap-social.css">
   <script src="https://use.fontawesome.com/6384f656d9.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
 
 </head>
 
@@ -23,12 +23,10 @@
   <html>
       
 	<!-- Your content here -->
-
-
     <!-- SwiftyQ title header -->
     <header>
-      <div class="title text-center" style="padding-top:300px !important;">
-        SwiftyQ
+      <div class="title text-center" style="padding-top:100px !important;">
+        <a href="index.html" style="text-decoration: inherit; color: inherit;">SwiftyQ</a>
       </div>
     </header>
 
@@ -52,24 +50,130 @@
       </div>
        <div class="form-group">
         <label for="expertise">Expertise</label>
-        <input type="password" class="form-control form-control-lg title-lg" placeholder="Please select from below">
+        <input type="expertise" class="form-control form-control-lg title-lg" placeholder="Please select from below">
       </div>
 
       <div class="dropdown">
         <button class="btn btn-block btn-lg title-lg btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown button
+          Choose your expertise
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+        <div class="dropdown-menu full-width" aria-labelledby="dropdownMenuButton" style="font-size: 1.75rem">
+          <a class="dropdown-item on-hover" href="#">Programming</a>
+          <a class="dropdown-item on-hover" href="#">Calculus</a>
+          <a class="dropdown-item on-hover" href="#">Physics</a>
         </div>
       </div>
-      <div class="group"><button type="button" class="btn btn-success btn-block btn-lg title-lg">Sign up</button></div>
+      <div class="group"><button type="button" data-toggle="modal" data-target="#modal1" class="btn btn-success btn-block btn-lg title-lg">Sign up</button></div>
      
     </form>
 
   </html>
+  <!--  initial modal for user agreement -->
+  <div class="modal fade top-30" id="modal1">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modal-content-pad">
+        <div class="modal-header">
+          <div class="modal-title" style="font-size: 40px !important;"><strong>Can we test you?</strong></div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body title-lg">
+          <p>Let SwiftyQ verify your expertise in "Programming". This means that we will ask you three questions on Python3.</p>
+        </div>
+        <div class="modal-footer text-center ">
+          <button type="button" class="btn btn-primary title-lg" data-dismiss="modal" data-toggle="modal" data-target="#modal2">Proceed</button>
+          <button type="button" class="btn btn-secondary title-lg" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 1st quality control -->
+  <div class="modal fade top-30" id="modal2">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modal-content-pad">
+        <div class="modal-header">
+          <div class="modal-title" style="font-size: 40px !important;"><strong>Test 1</strong></div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body title-lg">
+          <p>What is the result of 2*3.0 in Python3?</p>
+          <input type="text" placeholder="Answer here">
+        </div>
+        <div class="modal-footer text-center ">
+          <button type="button" class="btn btn-primary title-lg" data-dismiss="modal" data-toggle="modal" data-target="#modal3">Next</button>
+          <button type="button" class="btn btn-secondary title-lg" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 2nd quality control -->
+  <div class="modal fade top-30" id="modal3">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modal-content-pad">
+        <div class="modal-header">
+          <div class="modal-title" style="font-size: 40px !important;"><strong>Test 2</strong></div>
+          <button type="button" class="close" data-dismiss="#modal3" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body title-lg">
+          <p>Is tuple mutable in Python3?</p>
+          <input type="text" placeholder="Answer here">
+        </div>
+        <div class="modal-footer text-center ">
+          <button type="button" class="btn btn-primary title-lg" data-dismiss="modal" data-toggle="modal" data-target="#modal4">Next</button>
+          <button type="button" class="btn btn-secondary title-lg" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 3rd quality control -->
+  <div class="modal fade top-30" id="modal4">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modal-content-pad">
+        <div class="modal-header">
+          <div class="modal-title" style="font-size: 40px !important;"><strong>Test 3</strong></div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body title-lg">
+          <p>What is the result of the following?<br>a = 0<br>for i in range(3):<br>&nbsp; &nbsp; &nbsp; &nbsp; a+=1<br>&nbsp; &nbsp; &nbsp; &nbsp; print a</p>
+          <input type="text" placeholder="Answer here">
+        </div>
+        <div class="modal-footer text-center ">
+          <button type="button" class="btn btn-primary title-lg" data-dismiss="modal" data-toggle="modal" data-target="#modal5">Next</button>
+          <button type="button" class="btn btn-secondary title-lg" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!--  Success-->
+  <div class="modal fade top-30" id="modal5">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content modal-content-pad">
+        <div class="modal-header">
+          <div class="modal-title" style="font-size: 40px !important;"><strong>Congratulations</strong></div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body title-lg">
+          <p>You have successfully passed our test. You are now officially an expert of "Programming"</p>
+        </div>
+        <div class="modal-footer text-center ">
+          <a type="button" id="verylastbtn" class="btn btn-success title-lg" href="index.html" style="text-decoration: inherit; color: inherit;" data-dismiss="modal">Close</a>
+        </div>
+      </div>
+    </div>
+  </div>
   <script src="./assets/js/index.js"></script>
-
+  
 </body>
