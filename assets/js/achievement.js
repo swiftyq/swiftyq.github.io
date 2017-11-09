@@ -21,11 +21,12 @@ var list_text = [
 $(document).ready(function(){
   generate_grid();
   generate_list();
+  achievement_pop_up();
 })
 generate_grid = function(){
   for(var i=0; i<5; i++){
     $("#achievement_grid_box").append("<div id='grid_row_"+i.toString()+"' class='grid_row row'></div>")
-    for(var j=0; j<24; j++){
+    for(var j=0; j<10; j++){
       $("#grid_row_"+i.toString()).append("<div id='grid_"+i.toString()+"_"+j.toString()+"' class='col-sm grid'></div>")
     }
   }
