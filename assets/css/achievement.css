@@ -1,10 +1,12 @@
 
 #body_achievement{
   height: 100%;
+  width: 100%;
 }
 #html_achievement{
   font-family: 'PT Sans', sans-serif;
   height: 100%;
+  width: 100%;
 }
 #header{
   height: 8%;
