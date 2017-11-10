@@ -36,40 +36,30 @@ This is the page that allows a user to sign up. Most of them are identical to ty
 
 This is the main page (the profile page) of our application. It shows the user the “task inbox,” in which various other users can ask questions on the subject of the user’s expertise. The key features of the main page are:
 
-1. 
+1. Push alarm that notifies the user of pending tasks
 
 <img src="img/inbox2.png"/>
 
-Push alarm that notifies the user of pending tasks
-
-2.
+2. Button that takes the user to achievements and ranking pages
 
 <img src="img/inbox3.png"/>
 
-Button that takes the user to achievements and ranking pages
-
-3.
+3. A dropdown button where the user can choose his expertise
 
 <img src="img/inbox3.png"/>
 
-A dropdown button where the user can choose his expertise
-
-4.
+4. Message previews in the inbox itself, and two buttons:
 
 <img src="img/inbox4.png"/>
 
-Message previews in the inbox itself, and two buttons:
-
-4-1. Preview task
-
+4-1. Preview task will show the entire question, which the user can choose to answer
 <img src="img/inbox5.png"/>
 
-One that will show the entire question, which the user can choose to answer
 
-4-2. Reply
+
+4-2. Reply will take the user to the message page, where instant chatting begins
 
 <img src="img/inbox6.png"/>
-The other will take the user to the message page, where instant chatting begins
 
 Although we have implemented frontend UI’s for the most part, we have yet to implement the backend features. Our prototype will direct the users to right pages, but the pages will not actually work properly. For example, hitting the reply button will take the user to the chat page, but the user cannot actually chat on the page. Still, the prototype captures the general design of the application. 
 
