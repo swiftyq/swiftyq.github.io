@@ -3,3 +3,8 @@ $( ".expertise-item" ).on('click', function() {
 	console.log(expertise);
 	$( ".btn-expertise" ).text(expertise);
 })
+
+$( "#send" ).on('click', function() {
+  var text = $( "textarea#chat_text" ).text();
+  
+})
