@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" href='./assets/css/achievement_pop_up.css' />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src='./assets/js/achievement.js'></script>
 	<script type="text/javascript" src='./assets/js/achievement_pop_up.js'></script>
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
@@ -16,24 +16,37 @@
 <body id="body_achievement">
 	<html id="html_achievement">
 	<!-- Your content here -->
-			<div class = "container" style= "margin-top: 10px">
-				<div class = "row" style = "height: 100px">
-				<div class = "col-2">
-						 <button style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red">
-								<div id = "text-center onboard"> <font size="+10" style = "color: white">4</font></div>
-							</button>
-					</div>
-					<div class = "text-center col-8" style = "margin-top: 5px">
-						<h1>Task Inbox</h1>
-					</div>
-					<div class = "img-circle col">
-							<button style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px">
-								<img src="assets\image\annie.png"
-											style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
-							</button>
+	<div class = "container" style= "margin-top: 10px">
+		<div class = "row" style = "height: 72px">
+		<div class = "col-2">
+				<div class="dropdown" style = "width: 500px">
+						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red">
+							<div id = "text-center onboard"> <font size="+10" style = "color: white">4</font></div>
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">ChemistryBee</a>
+							<a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">ComputerGeek</a>
+							<a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">OrchemKing</a>
+							<a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">PhizWhiz</a>
 						</div>
-					</div>
+				</div>
 			</div>
+			<div class = "text-center col-8" style = "margin-top: 5px">
+				<h1>Achievement</h1>
+			</div>
+			<div class = "img-circle col">
+					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
+							<img src="assets\image\annie.png"
+									style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
+						</button>
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							<a class="dropdown-item" href="#">Profile</a>
+							<a class="dropdown-item" href="inbox.html">Inbox</a>
+							<a class="dropdown-item" href="#">Scores</a>
+						</div>
+				</div>
+			</div>
+	</div>
 		<div id="content" class="container-fluid">
 			<div id="achievement_vis" class="container-fluid">
 				<div id="achievement_title" class="row">
