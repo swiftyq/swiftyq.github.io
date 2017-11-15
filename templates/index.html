@@ -33,17 +33,22 @@
     </header>
 
     <!-- Login form -->
-    <form class="login">
+    <form class="login" action="/" method="POST">
       <div class="form-group">
-        <label>Email address</label>
-        <input type="email" class="form-control form-control-lg title-lg" aria-describedby="emailHelp" placeholder="Enter email">
+        <label for="id">Email address</label>
+        <input type="id" name="id" class="form-control form-control-lg title-lg" placeholder="Enter id">
+		{% if warning %}
+		  <small style="color:red">{{warning}}</small>
+		{% endif %}
       </div>
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control form-control-lg title-lg" placeholder="Password">
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control form-control-lg title-lg" placeholder="Password">
       </div>
-      <div class="group"><a class="no-deco" href="inbox.html"><button type="button" class="btn btn-outline-success btn-block btn-lg title-lg">Log In</button></a></div>
-      <div class="group"><button type="button" class="btn btn-outline-dark btn-block btn-lg title-lg"><a href="signup.html">Sign up</a></button></div>
+      <button type="submit" class="btn btn-outline-success btn-block btn-lg title-lg">Log In</button>
+	</form>
+	<div class="container">
+      <div class="group"><button type="button" class="btn btn-outline-dark btn-block btn-lg title-lg"><a href="signup">Sign up</a></button></div>
       <div class="group"><small class="form-text text-muted text-center">Forgot your login details? <u class="sign-up-btn">Get help signing in.</u></small></div>
      
       <div class="row" style="margin-top:150px;">
@@ -58,7 +63,7 @@
         <span style="top:12%;"><i class="fa fa-google fa-2x"></i></span><div class="title-lg" style="margin-left: 60px;">Sign in with Google</div >
       </div>
 
-    </form>
+    </div>
 
   </html>
   <script src="./static/js/index.js"></script>

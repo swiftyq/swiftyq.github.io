@@ -8,10 +8,27 @@ from time import time
 from math import log
 import json
 import achievement_list_opener
+import sqlite3
+
+conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
+cur = conn.cursor()
+
+#cur.execute('''CREATE TABLE info
+#				(id text, password text, name text, expertise text)''')
+#cur.execute('''CREATE TABLE rating
+#				(id text, rating number, date text)''')
+#cur.execute('''CREATE TABLE achievement
+#				(id text, achievement number, date text)''')
+#cur.execute('''CREATE TABLE session''')
 
 app = Flask(__name__)
 socket_io = SocketIO(app)
 
+# Data structure
+# User-info: id, password, expertise
+# rating history, 
+# achievement: id (text), achievement (number), date (text)
+# session history
 achievement_l = achievement_list_opener.returner()
 print(achievement_l)
 print(type(achievement_l))
@@ -20,13 +37,40 @@ print(type(achievement_l))
 def index():
     return render_template("index.html")
 
+@app.route('/',methods=["POST"])
+def login():
+	if request.method == "POST":
+		user_id = request.form['id']
+		password = request.form['password']
+		cur.execute("SELECT  * from info where id=? and password=?", (user_id,password,))
+		user_info = cur.fetchone()
+		if not user_info:
+			warning = "Incorrect id or password. Please try again."	
+			return render_template("index.html", warning=warning)
+	return render_template("inbox.html")
+
 @app.route('/signup')
 def signup():
     return render_template("signup.html")
+  
+@app.route('/signedup', methods=["POST"])
+def signedup():
+	print(request.form)
+	user_id = request.form['id']
+	password = request.form['password']
+	name =  request.form['name']
+	expertise = request.form['expertise']
+	expertise = expertise.split(",")[:-1]
+	for e in expertise:
+		cur.execute("INSERT INTO info VALUES (?,?,?,?)", (user_id,password,name,e))
+	conn.commit()
+	return render_template("index.html")
 
-@app.route('/inbox')
+@app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
-    return render_template("inbox.html")
+	print (request.method)
+	print (request.form["email"])
+	return render_template("inbox.html")
 
 @app.route('/chat')
 def chat():

@@ -16,7 +16,10 @@ $( "#btn-signup" ).on('click', function() {
   $( ".modal.fade" ).show();
   alert("clicked");
 })
+<<<<<<< HEAD
 
 $( "#verylastbtn" ).on('click', function() {
   window.location.href = "index.html";
 })
+=======
+>>>>>>> d9fbd65940f66ae4c3b4f48583a65730bed64a38
