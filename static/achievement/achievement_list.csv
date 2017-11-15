@@ -1,0 +1,21 @@
+0,First Three Star!,Get first three star from user rating
+1,First Four Star!,Get first four star from user rating
+2,First Five Star!,Get first five star from user rating
+3,Be talkative to explain!,Exchange 100 utterances with a person in a session
+4,You are an apprentice!,Explain 10 problems
+5,You helped for a month?,Explain 30 problems
+6,You are an experienced!,Explain 50 problems
+7,You are a master!,Explain 100 problems
+8,Heated explainr!,Explain 10 problems a day
+9,How consistent you are!,Explain 20 problems for 20 days
+10,Five star streak!,Get 3 five stars consecutively
+11,Swift four stars,Get 4 stars by solving a problem in 5 minutes after requester post a question
+12,Swift five stars,Get 5 stars by solving a problem in 5 minutes after requester post a question
+13,"Oh, you know how to explain",Get 5 five stars from user rating
+14,"Oh, you are a bit good at explaining",Get 10 five stars from user rating
+15,"Oh, you are outstanding at explaining!",Get 20 five stars from user rating
+16,Failure is also a good experience,Get one star from user rating
+17,"Frequent asker, aren't you?",Post a question for 20 days
+18,Before the deadline?,Ask 5 questions a day
+19,Before the exam?,Ask 10 questions a day
+20,You are talking for a long time,Maintain a session for 20 minutes
