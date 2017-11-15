@@ -13,7 +13,3 @@ $( "#btn-signup" ).on('click', function() {
   $( ".modal.fade" ).show();
   alert("clicked");
 })
-
-$( "#verylastbtn" ).on('click', function() {
-  window.location.href = "index.html";
-})
