@@ -18,16 +18,36 @@ var list_text = [
   ''
 ]
 
+var achievement_list;
+
 var grid_colors = ["#aaff91",
 "#75d5ff",
 "#eeeeee"]
 $(document).ready(function(){
+  get_achievement();
+  //console.log(achievement_list);
   generate_grid();
-  generate_list();
+
   achievement_pop_up("hoihoi", "dullinun");
 })
+get_achievement = function(){
+  $.ajax({
+                type: "POST",
+                url: "/achievement_list",
+                data: {},
+                dataType: "json",
+                success: function(data) {
+                    achievement_list = data;
+                    generate_list();
+                },
+                error: function(err) {
+                    console.log(err);
+                }
+            });
+}
+
 generate_grid = function(){
-  for(var i=0; i<5; i++){
+  for(var i=0; i<2; i++){
     $("#achievement_grid_box").append("<div id='grid_row_"+i.toString()+"' class='grid_row row'></div>")
     for(var j=0; j<10; j++){
       $("#grid_row_"+i.toString()).append("<div id='grid_"+i.toString()+"_"+j.toString()+"' class='col-sm grid'></div>")
@@ -58,8 +78,8 @@ generate_list = function(){
     $("#list_image_"+i.toString()).append("<div id='list_image_sub_"+i.toString()+"' class='achievement_entity_sub_image'></div>")
     $("#list_content_"+i.toString()).append("<div id='list_content_head_"+i.toString()+"' class='achievement_entity_head'></div>")
     .append("<div id='list_content_text_"+i.toString()+"' class='achievement_entity_text'></div>")
-    $("#list_content_head_"+i.toString()).text(list_head[i]);
-    $("#list_content_text_"+i.toString()).text(list_text[i]);
+    $("#list_content_head_"+i.toString()).text(achievement_list[i]['title']);
+    $("#list_content_text_"+i.toString()).text(achievement_list[i]['content']);
     var rand2 = Math.floor(Math.random()*100000)+100000
     //https://d30y9cdsu7xlg0.cloudfront.net/png/149821-200.png
     $("#list_image_sub_"+i.toString()).append("<img class='list_img' src='https://d30y9cdsu7xlg0.cloudfront.net/png/"+rand2.toString()+"-200.png' width='0' height='0'></img>")

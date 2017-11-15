@@ -6,9 +6,15 @@ from flask_socketio import SocketIO, send
 from subprocess import call
 from time import time
 from math import log
+import json
+import achievement_list_opener
 
 app = Flask(__name__)
 socket_io = SocketIO(app)
+
+achievement_l = achievement_list_opener.returner()
+print(achievement_l)
+print(type(achievement_l))
 
 @app.route('/')
 def index():
@@ -30,6 +36,9 @@ def chat():
 def achievement():
     return render_template("achievement.html")
 
-  
+@app.route('/achievement_list', methods=['POST'])
+def achievement_list():
+    return achievement_l
+
 if __name__ == '__main__':
     socket_io.run(app, host='0.0.0.0', debug=True, port=5000)
