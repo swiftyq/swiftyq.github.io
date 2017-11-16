@@ -26,12 +26,10 @@ socket_io = SocketIO(app)
 
 # Data structure
 # User-info: id, password, expertise
-# rating history, 
+# rating history,
 # achievement: id (text), achievement (number), date (text)
 # session history
 achievement_l = achievement_list_opener.returner()
-print(achievement_l)
-print(type(achievement_l))
 
 @app.route('/')
 def index():
@@ -45,14 +43,14 @@ def login():
 		cur.execute("SELECT  * from info where id=? and password=?", (user_id,password,))
 		user_info = cur.fetchone()
 		if not user_info:
-			warning = "Incorrect id or password. Please try again."	
+			warning = "Incorrect id or password. Please try again."
 			return render_template("index.html", warning=warning)
 	return render_template("inbox.html")
 
 @app.route('/signup')
 def signup():
     return render_template("signup.html")
-  
+
 @app.route('/signedup', methods=["POST"])
 def signedup():
 	print(request.form)
@@ -79,6 +77,10 @@ def chat():
 @app.route('/achievement')
 def achievement():
     return render_template("achievement.html")
+
+@app.route('/request_page')
+def request_page():
+    return render_template("request.html")
 
 @app.route('/achievement_list', methods=['POST'])
 def achievement_list():
