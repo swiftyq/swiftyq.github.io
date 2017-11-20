@@ -16,10 +16,27 @@ $( "#btn-signup" ).on('click', function() {
   $( ".modal.fade" ).show();
   alert("clicked");
 })
-//<<<<<<< HEAD
+
+$( ".fstbtn" ).on('click', function() {
+  console.log($("input[name='password1']").val(), $("input[name='password2']").val());
+  if ( ($( "input[type='password']").val().length)<4 || ($( "input[type='email']").val().length)<1 || ($( "input[type='expertise']").val().length)<2 || ($( "input[type='name']").val().length)<2) {
+    alert("Please fill in all fields correctly");
+  }
+  else if ($("input[name='password1']").val() != $("input[name='password2']").val()){
+    alert("Verify your password");
+  }
+  else {
+    $( "#modal1" ).modal('show');
+    console.log('aa'); 
+  }
+})
 
 $( "#verylastbtn" ).on('click', function() {
-  window.location.href = "index.html";
+  console.log("clicked");
+  console.log($(".group .btn.btn-success.btn-block.btn-lg.title-lg").attr("type"));
+  $(".group .btn.btn-success.btn-block.btn-lg.title-lg").attr("type","submit");
+  $(".group .btn.btn-success.btn-block.btn-lg.title-lg").text("Proceed");
+  $(".group .btn.btn-success.btn-block.btn-lg.title-lg").removeClass("btn-success");
+  $(".group .btn.btn-block.btn-lg.title-lg").removeClass("fstbtn");
+  $(".group .btn.btn-block.btn-lg.title-lg").addClass("btn-primary");
 })
-//=======
-//>>>>>>> d9fbd65940f66ae4c3b4f48583a65730bed64a38

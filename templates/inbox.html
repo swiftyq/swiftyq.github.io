@@ -13,7 +13,7 @@
 
 <body>
 	<html>
-  
+
 	<div class = "container" style= "margin-top: 10px">
 		<div class = "row" style = "height: 72px">
     <div class = "col-2">
@@ -22,8 +22,8 @@
               <div id = "text-center onboard"> <font size="+10" style = "color: white">{{count}}</font></div>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              {% for item in rtable %}
-              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">{{item[3]}}</a>
+							{% for item in rtable %}
+              	<a class="dropdown-item select_requester" data-toggle = "modal" data-target="#previewtask" val='{{loop.index0}}' val2='{{item[1]}}'>{{item[3]}}</a>
               {% endfor %}
             </div>
         </div>
@@ -33,12 +33,12 @@
       </div>
       <div class = "img-circle col">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
-              <img src="static/img/{{user_id}}.png" 
+              <img src="static/img/{{user_id}}.png"
                   style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="achievement.html">Achievements</a>
+              <a class="dropdown-item" href="achievement">Achievements</a>
               <a class="dropdown-item" href="{{ url_for('request_page', user_id = user_id)}}">Request Task</a>
             </div>
         </div>
@@ -61,7 +61,7 @@
   					<button class="btn btn-secondary dropdown-toggle btn-expertise" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "width: 300px">
    		 				<span>{{expertise}}</span>
   					</button>
-  					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  					<div id="expertise_selection" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
    			 			<a class="dropdown-item expertise-item" href="#">Chemistry</a>
     		 			<a class="dropdown-item expertise-item" href="#">Math</a>
    			 			<a class="dropdown-item expertise-item" href="#">Physics</a>
@@ -83,8 +83,8 @@
 	</div>
 		<div class = "col">
 	{% for item in rtable %}
-    <div class="w-100" style="margin-top: 30px; padding: 1px; background-color: #eee;"></div>
-	  <div class="container" style= "margin-top: 10px">
+    <div class="w-100" style="margin-top: 30px; padding: 1px; background-color: #eee;" ></div>
+	  <div class="container requester_box" style= "margin-top: 10px" val={{item[4]}}>
   		<div class ="row">
     		<div class="img-circle col">
       			<img
@@ -102,7 +102,7 @@
           </div>
       		<div class = "row" style= "margin-top: 8px">
       		<div class = "col-4" style = "padding-top: 5px"></div>
-      		  <button class = "col btn btn-success" style = "border-radius: 50px" data-toggle="modal" data-target="#previewtask">
+      		  <button class = "select_requester col btn btn-success" style = "border-radius: 50px" data-toggle="modal" data-target="#previewtask" val='{{loop.index0}}' val2='{{item[1]}}'>
       				Preview Task
       		  </button>
       		  <button class = "col btn btn-success" style = "border-radius: 50px; margin-left: 5px" href="chat">
@@ -121,7 +121,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div id="previewtask_content" class="modal-body">
          {{item[1]}}
       </div>
       <div class="modal-footer">
