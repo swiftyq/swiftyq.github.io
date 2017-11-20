@@ -13,6 +13,7 @@ import sqlite3
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
+#cur. execute('CREATE TABLE inboxinfo (id text, pic text, expertise text)')
 #cur.execute('''CREATE TABLE info
 #				(id text, password text, name text, expertise text)''')
 #cur.execute('''CREATE TABLE rating
@@ -45,7 +46,14 @@ def login():
 		if not user_info:
 			warning = "Incorrect id or password. Please try again."
 			return render_template("index.html", warning=warning)
-	return render_template("inbox.html")
+		return extract(user_id)
+	#return render_template("inbox.html", user_id = user_id)
+def extract(user_id):
+	cur.execute("SELECT expertise from info where id=?", (user_id,))
+	expertise = cur.fetchone()
+	#if not expertise:
+		#print("no")
+	return render_template("inbox.html", user_id = user_id, expertise = expertise[0])
 
 @app.route('/signup')
 def signup():
@@ -64,13 +72,17 @@ def signedup():
 	conn.commit()
 	return render_template("index.html")
 
-@app.route('/inbox',methods=['GET', 'POST'])
+@app.route('/inbox', methods = ["POST"])
 def inbox():
-	if(request.method == 'GET'):
-		#print (request.method)
-		#print (request.form["email"])
-	
+	if(request.method == "GET"):
 		return render_template("inbox.html")
+	if(request.method == "POST"):
+		print(request.form['user_id'])
+		#return render_template("inbox.html")
+
+
+	#if(request.method == "POST"):
+		#return render_template("inbox.html")
 
 @app.route('/chat')
 def chat():
