@@ -33,12 +33,20 @@
 
 	<!-- Your content here -->
     <!-- SwiftyQ title header -->
+
     <header>
       <div class="title text-center" style="padding-top:100px !important;">
         <a href="index.html" style="text-decoration: inherit; color: inherit;">SwiftyQ</a>
       </div>
     </header>
-
+		{% if warning %}
+			<script>
+			var warn = '{{warning}}';
+			$(document).ready(function () {
+    		alert(warn);
+			});
+			</script>
+		{% endif %}
     <!-- Login form -->
     <form class="request" action="{{ url_for('request_paged')}}" method="post" enctype="multipart/form-data">
       <div class="form-group">

@@ -58,7 +58,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#">Profile</a>
               <a class="dropdown-item" href="achievement.html">Achievements</a>
-              <a class="dropdown-item" href="#">Scores</a>
+              <a class="dropdown-item" href="request_page">Request Task</a>
             </div>
         </div>
       </div>
@@ -69,8 +69,8 @@
 		<img 
 			src = "static/img/{{user_id}}.png" 
 			alt= "John" 
-			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;">
-		<h1 id="user_id">{{user_id}}</h1>
+			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" >
+		<h1>{{user_id}}</h1>
 	</div>
 	<span style = "margin-left: 70px; margin-top: 70px"> Expertise: </span>
 	<div class = "container" style= "margin-top: 3px; margin-left:50px">
@@ -78,12 +78,13 @@
 			<div class = "col-9">
 				<div class="dropdown" style = "width: 500px">
   					<button class="btn btn-secondary dropdown-toggle btn-expertise" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "width: 300px">
-   		 				<span>Computer Science</span>
+   		 				<span>{{expertise}}</span>
   					</button>
   					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
    			 			<a class="dropdown-item expertise-item" href="#">Chemistry</a>
     		 			<a class="dropdown-item expertise-item" href="#">Math</a>
    			 			<a class="dropdown-item expertise-item" href="#">Physics</a>
+              <a class="dropdown-item expertise-item" href="#">Programming</a>
   					</div>
 				</div>
 			</div>
