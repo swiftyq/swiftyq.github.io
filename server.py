@@ -66,9 +66,11 @@ def signedup():
 
 @app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
-	print (request.method)
-	print (request.form["email"])
-	return render_template("inbox.html")
+	if(request.method == 'GET'):
+		#print (request.method)
+		#print (request.form["email"])
+	
+		return render_template("inbox.html")
 
 @app.route('/chat')
 def chat():
