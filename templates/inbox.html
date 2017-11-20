@@ -65,11 +65,11 @@
 	</div>
   <div class="w-100" style="margin-top: 2px; padding: 1px; background-color: #eee;"></div>
 	<div class = "img-circle text-center profile" style = "padding-top: 10px">
+
 		<img 
-			src = "static/img/annie.png" 
+			src = "static/img/{{user_id}}.png" 
 			alt= "John" 
-			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" 
-		>
+			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" >
 		<h1>{{user_id}}</h1>
 	</div>
 	<span style = "margin-left: 70px; margin-top: 70px"> Expertise: </span>
@@ -108,7 +108,7 @@
       			<img
 					src = "static/img/original.png"
 					alt = "chembee"
-					style = "width: 120px; height: 120px;  border-radius: 1000px; border-style: solid; border-color: black" 
+					style = "width: 120px; height: 120px;  border-radius: 1000px; border-style: solid; border-color: black"
 				>
 			</div>
     		<div class="col-9 respondent">
@@ -118,14 +118,14 @@
       			<div class = "row" style= "padding-left: 50px">
       				Describe three advantages of using tupules instead of other data structu...
       			</div>
-      			<div class = "row" style= "margin-top: 8px"> 
+      			<div class = "row" style= "margin-top: 8px">
       				<div class = "col-4" style = "padding-top: 5px">
       				</div>
       				<button class = "col btn btn-success" style = "border-radius: 50px" data-toggle="modal" data-target="#previewtask">
       					Preview Task
       				</button>
       				<button class = "col btn btn-success" style = "border-radius: 50px; margin-left: 5px" href="chat.html">
-      					<a href="chat.html" style="text-decoration: none; color:inherit;">Reply</a>
+      					<a href="chat?user_id='{{user_id}}" style="text-decoration: none; color:inherit;">Reply</a>
       				</button>
       			</div>
     		</div>
@@ -138,7 +138,7 @@
       			<img
 					src = "static/img/compgeek.jpg"
 					alt = "chembee"
-					style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black" 
+					style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black"
 				>
 			</div>
     		<div class="col-9 respondent">
@@ -168,7 +168,7 @@
       			<img
 					src = "static/img/orchking.jpg"
 					alt = "chembee"
-					style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black" 
+					style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black"
 				>
 			</div>
     		<div class="col-9 respondent">
@@ -198,7 +198,7 @@
       			<img
 					src = "static/img/phizwhiz.jpg"
 					alt = "chembee"
-					style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black" 
+					style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black"
 				>
 			</div>
     		<div class="col-9 respondent">
@@ -229,7 +229,7 @@
             <img
           src = "static/img/original.png"
           alt = "chembee"
-          style = "width: 120px; height: 120px;  border-radius: 1000px; border-style: solid; border-color: black" 
+          style = "width: 120px; height: 120px;  border-radius: 1000px; border-style: solid; border-color: black"
         >
       </div>
         <div class="col-9 respondent">
@@ -239,7 +239,7 @@
             <div class = "row" style= "padding-left: 50px">
               Describe three advantages of using tupules instead of other data structu...
             </div>
-            <div class = "row" style= "margin-top: 8px"> 
+            <div class = "row" style= "margin-top: 8px">
               <div class = "col-4" style = "padding-top: 5px">
               </div>
               <button class = "col btn btn-success" style = "border-radius: 50px" data-toggle="modal" data-target="#previewtask">
@@ -259,7 +259,7 @@
             <img
           src = "static/img/compgeek.jpg"
           alt = "chembee"
-          style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black" 
+          style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black"
         >
       </div>
         <div class="col-9 respondent">
@@ -289,7 +289,7 @@
             <img
           src = "static/img/orchking.jpg"
           alt = "chembee"
-          style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black" 
+          style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black"
         >
       </div>
         <div class="col-9 respondent">
@@ -319,7 +319,7 @@
             <img
           src = "static/img/phizwhiz.jpg"
           alt = "chembee"
-          style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black" 
+          style = "width: 120px; height: 120px; border-radius: 1000px; border-style: solid; border-color: black"
         >
       </div>
         <div class="col-9 respondent">
