@@ -159,7 +159,14 @@ def login():
 		if not user_info:
 			warning = "Incorrect id or password. Please try again."
 			return render_template("index.html", warning=warning)
-	return render_template("inbox.html",user_id=user_id)
+		return extract(user_id)
+	#return render_template("inbox.html", user_id = user_id)
+def extract(user_id):
+	cur.execute("SELECT expertise from info where id=?", (user_id,))
+	expertise = cur.fetchone()
+	#if not expertise:
+		#print("no")
+	return render_template("inbox.html", user_id = user_id, expertise = expertise[0])
 
 @app.route('/signup')
 def signup():
