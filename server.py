@@ -60,8 +60,6 @@ def extract(user_id):
 	expertise = cur.fetchone()
 	#if not expertise:
 		#print("no")
-	for x in range(0, 3):
-		cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", ("1", "hi!", "john", "john", expertise[0], "11/11",))
 	cur.execute("SELECT * from request where expertise = ?", (expertise[0],))
 	rtable = cur.fetchall()
 	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
