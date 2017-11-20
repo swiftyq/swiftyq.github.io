@@ -13,25 +13,7 @@
 
 <body>
 	<html>
-  <div class="modal fade" id="previewtask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style= "padding-top:500px">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <strong><h5 class="modal-title" id="exampleModalLabel">Preview Task</h5></strong>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary"><a href="chat.html" style="text-decoration: none; color:inherit;">Reply</a></button>
-      </div>
-    </div>
-  </div>
-</div>
+
 	<div class = "container" style= "margin-top: 10px">
 		<div class = "row" style = "height: 72px">
     <div class = "col-2">
@@ -40,10 +22,9 @@
               <div id = "text-center onboard"> <font size="+10" style = "color: white">{{count}}</font></div>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">ChemistryBee</a>
-              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">ComputerGeek</a>
-              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">OrchemKing</a>
-              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">PhizWhiz</a>
+              {% for item in rtable %}
+              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">{{item[3]}}</a>
+              {% endfor %}
             </div>
         </div>
       </div>
@@ -52,13 +33,13 @@
       </div>
       <div class = "img-circle col">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
-              <img src="static/img/annie.png" 
+              <img src="static/img/{{user_id}}.png"
                   style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="achievement.html">Achievements</a>
-              <a class="dropdown-item" href="request_page">Request Task</a>
+              <a class="dropdown-item" href="achievement">Achievements</a>
+              <a class="dropdown-item" href="{{ url_for('request_page', user_id = user_id)}}">Request Task</a>
             </div>
         </div>
       </div>
@@ -66,9 +47,9 @@
   <div class="w-100" style="margin-top: 2px; padding: 1px; background-color: #eee;"></div>
 	<div class = "img-circle text-center profile" style = "padding-top: 10px">
 
-		<img 
-			src = "static/img/{{user_id}}.png" 
-			alt= "John" 
+		<img
+			src = "static/img/{{user_id}}.png"
+			alt= "John"
 			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" >
 		<h1>{{user_id}}</h1>
 	</div>
@@ -101,9 +82,9 @@
 		</div>
 	</div>
 		<div class = "col">
-	<div class="w-100" style="margin-top: 30px; padding: 1px; background-color: #eee;"></div>
 	{% for item in rtable %}
-    <div class="container" style= "margin-top: 10px">
+    <div class="w-100" style="margin-top: 30px; padding: 1px; background-color: #eee;"></div>
+	  <div class="container" style= "margin-top: 10px">
   		<div class ="row">
     		<div class="img-circle col">
       			<img
@@ -114,24 +95,43 @@
 			</div>
       <div class="col-9 respondent">
       		<div class = "row" style = "width: 30px">
-      			<span style="font-weight:bold; font-size:25px">{{item[2]}}</span>
+      			<span style="font-weight:bold; font-size:25px">{{item[3]}}</span>
       		</div>
-      		<div class = "row" style= "padding-left: 50px">
+      		<div class = "row" style= "width: 450px; padding-left: 50px; overflow: hidden; text-overflow: ellipsis; white-space:nowrap; display: inline-block;">
       			 {{item[1]}}
-      		</div>
+          </div>
       		<div class = "row" style= "margin-top: 8px">
       		<div class = "col-4" style = "padding-top: 5px"></div>
       		  <button class = "col btn btn-success" style = "border-radius: 50px" data-toggle="modal" data-target="#previewtask">
       				Preview Task
       		  </button>
-      		  <button class = "col btn btn-success" style = "border-radius: 50px; margin-left: 5px" href="chat.html">
+      		  <button class = "col btn btn-success" style = "border-radius: 50px; margin-left: 5px" href="chat">
       		  <a href="chat?user_id='{{user_id}}" style="text-decoration: none; color:inherit;">Reply</a>
       		  </button>
       		</div>
     	</div>
-      {% endfor %}
   		</div>
   	</div>
+    <div class="modal fade" id="previewtask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style= "padding-top:500px">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <strong><h5 class="modal-title" id="exampleModalLabel">Preview Task</h5></strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         {{item[1]}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary"><a href="chat" style="text-decoration: none; color:inherit;">Reply</a></button>
+      </div>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
   </html>
 </body>
 

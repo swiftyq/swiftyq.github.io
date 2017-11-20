@@ -75,8 +75,6 @@ def extract(user_id):
 	expertise = cur.fetchone()
 	#if not expertise:
 		#print("no")
-	for x in range(0, 3):
-		cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", ("1", "hi!", "john", "john", expertise[0], "11/11",))
 	cur.execute("SELECT * from request where expertise = ?", (expertise[0],))
 	rtable = cur.fetchall()
 	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
@@ -91,10 +89,14 @@ def signup():
 
 @app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
-	print(request.method)
-	print(request.form["email"])
-	return render_template("inbox.html")
+    user_id = request.args.get('user_id')
+    var= request.method
+    print(var)
+    if var == 'POST' :
+        print(var)
+        return request_paged(request)
 
+    return render_template("inbox.html", user_id = user_id)
 @app.route('/chat', methods=["GET"])
 def chat():
 	user_id=request.args.get("user_id")
@@ -123,13 +125,22 @@ def msg(message,username):
 def achievement():
     return render_template("achievement.html")
 
+
+
+
 @app.route('/request_page')
 def request_page():
     print("rrrequest!")
-    return render_template("request.html")
+    #print(user_id)
+    user_id = request.args.get("user_id")
+    print(user_id)
+    return render_template("request.html", user_id=user_id)
 
-@app.route('/request_paged',methods=['POST'])
-def request_paged():
+
+def request_paged(request):
+    #user_id = request.form['user_id']
+    user_id = request.args.get("user_id")
+    print("guaack")
     question = request.form['question']
     expertise = request.form['expertise']
     _file = request.files['image']
@@ -150,9 +161,9 @@ def request_paged():
         filename = _id+".png"
     else:
         filename=""
-    cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,"requester",expertise,date))
+    cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,user_id,expertise,date))
     conn.commit()
-    return render_template("inbox.html")
+    return extract(user_id)
 
 
 @app.route('/achievement_list', methods=['POST'])

@@ -48,8 +48,8 @@
 			</script>
 		{% endif %}
     <!-- Login form -->
-    <form class="request" action="{{ url_for('request_paged')}}" method="post" enctype="multipart/form-data">
-      <div class="form-group">
+    <form class="request" action="{{ url_for('inbox', type = 'request_return', user_id=user_id)}}" method="post" enctype="multipart/form-data">
+			<div class="form-group">
         <label>Your Question</label>
         <textarea name="question" class="form-control form-control-lg title-lg"></textarea>
       </div>
