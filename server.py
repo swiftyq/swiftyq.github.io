@@ -53,16 +53,29 @@ def login():
 		if not user_info:
 			warning = "Incorrect id or password. Please try again."
 			return render_template("index.html", warning=warning)
+<<<<<<< HEAD
 
 	return extract(user_id)
 
 
+=======
+	return extract(user_id)
+
+>>>>>>> 9d6c91b53634b53768f13b7655c7b93dd85b2bfb
 def extract(user_id):
 	cur.execute("SELECT expertise from info where id=?", (user_id,))
 	expertise = cur.fetchone()
 	#if not expertise:
 		#print("no")
-	return render_template("inbox.html", user_id = user_id, expertise = expertise[0])
+	for x in range(0, 3):
+		cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", ("1", "hi!", "john", "john", expertise[0], "11/11",))
+	cur.execute("SELECT * from request where expertise = ?", (expertise[0],))
+	rtable = cur.fetchall()
+	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
+	count = cur.fetchone()[0]
+	mylist = []
+
+	return render_template("inbox.html", user_id = user_id, expertise = expertise[0], rtable=rtable, count = count)
 
 @app.route('/signup')
 def signup():
@@ -106,10 +119,12 @@ def msg(message,username):
 		to_client['message'] = username+" has entered the room."
 		to_client['message'] = to_client['message']
 		to_client['type'] = 'connect'
+		to_client['username'] = username
 	else:
 		to_client['message'] = message
 		to_client['username'] = username
 		to_client['type'] = 'normal'
+		to_client['time'] = "%02d:%02d" %(datetime.datetime.now().hour%12,datetime.datetime.now().minute)
 	# emit("response", {'data': message['data'], 'username': session['username']}, broadcast=True)
 	send(to_client, broadcast=True)
 
