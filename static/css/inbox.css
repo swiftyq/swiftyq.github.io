@@ -6,12 +6,6 @@
 
 }
 
-.onlinecircle{
-	border-radius: 100%;
-	width: 5px;
-	height: 5px;
-	background: green;
-}
 
 .button {
     background-color: #4CAF50; /* Green */
