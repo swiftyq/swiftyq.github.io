@@ -29,28 +29,28 @@
         <a href="index.html" style="text-decoration: inherit; color: inherit;">SwiftyQ</a>
       </div>
     </header>
-
     <!-- Login form -->
-    <form class="signup">
+    <form class="signup" action="/" method="POST">
       <div class="form-group">
         <label>Email address</label>
-        <input type="email" class="form-control form-control-lg title-lg" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="email" name='email' class="form-control form-control-lg title-lg" aria-describedby="emailHelp" placeholder="Enter email">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control form-control-lg title-lg" placeholder="Password">
+        <input type="password" name='password1' class="form-control form-control-lg title-lg" placeholder="Password">
       </div>
       <div class="form-group">
         <label for="exampleInputPassword2">Confirm Password</label>
-        <input type="password" class="form-control form-control-lg title-lg" placeholder="Re-enter password">
+        <input type="password" name='password2' class="form-control form-control-lg title-lg" placeholder="Re-enter password">
       </div>
        <div class="form-group">
         <label for="Name">Name</label>
-        <input type="name" class="form-control form-control-lg title-lg" placeholder="Your name">
+        <input type="name" name='name' class="form-control form-control-lg title-lg" placeholder="Your name">
       </div>
+      <input name="type" value="signup" style="display: none;">
        <div class="form-group">
         <label for="expertise">Expertise</label>
-        <input type="expertise" class="form-control form-control-lg title-lg" placeholder="Please select from below">
+        <input type="expertise" name='expertise' class="form-control form-control-lg title-lg" placeholder="Please select from below" readonly>
       </div>
 
       <div class="dropdown">
@@ -63,7 +63,7 @@
           <a class="dropdown-item on-hover" href="#">Physics</a>
         </div>
       </div>
-      <div class="group"><button type="button" data-toggle="modal" data-target="#modal1" class="btn btn-success btn-block btn-lg title-lg">Sign up</button></div>
+      <div class="group"><button type="button" class="fstbtn btn btn-success btn-block btn-lg title-lg">Sign up</button></div>
 
     </form>
 
@@ -169,7 +169,7 @@
           <p>You have successfully passed our test. You are now officially an expert of "Programming"</p>
         </div>
         <div class="modal-footer text-center ">
-          <a type="button" id="verylastbtn" class="btn btn-success title-lg" href="index.html" style="text-decoration: inherit; color: inherit;" data-dismiss="modal">Close</a>
+          <div type="button" id="verylastbtn" class="btn btn-success title-lg" style="text-decoration: inherit; color: inherit;" data-dismiss="modal">Close</div>
         </div>
       </div>
     </div>

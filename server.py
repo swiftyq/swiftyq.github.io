@@ -17,7 +17,7 @@ import string
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
-
+# cur.execute('''CREATE TABLE user_info (id text primary key, password text, name text, expertise text)''')
 #cur.execute('''CREATE TABLE info
 #				(id text, password text, name text, expertise text)''')
 #cur.execute('''CREATE TABLE rating
@@ -45,18 +45,33 @@ def index():
 
 @app.route('/',methods=["POST"])
 def login():
-	if request.method == "POST":
-		user_id = request.form['id']
+	print (request.form)
+	if request.form['type'] == 'signup':
+		user_id = request.form['email']
+		password = request.form['password1']
+		name =  request.form['name']
+		expertise = request.form['expertise']
+		expertise = expertise.split(",")[:-1]
+		print (expertise)
+		for e in expertise:
+			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (user_id,password,name,e))
+		conn.commit()
+		return render_template("index.html")
+	else:
+		user_id = request.form['email']
 		password = request.form['password']
-		cur.execute("SELECT  * from info where id=? and password=?", (user_id,password,))
-		user_info = cur.fetchone()
+		query = "SELECT  * from user_info where id='%s' and password='%s'" %(user_id,password)
+		print (query)
+		cur.execute(query)
+		user_info = cur.fetchall()
+		print (user_info)
 		if not user_info:
 			warning = "Incorrect id or password. Please try again."
 			return render_template("index.html", warning=warning)
-	return extract(user_id)
+		return extract(user_id)
 
 def extract(user_id):
-	cur.execute("SELECT expertise from info where id=?", (user_id,))
+	cur.execute("SELECT expertise from user_info where id=?", (user_id,))
 	expertise = cur.fetchone()
 	#if not expertise:
 		#print("no")
@@ -73,19 +88,6 @@ def extract(user_id):
 @app.route('/signup')
 def signup():
     return render_template("signup.html")
-
-@app.route('/signedup', methods=["POST"])
-def signedup():
-	print(request.form)
-	user_id = request.form['id']
-	password = request.form['password']
-	name =  request.form['name']
-	expertise = request.form['expertise']
-	expertise = expertise.split(",")[:-1]
-	for e in expertise:
-		cur.execute("INSERT INTO info VALUES (?,?,?,?)", (user_id,password,name,e))
-	conn.commit()
-	return render_template("index.html")
 
 @app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
