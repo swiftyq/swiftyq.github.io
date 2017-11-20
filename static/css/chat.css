@@ -33,24 +33,31 @@ body {
 
 .onlinecircle{
     border-radius: 100%;
-    width: 5px;
-    height: 5px;
+    width: 20px;
+    height: 20px;
     background: green;
-    position: relative; 
-    left: 46%; top: 10px; right: 2px
 }
 
 .content > div {
     padding: 70px 0;
 }
 /* Chat containers */
-.container {
+/*.msg_container {
     border: 2px solid #dedede;
     background-color: white;
     border-radius: 10px;
     padding: 10px;
     margin: 10px 0;
     max-width: none !important; font-size:20px;
+}*/
+
+#msg_text {
+    font-size: 30px;
+}
+
+#msgs {
+    margin-bottom: 10px;
+    font-size: 25px;
 }
 
 /* Darker chat container */

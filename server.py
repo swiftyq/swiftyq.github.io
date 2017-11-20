@@ -93,10 +93,12 @@ def msg(message,username):
 		to_client['message'] = username+" has entered the room."
 		to_client['message'] = to_client['message']
 		to_client['type'] = 'connect'
+		to_client['username'] = username
 	else:
 		to_client['message'] = message
 		to_client['username'] = username
 		to_client['type'] = 'normal'
+		to_client['time'] = "%02d:%02d" %(datetime.datetime.now().hour%12,datetime.datetime.now().minute)
 	# emit("response", {'data': message['data'], 'username': session['username']}, broadcast=True)
 	send(to_client, broadcast=True)
 
