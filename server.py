@@ -81,7 +81,7 @@ def extract(user_id):
 	count = cur.fetchone()[0]
 	mylist = []
 
-	return render_template("inbox.html", user_id = user_id, expertise = expertise[0], rtable=rtable, count = count)
+	return render_template("inbox.html", user_id=user_id, expertise = expertise[0], rtable=rtable, count = count)
 
 @app.route('/signup')
 def signup():
