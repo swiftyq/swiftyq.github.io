@@ -96,13 +96,24 @@ def request_paged():
     question = request.form['question']
     expertise = request.form['expertise']
     _file = request.files['image']
+    if not question:
+        warning = "Question not specified. Please ask a question."
+        return render_template("request.html", warning=warning)
+    if not expertise:
+        warning = "Expertise not specified. Please specify expertise."
+        return render_template("request.html", warning=warning)
     print(_file)
     date = datetime.datetime.now().isoformat()
     print(date)
+
     _id = ''.join([random.choice(string.ascii_letters + string.digits) for i in range(10)])
     #cur_date =
-    _file.save(os.path.join("./static/upload", _id + ".png"))
-    cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,_id+".png","requester",expertise,date))
+    if _file:
+        _file.save(os.path.join("./static/upload", _id + ".png"))
+        filename = _id+".png"
+    else:
+        filename=""
+    cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,"requester",expertise,date))
     conn.commit()
     return render_template("inbox.html")
 
