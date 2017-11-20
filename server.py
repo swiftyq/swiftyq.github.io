@@ -53,15 +53,8 @@ def login():
 		if not user_info:
 			warning = "Incorrect id or password. Please try again."
 			return render_template("index.html", warning=warning)
-<<<<<<< HEAD
-
 	return extract(user_id)
 
-
-=======
-	return extract(user_id)
-
->>>>>>> 9d6c91b53634b53768f13b7655c7b93dd85b2bfb
 def extract(user_id):
 	cur.execute("SELECT expertise from info where id=?", (user_id,))
 	expertise = cur.fetchone()
