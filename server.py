@@ -17,7 +17,7 @@ import string
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
-# cur.execute('''CREATE TABLE user_info (id text primary key, password text, name text, expertise text)''')
+#cur.execute('''CREATE TABLE user_info (id text primary key, password text, name text, expertise text)''')
 #cur.execute('''CREATE TABLE info
 #				(id text, password text, name text, expertise text)''')
 #cur.execute('''CREATE TABLE rating
@@ -26,7 +26,7 @@ cur = conn.cursor()
 #				(id text, achievement number, date text)''')
 #cur.execute('''CREATE TABLE session''')
 #cur.execute('''CREATE TABLE request
-#				(id number, question text, image text, requester text, expertise text, date text)''')
+				#(id number, question text, image text, requester text, expertise text, date text)''')
 
 
 app = Flask(__name__)
@@ -41,7 +41,8 @@ achievement_l = achievement_list_opener.returner()
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+	cur.execute("INSERT INTO user_info VALUES(?,?,?,?)", ("admin", "admin", "smartboy", "Programming"))
+	return render_template("index.html")
 
 @app.route('/',methods=["POST"])
 def login():
