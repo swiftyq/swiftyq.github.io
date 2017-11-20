@@ -53,7 +53,7 @@ def login():
 		if not user_info:
 			warning = "Incorrect id or password. Please try again."
 			return render_template("index.html", warning=warning)
-	return render_template("inbox.html")
+	return render_template("inbox.html",user_id=user_id)
 
 @app.route('/signup')
 def signup():
@@ -78,9 +78,27 @@ def inbox():
 	print(request.form["email"])
 	return render_template("inbox.html")
 
-@app.route('/chat')
+@app.route('/chat', methods=["GET"])
 def chat():
-    return render_template("chat.html")
+	user_id=request.args.get("user_id")
+	return render_template("chat.html",user_id=user_id)
+
+@socket_io.on("message", namespace='/chat')
+def msg(message,username):
+
+	print("message : "+ message)
+	print("username :"+ username)
+	to_client = dict()
+	if message == 'new_connect':
+		to_client['message'] = username+" has entered the room."
+		to_client['message'] = to_client['message']
+		to_client['type'] = 'connect'
+	else:
+		to_client['message'] = message
+		to_client['username'] = username
+		to_client['type'] = 'normal'
+	# emit("response", {'data': message['data'], 'username': session['username']}, broadcast=True)
+	send(to_client, broadcast=True)
 
 @app.route('/achievement')
 def achievement():

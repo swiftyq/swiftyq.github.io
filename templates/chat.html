@@ -15,15 +15,15 @@
   <!-- https://lipis.github.io/bootstrap-social/ -->
   <link rel="stylesheet" href="./static/css/bootstrap-social.css">
   <script src="https://use.fontawesome.com/6384f656d9.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 </head>
-
 <body>
   <div id="header" style = "height: 10%">
       <div class = "text-center row" style = "padding-top: 20px">
-        <h1 style = "width: 100%">GoNBeast</h1>
+        <h1 id="user_id" style = "width: 100%">{{user_id}}</h1>
       </div>
       <div class = "text-center row" style = "width: 100%">
         <div class = "onlinecircle"></div><span style = "position: relative; left: 47%">online</span>
@@ -31,8 +31,8 @@
     <div class="w-100" style="position: relative; top: 10px; height: 2px; background-color: #eee;"></div>
 
   </div>
-    <div id="content" style = "height: 70%; margin: 15px; overflow: scroll">
-        <div class="container" style = "width: 80%; margin-left: 2%;">
+    <div id="messages" style = "height: 70%; margin: 15px; overflow: scroll">
+<!--         <div class="container" style = "width: 80%; margin-left: 2%;">
            <img src="/w3images/bandmember.jpg" alt="Avatar">
               <p>Hello. How are you today?</p>
             <span class="time-right">11:00</span>
@@ -54,20 +54,68 @@
        <img src="/w3images/avatar_g2.jpg" alt="Avatar" class="right">
           <p>Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
        <span class="time-left" style = "color: gainsboro">11:05</span>
-    </div>
+    </div> -->
   </div>
     
   <div id="footer" style = "height: 20%">
      <div class = "row" style = "height: 100%">
       <div class="w-100" style="height: 2px; background-color: #eee;"></div>
         <div class = "col-8" style = "position: relative; left:40px; height: 80%; top: 5%">
-          <textarea placeholder=" Type something.." style="width:100%; height: 100%; margin-top: 5px; bottom: 2px; border: 1px solid; padding-left: 10px" ></textarea>
+          <textarea id="user_msg" placeholder=" Type something.." style="width:100%; height: 100%; margin-top: 5px; bottom: 2px; border: 1px solid; padding-left: 10px" ></textarea>
         </div>
         <div class = "col-3" style = "left: 30px; top: 73%; bottom: 2px; height: 80%">
-        <div class="btn btn-dark" style = "width: 100%">
+        <div id="send_button" class="btn btn-dark" style = "width: 100%">
           Send
         </div>
       </div>
     </div> 
     </div>
 </body>
+<script type="text/javascript">
+  var username = $("#user_id").text();
+  console.log(username);
+  $(document).ready(function(){
+    var sock = io.connect('/chat');
+    sock.on('connect', function(){
+      var connect_string = 'new_connect';
+      sock.send(connect_string,username);
+    });
+
+    sock.on('hello', function(msg){
+      $('#messages').append('<li>' +'>>Hello :'+ msg + '</li>');
+      console.log('Received Hello Message');
+    });
+
+    sock.on('message', function(msg){
+      // console.log(type(msg));
+      if(msg.type === 'normal'){
+        if (msg.username == username) {
+          $('#messages').append('<div class="container darker" style = "width: 80%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p>'+msg.message+'</p><span class="time-left" style = "color: gainsboro">11:01</span></div>')
+        }
+        else {
+          $("#messages").append(```<div class="container" style = "width: 80%; margin-left: 2%;">
+           <img src="/w3images/bandmember.jpg" alt="Avatar">
+              <p>```+msg.message+```</p>
+            <span class="time-right">11:00</span>
+        </div>```)
+        }
+      }else{
+        $('#messages').append('<li>' + msg.message + '</li>');
+      }
+      console.log('Received Message : '+msg.type);
+    });
+
+    $('#sendbutton').on('click', function(){
+      sock.send($('#user_msg').val(),username);
+      $('#user_msg').val('');
+    });
+    $(document).keypress(function(e) {
+        if(e.which == 13) {
+          if ($("#user_msg").is(":focus")) {
+            sock.send($('#user_msg').val(),username);
+          $('#user_msg').val('');
+          }
+        }
+    });
+  });
+</script>
