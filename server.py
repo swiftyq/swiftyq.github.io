@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template
@@ -104,6 +105,8 @@ def achievement_list():
 if __name__ == '__main__':
     socket_io.run(app, host='0.0.0.0', debug=True, port=5000)
 =======
+=======
+>>>>>>> f0fdb46a145d0fdf62a0858e4b5b0dd9c21a2fd1
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from flask import Flask, render_template
@@ -159,8 +162,13 @@ def login():
 		if not user_info:
 			warning = "Incorrect id or password. Please try again."
 			return render_template("index.html", warning=warning)
+<<<<<<< HEAD
 		return extract(user_id)
 	#return render_template("inbox.html", user_id = user_id)
+=======
+	return extract(user_id)
+
+>>>>>>> f0fdb46a145d0fdf62a0858e4b5b0dd9c21a2fd1
 def extract(user_id):
 	cur.execute("SELECT expertise from info where id=?", (user_id,))
 	expertise = cur.fetchone()
@@ -255,4 +263,3 @@ def achievement_list():
 
 if __name__ == '__main__':
     socket_io.run(app, host='0.0.0.0', debug=True, port=5000)
->>>>>>> b3c466adb43896fca32eeec8a7fb288e165e8b21
