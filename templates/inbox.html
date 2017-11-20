@@ -52,13 +52,13 @@
       </div>
       <div class = "img-circle col">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
-              <img src="static/img/annie.png" 
+              <img src="static/img/annie.png"
                   style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#">Profile</a>
               <a class="dropdown-item" href="achievement.html">Achievements</a>
-              <a class="dropdown-item" href="request_page">Request Task</a>
+              <a class="dropdown-item" href="{{ url_for('request_page', user_id = user_id)}}">Request Task</a>
             </div>
         </div>
       </div>
@@ -66,9 +66,9 @@
   <div class="w-100" style="margin-top: 2px; padding: 1px; background-color: #eee;"></div>
 	<div class = "img-circle text-center profile" style = "padding-top: 10px">
 
-		<img 
-			src = "static/img/{{user_id}}.png" 
-			alt= "John" 
+		<img
+			src = "static/img/{{user_id}}.png"
+			alt= "John"
 			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" >
 		<h1>{{user_id}}</h1>
 	</div>
