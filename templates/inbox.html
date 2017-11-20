@@ -22,10 +22,9 @@
               <div id = "text-center onboard"> <font size="+10" style = "color: white">{{count}}</font></div>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">ChemistryBee</a>
-              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">ComputerGeek</a>
-              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">OrchemKing</a>
-              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">PhizWhiz</a>
+              {% for item in rtable %}
+              <a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">{{item[3]}}</a>
+              {% endfor %}
             </div>
         </div>
       </div>
@@ -96,9 +95,9 @@
 			</div>
       <div class="col-9 respondent">
       		<div class = "row" style = "width: 30px">
-      			<span style="font-weight:bold; font-size:25px">{{item[2]}}</span>
+      			<span style="font-weight:bold; font-size:25px">{{item[3]}}</span>
       		</div>
-      		<div class = "row" style= "padding-left: 50px">
+      		<div class = "row" style= "width: 450px; padding-left: 50px; overflow: hidden; text-overflow: ellipsis; white-space:nowrap; display: inline-block;">
       			 {{item[1]}}
           </div>
       		<div class = "row" style= "margin-top: 8px">
