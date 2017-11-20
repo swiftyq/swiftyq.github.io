@@ -9,6 +9,10 @@ from math import log
 import json
 import achievement_list_opener
 import sqlite3
+import os
+import datetime
+import random
+import string
 
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
@@ -56,7 +60,15 @@ def extract(user_id):
 	expertise = cur.fetchone()
 	#if not expertise:
 		#print("no")
-	return render_template("inbox.html", user_id = user_id, expertise = expertise[0])
+	for x in range(0, 3):
+		cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", ("1", "hi!", "john", "john", expertise[0], "11/11",))
+	cur.execute("SELECT * from request where expertise = ?", (expertise[0],))
+	rtable = cur.fetchall()
+	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
+	count = cur.fetchone()[0]
+	mylist = []
+
+	return render_template("inbox.html", user_id = user_id, expertise = expertise[0], rtable=rtable, count = count)
 
 @app.route('/signup')
 def signup():
