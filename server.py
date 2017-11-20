@@ -9,9 +9,14 @@ from math import log
 import json
 import achievement_list_opener
 import sqlite3
+import os
+import datetime
+import random
+import string
 
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
+
 
 #cur.execute('''CREATE TABLE info
 #				(id text, password text, name text, expertise text)''')
@@ -20,6 +25,9 @@ cur = conn.cursor()
 #cur.execute('''CREATE TABLE achievement
 #				(id text, achievement number, date text)''')
 #cur.execute('''CREATE TABLE session''')
+#cur.execute('''CREATE TABLE request
+#				(id number, question text, image text, requester text, expertise text, date text)''')
+
 
 app = Flask(__name__)
 socket_io = SocketIO(app)
@@ -66,8 +74,8 @@ def signedup():
 
 @app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
-	print (request.method)
-	print (request.form["email"])
+	print(request.method)
+	print(request.form["email"])
 	return render_template("inbox.html")
 
 @app.route('/chat')
@@ -80,7 +88,24 @@ def achievement():
 
 @app.route('/request_page')
 def request_page():
+    print("rrrequest!")
     return render_template("request.html")
+
+@app.route('/request_paged',methods=['POST'])
+def request_paged():
+    question = request.form['question']
+    expertise = request.form['expertise']
+    _file = request.files['image']
+    print(_file)
+    date = datetime.datetime.now().isoformat()
+    print(date)
+    _id = ''.join([random.choice(string.ascii_letters + string.digits) for i in range(10)])
+    #cur_date =
+    _file.save(os.path.join("./static/upload", _id + ".png"))
+    cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,_id+".png","requester",expertise,date))
+    conn.commit()
+    return render_template("inbox.html")
+
 
 @app.route('/achievement_list', methods=['POST'])
 def achievement_list():
