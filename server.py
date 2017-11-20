@@ -94,7 +94,7 @@ def inbox():
     print(var)
     if var == 'POST' :
         print(var)
-        request_paged(request)
+        return request_paged(request)
 
     return render_template("inbox.html", user_id = user_id)
 @app.route('/chat', methods=["GET"])
