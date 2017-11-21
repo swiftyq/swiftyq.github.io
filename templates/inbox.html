@@ -80,10 +80,10 @@
   <div class="container" style="margin-top:20px; margin-bottom: 20px;">
   	<div class = "img-circle text-center profile" style = "padding-top: 10px">
   		<img
-      {% if img == 0 %}
+      {% if img is 0 %}
   			src = "static/img/default.jpg"
       {% endif %}
-      {% if img == 1 %}
+      {% if img is 1 %}
         src = "static/propic/{{user_id}}.jpg"
       {% endif %}
   			alt= "John"
@@ -130,7 +130,12 @@
   		<div class ="row">
     		<div class="img-circle col" style = "margin-top: 10px; margin-left: 30px">
       			<img
-					src = "static/propic/{{index[3]}}.jpg"
+					{% if req[loop.index0]== 0 %}
+            src = "static/img/default.jpg"
+          {% endif %}
+          {% if req[loop.index0] == 1 %}
+            src = "static/propic/{{item[3]}}.jpg"
+          {% endif %}
 					alt = "chembee"
 					style = "width: 120px; height: 120px;  border-radius: 1000px; border-style: solid; border-color: black"
 				>

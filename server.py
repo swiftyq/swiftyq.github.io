@@ -83,9 +83,18 @@ def extract(user_id):
 	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
 	count = cur.fetchone()[0]
 	mylist = []
-	cur.execute("SELECT img from user_info where id = ?", (user_id,))
+	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 
-	return render_template("inbox.html", user_id=user_id, expertise = expertise[0], rtable=rtable, count = len(rtable))
+	req = []
+	count = 0;
+	for i in rtable:
+		cur.execute("SELECT image from user_info where id = ?", (i[0]))
+		image = fetchone()[0]
+		req[count] = image
+		count = count+1
+
+	img = cur.fetchone()[0]
+	return render_template("inbox.html", user_id=user_id, expertise = expertise[0], rtable=rtable, count = len(rtable), img = img, req = req)
 
 @app.route('/signup')
 def signup():
