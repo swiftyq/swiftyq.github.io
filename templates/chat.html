@@ -23,7 +23,13 @@
 
 <body style="height:100%; width: 100%;">
   <div id="header text-center" style="height: 200px; width:100%; padding-top: 80px; padding-bottom: 80px">
-    <h1 class="text-center" id="user_id" >{{respondent}}</h1>
+    <h1 class="text-center" id="user_id" >
+      {% if requester %}
+        {{user_id}}
+      {% else %}
+        {{respondent}}
+      {% endif %}
+    </h1>
     <div class="text-center"><div class = "onlinecircle text-center" style="display: inline-block;"></div><span style="font-size: 25px;">&nbsp&nbsponline</span></div>
   </div>
   <div class="w-100" style="position: relative; top: 10px; height: 5px; background-color: #eee;"></div>
@@ -61,16 +67,13 @@
 
     sock.on('message', function(msg){
       // console.log(type(msg));
+      console.log(msg);
       if(msg.type === 'normal'){
         if (msg.username == username) {
           $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><span class="time-left" style = "color: gainsboro">'+msg.time+'</span></div>')
         }
         else {
-          $("#messages").append(```<div class="container" id="msgs" style = "width: 80%; margin-left: 2%;">
-           <img src="/w3images/bandmember.jpg" alt="Avatar">
-              <p id="msg_text">```+msg.message+```</p>
-            <span class="time-right">11:00</span>
-        </div>```)
+          $("#messages").append('<div class="container" id="msgs" style = "width: 80%; margin-left: 2%;"><div class="col-2"><img src="/w3images/bandmember.jpg" alt="Avatar"></div><div class="col-9"><p id="msg_text">'+msg.message+'</p><span class="time-right">11:00</span></div></div>')
         }
       }else{
         if (msg.username != username) {

@@ -9,16 +9,48 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
   <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/inbox.css">
+  <link rel="stylesheet" href="../static/css/fileinput.css">
+
+  <script src="../static/js/plugins/sortable.js" type="text/javascript"></script>
+  <script src="../static/js/fileinput.js"></script>
+  <script src="../static/themes/explorer-fa/theme.js" type="text/javascript"></script>
+  <script src="../static/themes/fa/theme.js" type="text/javascript"></script>
+
 </head>
 
 <body>
 	<html>
+ <form class="photorequest" action="{{ url_for('inbox', type = 'file', user_id=user_id)}}" method="post" enctype="multipart/form-data">
+<div id="myModal" class="modal fade" role="dialog" style = "padding-top:500px">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Upload Profile Picture</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+       <div class="form-group">
+        <label>Click to upload photo with camera</label>
+        <input id="input-b1" name="image" type="file" class="btn btn-lg btn-block title-lg btn-outline-primary" accept="image/*" capture="camera"></input>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default">Submit</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</form>
 
 	<div class = "container" style= "margin-top: 10px">
 		<div class = "row" style = "height: 72px">
     <div class = "col-2">
         <div class="dropdown" style = "width: 500px">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red;">
               <div id = "text-center onboard"> <font size="+10" style = "color: white">{{count}}</font></div>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -33,7 +65,7 @@
       </div>
       <div class = "img-circle col">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
-              <img src="/static/img/annie.png"
+              <img src="static/propic/{{index[3]}}.png"
                   style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -48,71 +80,75 @@
   <div class="container" style="margin-top:20px; margin-bottom: 20px;">
   	<div class = "img-circle text-center profile" style = "padding-top: 10px">
   		<img
-  			src = "static/img/annie.png"
+      {% if img == 0 %}
+  			src = "static/img/default.jpg"
+      {% endif %}
+      {% if img == 1 %}
+        src = "static/propic/{{user_id}}.jpg"
+      {% endif %}
   			alt= "John"
   			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" >
   		<h1>{{user_id}}</h1>
   	</div>
     <div class="text-center" style="width:30%; margin: auto;">
       <div class="btn btn-primary btn-lg" style="width: 100%">
-        <a class="no-deco" href="{{ url_for('request_page', user_id = user_id)}}">Send Request</a>
+        <a class="no-deco" href="{{ url_for('request_page', user_id = user_id)}}" style = "font-size: 25px">Send Request</a>
       </div>
     </div>
   </div>
-	<span style = "margin-left: 70px; margin-top: 70px"> Expertise: </span>
-	<div class = "container" style= "margin-top: 3px; margin-left:50px">
-		<div class = "row">
-			<div class = "col-9">
+	<span class= "row" style = "margin-left: 70px; margin-top: 30px; font-size: 23px"> Expertise: </span>
+	<div class = "box" style= "margin-top: 3px; margin-left:50px; width: inherit">
+		<div class = "row" style = "width: inherit">
+			<div class = "col-8">
 				<div class="dropdown" style = "width: 500px">
-  					<button class="btn btn-secondary dropdown-toggle btn-expertise" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "width: 300px">
-   		 				<span>{{expertise}}</span>
+  					<button class="btn btn-secondary dropdown-toggle btn-expertise" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "width: 300px; font-size: 20px">
+   		 				<span style = "font-size: 25px">{{expertise}}</span>
   					</button>
   					<div id="expertise_selection" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-   			 			<a class="dropdown-item expertise-item" href="#">Chemistry</a>
-    		 			<a class="dropdown-item expertise-item" href="#">Math</a>
-   			 			<a class="dropdown-item expertise-item" href="#">Physics</a>
-              <a class="dropdown-item expertise-item" href="#">Programming</a>
+   			 			<a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Chemistry</a>
+    		 			<a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Math</a>
+   			 			<a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Physics</a>
+              <a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Programming</a>
   					</div>
 				</div>
 			</div>
-			<div class = "col">
+			<div class = "col-3" style = "margin-left: 8%">
+         <button class = "btn btn-success" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style = "background-color: white; border-width: 1px; border-color: black; color: black; font-size: 20px;">
+              Upload Photo
+            </button>
+          </div>
 				<div class = "row">
-					<button class = "roundbutton"> </button>
-					 <div class = "text" style= " padding-left: 5px; width: 5px;  font-weight: bold">Unanswered</div>
-				</div>
-				<div class = "row" style = "margin-top: 3px">
-					<button class = "roundbutton"> </button>
-					<div class = "text" style= " padding-left: 5px; width: 5px">Latest</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 		<div class = "col">
 	{% for item in rtable %}
-	  <div class="container requester_box" style= "margin-top: 10px" val={{item[4]}}>
-      <div class="w-100" style="margin-top: 30px; padding: 1px; background-color: #eee;" ></div>
+	  <div class="requester_box" style= "margin-top: 10px; width: inherit;" val='{{item[4]}}'>
+      <div class="w-100" style="margin-top: 15px; padding: 1px; background-color: #eee; width: 103%" ></div>
   		<div class ="row">
-    		<div class="img-circle col">
+    		<div class="img-circle col" style = "margin-top: 10px; margin-left: 30px">
       			<img
-					src = "static/img/compgeek.jpg"
+					src = "static/propic/{{index[3]}}.jpg"
 					alt = "chembee"
 					style = "width: 120px; height: 120px;  border-radius: 1000px; border-style: solid; border-color: black"
 				>
 			</div>
       <div class="col-9 respondent">
       		<div class = "row" style = "width: 30px">
-      			<span style="font-weight:bold; font-size:25px">{{item[3]}}</span>
+      			<span style="font-weight:bold; font-size:30px">{{item[3]}}</span>
       		</div>
-      		<div class = "row" style= "width: 450px; padding-left: 50px; overflow: hidden; text-overflow: ellipsis; white-space:nowrap; display: inline-block;">
+      		<div class = "row" style= "width: 450px; padding-left: 50px; overflow: hidden; text-overflow: ellipsis; white-space:nowrap; display: inline-block; font-size: 20px">
       			 {{item[1]}}
           </div>
-      		<div class = "row" style= "margin-top: 8px">
-      		<div class = "col-4" style = "padding-top: 5px"></div>
-      		  <button class = "select_requester col btn btn-success" style = "border-radius: 50px" data-toggle="modal" data-target="#previewtask" val='{{loop.index0}}' val2='{{item[1]}}'>
+      		<div class = "row" style= "margin-top: 25px">
+      		<div class = "col-4" style = "padding-top: 10px"></div>
+      		  <button class = "select_requester col btn btn-success" style = "border-radius: 50px; font-size: 25px" data-toggle="modal" data-target="#previewtask" val='{{loop.index0}}' val2='{{item[1]}}'>
       				Preview Task
       		  </button>
       		  <button class = "col btn btn-success" style = "border-radius: 50px; margin-left: 5px" href="chat">
-      		  <a href="chat?user_id={{user_id}}&respondent={{item[3]}}" style="text-decoration: none; color:inherit;">Reply</a>
+      		  <a href="chat?user_id={{user_id}}&respondent={{item[3]}}" style="text-decoration: none; color:inherit; font-size: 25px">Reply</a>
       		  </button>
       		</div>
     	</div>
