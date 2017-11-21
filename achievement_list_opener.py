@@ -7,4 +7,4 @@ def returner():
     fieldname = ("num", "title", "content")
     reader = csv.DictReader(csvfile, fieldname)
     out = json.dumps([row for row in reader])
-    return out
+    return json.loads(out)

@@ -33,12 +33,12 @@
       </div>
       <div class = "img-circle col">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
-              <img src="static/img/annie.png"
+              <img src="/static/img/annie.png"
                   style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="achievement">Achievements</a>
+              <a class="dropdown-item" href="{{ url_for('achievement', user_id = user_id)}}">Achievements</a>
               <a class="dropdown-item" href="/">Logout</a>
             </div>
         </div>

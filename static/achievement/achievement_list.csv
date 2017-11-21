@@ -6,7 +6,7 @@
 5,You helped for a month?,Explain 30 problems
 6,You are an experienced!,Explain 50 problems
 7,You are a master!,Explain 100 problems
-8,Heated explainr!,Explain 10 problems a day
+8,Heated explainer!,Explain 10 problems a day
 9,How consistent you are!,Explain 20 problems for 20 days
 10,Five star streak!,Get 3 five stars consecutively
 11,Swift four stars,Get 4 stars by solving a problem in 5 minutes after requester post a question
@@ -18,4 +18,3 @@
 17,"Frequent asker, aren't you?",Post a question for 20 days
 18,Before the deadline?,Ask 5 questions a day
 19,Before the exam?,Ask 10 questions a day
-20,You are talking for a long time,Maintain a session for 20 minutes
