@@ -35,6 +35,7 @@
         <label>Email address</label>
         <input type="email" name='email' class="form-control form-control-lg title-lg" aria-describedby="emailHelp" placeholder="Enter email">
       </div>
+      <div style="font-size: 60%; color:red;">{{warning}}</div>
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" name='password1' class="form-control form-control-lg title-lg" placeholder="Password">
@@ -101,10 +102,10 @@
         </div>
         <div class="modal-body title-lg">
           <p>What is the result of 2*3.0 in Python3?</p>
-          <input type="text" placeholder="Answer here">
+          <input type="text" name='fstmodal' placeholder="Answer here">
         </div>
         <div class="modal-footer text-center ">
-          <button type="button" class="btn btn-primary title-lg" data-dismiss="modal" data-toggle="modal" data-target="#modal3">Next</button>
+          <button type="button" class="btn btn-primary title-lg fst-modal-btn">Next</button>
           <button type="button" class="btn btn-secondary title-lg" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -126,7 +127,7 @@
           <input type="text" placeholder="Answer here">
         </div>
         <div class="modal-footer text-center ">
-          <button type="button" class="btn btn-primary title-lg" data-dismiss="modal" data-toggle="modal" data-target="#modal4">Next</button>
+          <button type="button" class="btn btn-primary title-lg snd-modal-btn">Next</button>
           <button type="button" class="btn btn-secondary title-lg" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -144,11 +145,11 @@
           </button>
         </div>
         <div class="modal-body title-lg">
-          <p>What is the result of the following?<br>a = 0<br>for i in range(3):<br>&nbsp; &nbsp; &nbsp; &nbsp; a+=1<br>&nbsp; &nbsp; &nbsp; &nbsp; print a</p>
+          <p>What is the result of the following?<br>a = 0<br>for i in range(3):<br>&nbsp; &nbsp; &nbsp; &nbsp; a+=1<br>&nbsp; &nbsp; &nbsp; &nbsp; print (a,)</p>
           <input type="text" placeholder="Answer here">
         </div>
         <div class="modal-footer text-center ">
-          <button type="button" class="btn btn-primary title-lg" data-dismiss="modal" data-toggle="modal" data-target="#modal5">Next</button>
+          <button type="button" class="btn btn-primary title-lg trd-modal-btn">Next</button>
           <button type="button" class="btn btn-secondary title-lg" data-dismiss="modal">Close</button>
         </div>
       </div>
