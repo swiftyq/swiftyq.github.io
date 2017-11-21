@@ -60,11 +60,11 @@ def login():
 		except sqlite3.IntegrityError:
 			return render_template("signup.html", warning="Sorry, email already taken.")
 		for e in expertise:
-			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (user_id,password,name,e))
+			cur.execute("INSERT INTO expertise VALUES (?,?,?)", (email,user_id,e))
 		#achievement generation
 		for achievement in achievement_l:
 			print(type(int(achievement['num'])))
-			cur.execute("INSERT INTO achievement VALUES (?,?,?,?)", (name,int(achievement['num']),"",0))
+			cur.execute("INSERT INTO achievement VALUES (?,?,?,?)", (user_id,int(achievement['num']),"",0))
 		conn.commit()
 		return render_template("index.html")
 	else:
