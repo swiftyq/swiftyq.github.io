@@ -95,7 +95,7 @@ def extract(user_id):
 	print(img)
 
 	req = []
-	
+
 	for i in rtable:
 		print(i)
 		cur.execute("SELECT image from user_info where id = ?", (i[3],))
@@ -143,7 +143,7 @@ def chat():
 		#respondent handler
 		cur.execute("SELECT email from user_info where id='%s'" %respondent)
 		respondent_email = cur.fetchone()[0]
-		url = "http://swiftyq.herokuapp.com/chat?user_id=%s&respondent=%s&flag=true" %(user_id,respondent)
+		url = "http://115.68.222.144:3000/chat?user_id=%s&respondent=%s&flag=true" %(user_id,respondent)
 		msg = ("From %s\r\nTo: %s\r\nSubject:Your request is being responded\r\n\r\n %s is trying to help you. Log into chat in %s" %('donotreplyswiftyq@gmail.com',respondent_email,user_id,url))
 		s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
 	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester)
