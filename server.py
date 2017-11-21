@@ -98,12 +98,26 @@ def inbox():
 		print(var)
 		return request_paged(request)
 
-	return render_template("inbox.html", user_id = user_id)
+	return render_template("inbox.html", user_id=user_id)
 @app.route('/chat', methods=["GET"])
 def chat():
 	user_id=request.args.get("user_id")
 	respondent = request.args.get("respondent")
-	return render_template("chat.html",user_id=user_id,respondent=respondent)
+	requester = ""
+	flag = request.args.get("flag")
+	print (flag)
+	if request.args.get("flag"):
+		#request handler
+		requester = True
+		print (requester)
+	else:
+		#respondent handler
+		cur.execute("SELECT email from user_info where id='%s'" %respondent)
+		respondent_email = cur.fetchone()[0]
+		url = "http://swiftyq.herokuapp.com/chat?user_id=%s&respondent=%s&flag=true" %(user_id,respondent)
+		msg = ("From %s\r\nTo: %s\r\nSubject:Your request is being responded\r\n\r\n %s is trying to help you. Log into chat in %s" %('donotreplyswiftyq@gmail.com',respondent_email,user_id,url))
+		s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
+	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester)
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
