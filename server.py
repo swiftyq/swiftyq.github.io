@@ -247,4 +247,4 @@ if __name__ == '__main__':
 	s.ehlo()
 	s.login('donotreplyswiftyq@gmail.com', 'swiftyqadmin')
 	s.ehlo()
-	socket_io.run(app, host='0.0.0.0', debug=True, port=5000)
+	socket_io.run(app, host='0.0.0.0', debug=True, port=3000)
