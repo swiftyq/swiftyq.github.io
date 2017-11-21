@@ -26,7 +26,7 @@ cur = conn.cursor()
 #cur.execute('''CREATE TABLE rating
 #				(id text, rating number, date text)''')
 #cur.execute('''CREATE TABLE achievement
-#				(id text, achievement number, date text)''')
+#				(id text, achievement number, date text, done number)''')
 #cur.execute('''CREATE TABLE session''')
 #cur.execute('''CREATE TABLE request
 				#(id number, question text, image text, requester text, expertise text, date text)''')
@@ -60,7 +60,11 @@ def login():
 		except sqlite3.IntegrityError:
 			return render_template("signup.html", warning="Sorry, email already taken.")
 		for e in expertise:
-			cur.execute("INSERT INTO expertise VALUES (?,?,?)", (email,user_id,e.strip()))
+			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (user_id,password,name,e))
+		#achievement generation
+		for achievement in achievement_l:
+			print(type(int(achievement['num'])))
+			cur.execute("INSERT INTO achievement VALUES (?,?,?,?)", (name,int(achievement['num']),"",0))
 		conn.commit()
 		return render_template("index.html")
 	else:
@@ -86,9 +90,19 @@ def extract(user_id):
 	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
 	count = cur.fetchone()[0]
 	mylist = []
-	cur.execute("SELECT img from user_info where id = ?", (user_id,))
+	cur.execute("SELECT image from user_info where id = ?", (user_id,))
+	img = cur.fetchone()[0]
+	print(img)
 
-	return render_template("inbox.html", user_id=user_id, expertise = expertise[0], rtable=rtable, count = len(rtable))
+	req = []
+	
+	for i in rtable:
+		print(i)
+		cur.execute("SELECT image from user_info where id = ?", (i[3],))
+		image = cur.fetchone()[0]
+		req.append(image)
+
+	return render_template("inbox.html", user_id=user_id, expertise = expertise[0], rtable=rtable, count = len(rtable), img = img, req = req)
 
 @app.route('/signup')
 def signup():
@@ -106,7 +120,7 @@ def inbox():
 		_file = request.files['image']
 		if _file:
 			_file.save(os.path.join("./static/propic", user_id + ".png"))
-			cur.execute("INSERT INTO user_info (image) VALUES (?) where id =?", (1, user_id,))
+			cur.execute("UPDATE user_info SET image = 1 WHERE id = ?", (user_id,))
 		else:
 			warning = "Question not specified. Please ask a question."
 			return render_template("inbox.html", warning=warning)
@@ -154,7 +168,20 @@ def msg(message,username):
 
 @app.route('/achievement')
 def achievement():
-	return render_template("achievement.html")
+	user_id = request.args.get("user_id")
+	print("yay")
+	cur.execute("SELECT * from achievement where id=?", (user_id,))
+	achievements = cur.fetchall()
+	cur.execute("SELECT * from achievement where id=? and done=? ORDER BY RANDOM() LIMIT 7", (user_id, 0,))
+	non_achieved = cur.fetchall()
+	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
+	achieve_num = cur.fetchall()
+	print(achievements)
+	non_to_send=[]
+	for non in non_achieved:
+		non_to_send.append(achievement_l[non[1]])
+		print(achievement_l[non[1]])
+	return render_template("achievement.html", user_id=user_id, achievements = achievements, non_achieved = non_to_send, achieve_num = achieve_num[0][0])
 
 
 
@@ -209,9 +236,9 @@ def request_paged(request):
 	return extract(user_id)
 
 
-@app.route('/achievement_list', methods=['POST'])
-def achievement_list():
-	return achievement_l
+#@app.route('/achievement_list', methods=['POST'])
+#def achievement_list():
+#	return achievement_l
 
 if __name__ == '__main__':
 	s = smtplib.SMTP('smtp.gmail.com',587)

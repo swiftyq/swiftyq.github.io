@@ -38,6 +38,15 @@ body {
     background: green;
 }
 
+.onlinecircle{
+    border-radius: 100%;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-color: black;
+    border-width:1px;
+}
+
 .content > div {
     padding: 70px 0;
 }

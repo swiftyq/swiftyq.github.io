@@ -24,11 +24,11 @@ var grid_colors = ["#aaff91",
 "#75d5ff",
 "#eeeeee"]
 $(document).ready(function(){
-  get_achievement();
+//  get_achievement();
   //console.log(achievement_list);
-  generate_grid();
+//  generate_grid();
 
-  achievement_pop_up("hoihoi", "dullinun");
+  //achievement_pop_up("hoihoi", "dullinun");
 })
 get_achievement = function(){
   $.ajax({
@@ -70,35 +70,5 @@ generate_grid = function(){
 }
 
 generate_list = function(){
-  for(var i=0; i<7; i++){
-    $("#achievement_list_sub_box").append("<div id='list_"+i.toString()+"' class='achievement_entity_box row'>");
-    $("#list_"+i.toString()).append("<div class='col-md-2'></div><div id='list_sub_"+i.toString()+"' class='achievement_entity_sub_box col-md-10 row'></div>")
-    $("#list_sub_"+i.toString()).append("<div id='list_image_"+i.toString()+"' class='achievement_entity_image col-md-3'>")
-    .append("<div id='list_content_"+i.toString()+"' class='achievement_entity_exp col-md-9'>")
-    $("#list_image_"+i.toString()).append("<div id='list_image_sub_"+i.toString()+"' class='achievement_entity_sub_image'></div>")
-    $("#list_content_"+i.toString()).append("<div id='list_content_head_"+i.toString()+"' class='achievement_entity_head'></div>")
-    .append("<div id='list_content_text_"+i.toString()+"' class='achievement_entity_text'></div>")
-    $("#list_content_head_"+i.toString()).text(achievement_list[i]['title']);
-    $("#list_content_text_"+i.toString()).text(achievement_list[i]['content']);
-    var rand2 = Math.floor(Math.random()*100000)+100000
-    //https://d30y9cdsu7xlg0.cloudfront.net/png/149821-200.png
-    $("#list_image_sub_"+i.toString()).append("<img class='list_img' src='https://d30y9cdsu7xlg0.cloudfront.net/png/"+rand2.toString()+"-200.png' width='0' height='0'></img>")
-
-  }
-  $("#list_sub_0").css("border-top-left-radius", "30px")
-  .css("border-top-right-radius", "30px");
-
-  $('.achievement_entity_image').outerHeight(function(){
-    return $(this).outerWidth();
-  })
-  $('.achievement_entity_sub_image').outerHeight(function(){
-    var height = $(this).width();
-    var oh = $(this).outerWidth();
-    //console.log($(this).outerWidth())
-    $(".list_img").outerWidth(height).outerHeight(height).css("margin-top", function(){
-      return (oh-height)/2;
-    });
-    return $(this).outerWidth();
-  })
 
 }
