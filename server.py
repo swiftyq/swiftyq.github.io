@@ -26,7 +26,7 @@ cur = conn.cursor()
 #cur.execute('''CREATE TABLE rating
 #				(id text, rating number, date text)''')
 #cur.execute('''CREATE TABLE achievement
-#				(id text, achievement number, date text, done number)''')
+				#(id text, achievement number, date text, done number)''')
 #cur.execute('''CREATE TABLE session''')
 #cur.execute('''CREATE TABLE request
 				#(id number, question text, image text, requester text, expertise text, date text)''')
