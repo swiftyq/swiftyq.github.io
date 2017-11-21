@@ -55,7 +55,10 @@ def login():
 		expertise = request.form['expertise']
 		expertise = expertise.split(",")[:-1]
 		print (request.form)
-		cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (email,password,user_id,0))
+		try:
+			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (email,password,user_id,0))
+		except sqlite3.IntegrityError:
+			return render_template("signup.html", warning="Sorry, email already taken.")
 		for e in expertise:
 			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (user_id,password,name,e))
 		#achievement generation
