@@ -19,7 +19,8 @@ from email.mime.text import MIMEText
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
-#cur.execute('''CREATE TABLE user_info (id text primary key, password text, name text, expertise text, img number)''')
+
+#cur.execute('''CREATE TABLE user_info (email text, password text, id text, image integer, CONSTRAINT email_id PRIMARY KEY (email,id))''')
 #cur.execute('''CREATE TABLE info
 #				(id text, password text, name text, expertise text)''')
 #cur.execute('''CREATE TABLE rating
@@ -48,14 +49,15 @@ def index():
 def login():
 	print (request.form)
 	if request.form['type'] == 'signup':
-		user_id = request.form['email']
+		email = request.form['email']
 		password = request.form['password1']
-		name =  request.form['name']
+		user_id =  request.form['name']
 		expertise = request.form['expertise']
 		expertise = expertise.split(",")[:-1]
-		print (expertise)
+		print (request.form)
+		cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (email,password,user_id,0))
 		for e in expertise:
-			cur.execute("INSERT INTO user_info VALUES (?,?,?,?,?)", (user_id,password,name,e,0))
+			cur.execute("INSERT INTO expertise VALUES (?,?,?)", (email,user_id,e))
 		conn.commit()
 		return render_template("index.html")
 	else:
@@ -72,7 +74,7 @@ def login():
 		return extract(user_info[0][2])
 
 def extract(user_id):
-	cur.execute("SELECT expertise from user_info where id=?", (user_id,))
+	cur.execute("SELECT expertise from expertise where id=?", (user_id,))
 	expertise = cur.fetchone()
 	#if not expertise:
 		#print("no")
@@ -101,18 +103,32 @@ def inbox():
 		_file = request.files['image']
 		if _file:
 			_file.save(os.path.join("./static/propic", user_id + ".png"))
-			cur.execute("INSERT INTO user_info (img) VALUES (?) where name =?", (1, user_id,))
+			cur.execute("INSERT INTO user_info (image) VALUES (?) where id =?", (1, user_id,))
 		else:
 			warning = "Question not specified. Please ask a question."
 			return render_template("inbox.html", warning=warning)
 		return extract(user_id)
 
-	return render_template("inbox.html", user_id = user_id)
+	return render_template("inbox.html", user_id=user_id)
 @app.route('/chat', methods=["GET"])
 def chat():
 	user_id=request.args.get("user_id")
 	respondent = request.args.get("respondent")
-	return render_template("chat.html",user_id=user_id,respondent=respondent)
+	requester = ""
+	flag = request.args.get("flag")
+	print (flag)
+	if request.args.get("flag"):
+		#request handler
+		requester = True
+		print (requester)
+	else:
+		#respondent handler
+		cur.execute("SELECT email from user_info where id='%s'" %respondent)
+		respondent_email = cur.fetchone()[0]
+		url = "http://swiftyq.herokuapp.com/chat?user_id=%s&respondent=%s&flag=true" %(user_id,respondent)
+		msg = ("From %s\r\nTo: %s\r\nSubject:Your request is being responded\r\n\r\n %s is trying to help you. Log into chat in %s" %('donotreplyswiftyq@gmail.com',respondent_email,user_id,url))
+		s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
+	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester)
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
@@ -176,7 +192,7 @@ def request_paged(request):
 		filename=""
 	cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,user_id,expertise,date))
 	conn.commit()
-	cur.execute("SELECT email,id FROM user_info where expertise=?", (expertise,))
+	cur.execute("SELECT email,id FROM expertise where expertise=?", (expertise,))
 	emails = cur.fetchall()
 	print (emails)
 

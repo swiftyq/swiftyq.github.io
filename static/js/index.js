@@ -26,8 +26,18 @@ $( ".fstbtn" ).on('click', function() {
     alert("Verify your password");
   }
   else {
-    $( "#modal1" ).modal('show');
-    console.log('aa'); 
+    if ($("input[name='expertise']").val().includes("Programming")){
+      $( "#modal1" ).modal('show');
+      console.log('aa');
+    }
+    else {
+      console.log($(".group .btn.btn-success.btn-block.btn-lg.title-lg").attr("type"));
+      $(".group .btn.btn-success.btn-block.btn-lg.title-lg").attr("type","submit");
+      $(".group .btn.btn-success.btn-block.btn-lg.title-lg").text("Proceed");
+      $(".group .btn.btn-success.btn-block.btn-lg.title-lg").removeClass("btn-success");
+      $(".group .btn.btn-block.btn-lg.title-lg").removeClass("fstbtn");
+      $(".group .btn.btn-block.btn-lg.title-lg").addClass("btn-primary");
+    }
   }
 })
 
