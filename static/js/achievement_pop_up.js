@@ -12,9 +12,9 @@ achievement_pop_up = function(title, content){
   $("#achievement_pop_up_container").prepend("<div id='achievement_title_pop_up' class='achievement_head'></div>").append("<div id='achievement_orna_1'></div>")
   $("#achievement_title_pop_up").text("You made an achievement!")
   $("#list_content_pop_up").append("<button id='close_achievement' class='btn btn-success'>Yay!</button>")
-  var rand2 = Math.floor(Math.random()*100000)+100000
+  var rand2 = Math.floor(Math.random()*20)
   //https://d30y9cdsu7xlg0.cloudfront.net/png/149821-200.png
-  $("#list_image_sub_pop_up").append("<img class='list_pop_img' src='https://d30y9cdsu7xlg0.cloudfront.net/png/"+rand2.toString()+"-200.png' width='0' height='0'></img>")
+  $("#list_image_sub_pop_up").append("<img class='list_pop_img' src='static/achievement/icon/"+rand2.toString()+"-200.png' width='0' height='0'></img>")
   $('#list_image_pop_up').outerHeight(function(){
     return $(this).outerWidth();
   })
