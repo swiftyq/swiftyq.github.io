@@ -121,6 +121,7 @@ def inbox():
 		if _file:
 			_file.save(os.path.join("./static/propic", user_id + ".png"))
 			cur.execute("UPDATE user_info SET image = 1 WHERE id = ?", (user_id,))
+			conn.commit()
 		else:
 			warning = "Question not specified. Please ask a question."
 			return render_template("inbox.html", warning=warning)

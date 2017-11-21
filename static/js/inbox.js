@@ -1,7 +1,7 @@
 $( ".expertise-item" ).on('click', function() {
 	var expertise = $(this).text();
 	console.log(expertise);
-	$( ".btn-expertise" ).text(expertise);
+	$( "#expertise_span" ).text(expertise);
 	$(".requester_box").css("visibility", function(){
 		if($(this).attr('val')==expertise){
 			// $(this).css("position", "relative")
