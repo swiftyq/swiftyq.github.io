@@ -19,7 +19,7 @@ from email.mime.text import MIMEText
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
-#cur.execute('''CREATE TABLE user_info (id text primary key, password text, name text, expertise text)''')
+#cur.execute('''CREATE TABLE user_info (email text, password text, id text, expertise text, CONSTRAINT email_id PRIMARY KEY (email,id))''')
 #cur.execute('''CREATE TABLE info
 #				(id text, password text, name text, expertise text)''')
 #cur.execute('''CREATE TABLE rating
