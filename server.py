@@ -19,6 +19,7 @@ from email.mime.text import MIMEText
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
+
 #cur.execute('''CREATE TABLE user_info (email text, password text, id text, image integer, CONSTRAINT email_id PRIMARY KEY (email,id))''')
 #cur.execute('''CREATE TABLE info
 #				(id text, password text, name text, expertise text)''')
@@ -29,7 +30,6 @@ cur = conn.cursor()
 #cur.execute('''CREATE TABLE session''')
 #cur.execute('''CREATE TABLE request
 				#(id number, question text, image text, requester text, expertise text, date text)''')
-
 
 app = Flask(__name__)
 socket_io = SocketIO(app)
@@ -86,6 +86,7 @@ def extract(user_id):
 	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
 	count = cur.fetchone()[0]
 	mylist = []
+	cur.execute("SELECT img from user_info where id = ?", (user_id,))
 
 	return render_template("inbox.html", user_id=user_id, expertise = expertise[0], rtable=rtable, count = len(rtable))
 
@@ -98,9 +99,18 @@ def inbox():
 	user_id = request.args.get('user_id')
 	var= request.method
 	print(var)
-	if var == 'POST' :
+	if request.args.get('type') == 'request' :
 		print(var)
 		return request_paged(request)
+	elif request.args.get('type') == 'file':
+		_file = request.files['image']
+		if _file:
+			_file.save(os.path.join("./static/propic", user_id + ".png"))
+			cur.execute("INSERT INTO user_info (image) VALUES (?) where id =?", (1, user_id,))
+		else:
+			warning = "Question not specified. Please ask a question."
+			return render_template("inbox.html", warning=warning)
+		return extract(user_id)
 
 	return render_template("inbox.html", user_id=user_id)
 @app.route('/chat', methods=["GET"])
