@@ -35,14 +35,47 @@ $( ".fstbtn" ).on('click', function() {
 })
 
 $( ".fst-modal-btn" ).on('click', function() {
-  console.log($("input[name='fstmodal']").val());
   if ($("input[name='fstmodal']").val() == "6.0"){
     $("#modal3").modal('show');
     $("#modal2").modal('hide');
   }
   else {
-    alert("dumb");
+    $("#modal6").modal('show');
+    $("#modal2").modal("hide");
   }
+})
+
+$( ".snd-modal-btn" ).on('click', function() {
+  if ($("input[name='sndmodal']").val().includes("no") || $("input[name='sndmodal']").val().includes("No")){
+    $("#modal4").modal('show');
+    $("#modal3").modal('hide');
+  }
+  else {
+    $("#modal6").modal('show');
+    $("#modal3").modal("hide");
+  }
+})
+
+$( ".trd-modal-btn" ).on('click', function() {
+  if ($("input[name='trdmodal']").val().includes("0,1,2")){
+    $("#modal5").modal('show');
+    $("#modal4").modal('hide');
+  }
+  else {
+    $("#modal6").modal('show');
+    $("#modal4").modal("hide");
+  }
+})
+
+$( "#failbutton" ).on('click', function() {
+  console.log("fail");
+  $.ajax({
+    url: "/",
+    success: function(data,status) {
+      console.log("succss");
+      window.location.href="/";
+    }
+  })
 })
 
 $( "#verylastbtn" ).on('click', function() {
