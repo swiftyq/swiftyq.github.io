@@ -1,18 +1,88 @@
 <!DOCTYPE html>
 <head>
 	<title>SwiftyQ</title>
+
 	<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- iOS fullscreen webapp -->
 	<meta name="mobile-web-app-capable" content="yes" /> <!-- Android Chrome fullscreen webapp -->
-	<link rel="stylesheet" type="text/css" href='../static/css/achievement.css' />
-	<link rel="stylesheet" type="text/css" href='../static/css/achievement_pop_up.css' />
+	<link rel="stylesheet" type="text/css" href='./static/css/achievement.css' />
+	<link rel="stylesheet" type="text/css" href='./static/css/achievement_pop_up.css' />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src='../static/js/achievement.js'></script>
-	<script type="text/javascript" src='../static/js/achievement_pop_up.js'></script>
+	<script type="text/javascript" src='./static/js/achievement.js'></script>
+	<script>
+	var grid_colors = ["#eeeeee",
+	"#75d5ff",]
+	$(document).ready(function(){
+
+	for(var i=0; i<2; i++){
+		$("#achievement_grid_box").append("<div id='grid_row_"+i.toString()+"' class='grid_row row'></div>")
+		for(var j=0; j<10; j++){
+
+			$("#grid_row_"+i.toString()).append("<div id='grid_"+i.toString()+"_"+j.toString()+"' class='col-sm grid'></div>")
+			var rand = Math.floor(Math.random()*3)
+			var rand2 = Math.floor(Math.random()*100000)+100000
+			//https://d30y9cdsu7xlg0.cloudfront.net/png/149821-200.png
+			$("#grid_"+i.toString()+"_"+j.toString()).append("<img class='grid_img' src='https://d30y9cdsu7xlg0.cloudfront.net/png/"+rand2.toString()+"-200.png' width='0' height='0'></img>")
+		}
+	}
+	{% for a in achievements %}
+		console.log('{{a[3]}}')
+		console.log('{{loop.index0%10}}')
+		$("#grid_"+parseInt('{{(loop.index0/10)|round(0,"floor")}}').toString()+"_"+'{{loop.index0%10}}').css("background-color", grid_colors['{{a[3]}}'])
+	{% endfor %}
+	$(".grid").outerHeight(function(){
+		var height = $(this).width();
+		var oh = $(this).outerWidth();
+		//console.log($(this).outerWidth())
+		$(".grid_img").outerWidth(height).outerHeight(height).css("margin-top", function(){
+			return (oh-height)/2;
+		});
+
+		return $(this).outerWidth();
+	})
+
+	{% set j = 0%}
+	{% for non_a in non_achieved %}
+
+		$("#achievement_list_sub_box").append("<div id='list_"+'{{loop.index0}}'+"' class='achievement_entity_box row'>");
+		$("#list_"+'{{loop.index0}}').append("<div class='col-md-2'></div><div id='list_sub_"+'{{loop.index0}}'+"' class='achievement_entity_sub_box col-md-10 row'></div>")
+		$("#list_sub_"+'{{loop.index0}}').append("<div id='list_image_"+'{{loop.index0}}'+"' class='achievement_entity_image col-md-3'>")
+		.append("<div id='list_content_"+'{{loop.index0}}'+"' class='achievement_entity_exp col-md-9'>")
+		$("#list_image_"+'{{loop.index0}}').append("<div id='list_image_sub_"+'{{loop.index0}}'+"' class='achievement_entity_sub_image'></div>")
+		$("#list_content_"+'{{loop.index0}}').append("<div id='list_content_head_"+'{{loop.index0}}'+"' class='achievement_entity_head'></div>")
+		.append("<div id='list_content_text_"+'{{loop.index0}}'+"' class='achievement_entity_text'></div>")
+		$("#list_content_head_"+'{{loop.index0}}').text('{{non_a["title"]}}');
+		$("#list_content_text_"+'{{loop.index0}}').text('{{non_a["content"]}}');
+		var rand2 = Math.floor(Math.random()*100000)+100000
+		//https://d30y9cdsu7xlg0.cloudfront.net/png/149821-200.png
+		$("#list_image_sub_"+'{{loop.index0}}').append("<img class='list_img' src='https://d30y9cdsu7xlg0.cloudfront.net/png/"+rand2.toString()+"-200.png' width='0' height='0'></img>")
+		{% set j = j+1 %}
+	{% endfor %}
+
+	$("#list_sub_0").css("border-top-left-radius", "30px")
+	.css("border-top-right-radius", "30px");
+
+	$('.achievement_entity_image').outerHeight(function(){
+		return $(this).outerWidth();
+	})
+	$('.achievement_entity_sub_image').outerHeight(function(){
+		var height = $(this).width();
+		var oh = $(this).outerWidth();
+		//console.log($(this).outerWidth())
+		$(".list_img").outerWidth(height).outerHeight(height).css("margin-top", function(){
+			return (oh-height)/2;
+		});
+		return $(this).outerWidth();
+	})
+})
+
+
+	</script>
+	<script type="text/javascript" src='./static/js/jquery.csv.js'></script>
+	<script type="text/javascript" src='./static/js/achievement_pop_up.js'></script>
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
 </head>
-
 <body id="body_achievement">
 	<html id="html_achievement">
 	<!-- Your content here -->
@@ -36,7 +106,7 @@
 			</div>
 			<div class = "img-circle col">
 					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
-							<img src="..\static\image\annie.png"
+							<img src="static/img/annie.png"
 									style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
 						</button>
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -50,7 +120,7 @@
 		<div id="content" class="container-fluid">
 			<div id="achievement_vis" class="container-fluid">
 				<div id="achievement_title" class="row">
-					<h id="achievement_title_text" class="achievement_head">Achieved 40 achievements among 120!</h>
+					<h id="achievement_title_text" class="achievement_head">Achieved {{achieve_num}} achievements among 20!</h>
 				</div>
 				<div id="achievement_grid_box" class="container-fluid">
 				</div>
