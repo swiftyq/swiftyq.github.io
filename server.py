@@ -62,7 +62,7 @@ def login():
 	else:
 		user_id = request.form['email']
 		password = request.form['password']
-		query = "SELECT  * from user_info where id='%s' and password='%s'" %(user_id,password)
+		query = "SELECT  * from user_info where email='%s' and password='%s'" %(user_id,password)
 		print (query)
 		cur.execute(query)
 		user_info = cur.fetchall()
