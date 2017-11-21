@@ -41,7 +41,6 @@ achievement_l = achievement_list_opener.returner()
 
 @app.route('/')
 def index():
-	cur.execute("INSERT INTO user_info VALUES(?,?,?,?)", ("admin", "admin", "smartboy", "Programming"))
 	return render_template("index.html")
 
 @app.route('/',methods=["POST"])
