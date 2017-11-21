@@ -19,7 +19,7 @@ from email.mime.text import MIMEText
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
-#cur.execute('''CREATE TABLE user_info (email text, password text, id text, expertise text, CONSTRAINT email_id PRIMARY KEY (email,id))''')
+#cur.execute('''CREATE TABLE user_info (email text, password text, id text, image integer, CONSTRAINT email_id PRIMARY KEY (email,id))''')
 #cur.execute('''CREATE TABLE info
 #				(id text, password text, name text, expertise text)''')
 #cur.execute('''CREATE TABLE rating
@@ -49,14 +49,15 @@ def index():
 def login():
 	print (request.form)
 	if request.form['type'] == 'signup':
-		user_id = request.form['email']
+		email = request.form['email']
 		password = request.form['password1']
-		name =  request.form['name']
+		user_id =  request.form['name']
 		expertise = request.form['expertise']
 		expertise = expertise.split(",")[:-1]
-		print (expertise)
+		print (request.form)
+		cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (email,password,user_id,0))
 		for e in expertise:
-			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (user_id,password,name,e))
+			cur.execute("INSERT INTO expertise VALUES (?,?,?)", (email,user_id,e))
 		conn.commit()
 		return render_template("index.html")
 	else:
@@ -73,7 +74,7 @@ def login():
 		return extract(user_info[0][2])
 
 def extract(user_id):
-	cur.execute("SELECT expertise from user_info where id=?", (user_id,))
+	cur.execute("SELECT expertise from expertise where id=?", (user_id,))
 	expertise = cur.fetchone()
 	#if not expertise:
 		#print("no")
@@ -181,7 +182,7 @@ def request_paged(request):
 		filename=""
 	cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,user_id,expertise,date))
 	conn.commit()
-	cur.execute("SELECT email,id FROM user_info where expertise=?", (expertise,))
+	cur.execute("SELECT email,id FROM expertise where expertise=?", (expertise,))
 	emails = cur.fetchall()
 	print (emails)
 
