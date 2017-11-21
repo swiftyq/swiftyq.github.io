@@ -62,7 +62,7 @@ def login():
 	else:
 		user_id = request.form['email']
 		password = request.form['password']
-		query = "SELECT  * from user_info where id='%s' and password='%s'" %(user_id,password)
+		query = "SELECT  * from user_info where id='%s' and password='%s'" %(user_id,password,user_id)
 		print (query)
 		cur.execute(query)
 		user_info = cur.fetchall()
@@ -77,7 +77,7 @@ def extract(user_id):
 	expertise = cur.fetchone()
 	#if not expertise:
 		#print("no")
-	cur.execute("SELECT * from request where expertise = ?", (expertise[0],))
+	cur.execute("SELECT * from request where expertise = ? and not requester=?", (expertise[0],user_id,))
 	rtable = cur.fetchall()
 	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
 	count = cur.fetchone()[0]
