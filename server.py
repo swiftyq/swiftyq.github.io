@@ -13,6 +13,8 @@ import os
 import datetime
 import random
 import string
+import smtplib
+from email.mime.text import MIMEText
 
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
@@ -41,7 +43,6 @@ achievement_l = achievement_list_opener.returner()
 
 @app.route('/')
 def index():
-	cur.execute("INSERT INTO user_info VALUES(?,?,?,?)", ("admin", "admin", "smartboy", "Programming"))
 	return render_template("index.html")
 
 @app.route('/',methods=["POST"])
@@ -86,22 +87,23 @@ def extract(user_id):
 
 @app.route('/signup')
 def signup():
-    return render_template("signup.html")
+	return render_template("signup.html")
 
 @app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
-    user_id = request.args.get('user_id')
-    var= request.method
-    print(var)
-    if var == 'POST' :
-        print(var)
-        return request_paged(request)
+	user_id = request.args.get('user_id')
+	var= request.method
+	print(var)
+	if var == 'POST' :
+		print(var)
+		return request_paged(request)
 
-    return render_template("inbox.html", user_id = user_id)
+	return render_template("inbox.html", user_id = user_id)
 @app.route('/chat', methods=["GET"])
 def chat():
 	user_id=request.args.get("user_id")
-	return render_template("chat.html",user_id=user_id)
+	respondent = request.args.get("respondent")
+	return render_template("chat.html",user_id=user_id,respondent=respondent)
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
@@ -124,52 +126,70 @@ def msg(message,username):
 
 @app.route('/achievement')
 def achievement():
-    return render_template("achievement.html")
+	return render_template("achievement.html")
 
 
 
 
 @app.route('/request_page')
 def request_page():
-    print("rrrequest!")
-    #print(user_id)
-    user_id = request.args.get("user_id")
-    print(user_id)
-    return render_template("request.html", user_id=user_id)
+	print("rrrequest!")
+	#print(user_id)
+	user_id = request.args.get("user_id")
+	print(user_id)
+	return render_template("request.html", user_id=user_id)
 
 
 def request_paged(request):
-    #user_id = request.form['user_id']
-    user_id = request.args.get("user_id")
-    print("guaack")
-    question = request.form['question']
-    expertise = request.form['expertise']
-    _file = request.files['image']
-    if not question:
-        warning = "Question not specified. Please ask a question."
-        return render_template("request.html", warning=warning)
-    if not expertise:
-        warning = "Expertise not specified. Please specify expertise."
-        return render_template("request.html", warning=warning)
-    print(_file)
-    date = datetime.datetime.now().isoformat()
-    print(date)
+	#user_id = request.form['user_id']
+	global s
+	user_id = request.args.get("user_id")
+	print("guaack")
+	question = request.form['question']
+	expertise = request.form['expertise']
+	_file = request.files['image']
+	if not question:
+		warning = "Question not specified. Please ask a question."
+		return render_template("request.html", warning=warning)
+	if not expertise:
+		warning = "Expertise not specified. Please specify expertise."
+		return render_template("request.html", warning=warning)
+	print(_file)
+	date = datetime.datetime.now().isoformat()
+	print(date)
 
-    _id = ''.join([random.choice(string.ascii_letters + string.digits) for i in range(10)])
-    #cur_date =
-    if _file:
-        _file.save(os.path.join("./static/upload", _id + ".png"))
-        filename = _id+".png"
-    else:
-        filename=""
-    cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,user_id,expertise,date))
-    conn.commit()
-    return extract(user_id)
+	_id = ''.join([random.choice(string.ascii_letters + string.digits) for i in range(10)])
+	#cur_date =
+	if _file:
+		_file.save(os.path.join("./static/upload", _id + ".png"))
+		filename = _id+".png"
+	else:
+		filename=""
+	cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,user_id,expertise,date))
+	conn.commit()
+	cur.execute("SELECT email,id FROM user_info where expertise=?", (expertise,))
+	emails = cur.fetchall()
+	print (emails)
+
+	for i in emails:
+		if not "@" in i[0]:
+			continue
+		print (i[0])
+		msg = ("From %s\r\nTo: %s\r\nSubject:SwiftyQ Request\r\n\r\n Someone needs your help for %s" %('donotreplyswiftyq@gmail.com',i[0],expertise))
+		s.sendmail('donotreplyswiftyq@gmail.com',i[0],msg)
+	s.quit()
+	return extract(user_id)
 
 
 @app.route('/achievement_list', methods=['POST'])
 def achievement_list():
-    return achievement_l
+	return achievement_l
 
 if __name__ == '__main__':
-    socket_io.run(app, host='0.0.0.0', debug=True, port=5000)
+	s = smtplib.SMTP('smtp.gmail.com',587)
+	s.ehlo()
+	s.starttls()
+	s.ehlo()
+	s.login('donotreplyswiftyq@gmail.com', 'swiftyqadmin')
+	s.ehlo()
+	socket_io.run(app, host='0.0.0.0', debug=True, port=5000)

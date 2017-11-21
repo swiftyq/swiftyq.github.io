@@ -33,7 +33,7 @@
       </div>
       <div class = "img-circle col">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
-              <img src="static/img/{{user_id}}.png"
+              <img src="static/img/annie.png"
                   style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -45,14 +45,20 @@
       </div>
 	</div>
   <div class="w-100" style="margin-top: 2px; padding: 1px; background-color: #eee;"></div>
-	<div class = "img-circle text-center profile" style = "padding-top: 10px">
-
-		<img
-			src = "static/img/{{user_id}}.png"
-			alt= "John"
-			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" >
-		<h1>{{user_id}}</h1>
-	</div>
+  <div class="container" style="margin-top:20px; margin-bottom: 20px;">
+  	<div class = "img-circle text-center profile" style = "padding-top: 10px">
+  		<img
+  			src = "static/img/annie.png"
+  			alt= "John"
+  			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" >
+  		<h1>{{user_id}}</h1>
+  	</div>
+    <div class="text-center" style="width:30%; margin: auto;">
+      <div class="btn btn-primary btn-lg" style="width: 100%">
+        <a class="no-deco" href="{{ url_for('request_page', user_id = user_id)}}">Send Request</a>
+      </div>
+    </div>
+  </div>
 	<span style = "margin-left: 70px; margin-top: 70px"> Expertise: </span>
 	<div class = "container" style= "margin-top: 3px; margin-left:50px">
 		<div class = "row">
@@ -88,7 +94,7 @@
   		<div class ="row">
     		<div class="img-circle col">
       			<img
-					src = "static/img/{{item[2]}}.png"
+					src = "static/img/compgeek.jpg"
 					alt = "chembee"
 					style = "width: 120px; height: 120px;  border-radius: 1000px; border-style: solid; border-color: black"
 				>
@@ -106,7 +112,7 @@
       				Preview Task
       		  </button>
       		  <button class = "col btn btn-success" style = "border-radius: 50px; margin-left: 5px" href="chat">
-      		  <a href="chat?user_id='{{user_id}}" style="text-decoration: none; color:inherit;">Reply</a>
+      		  <a href="chat?user_id={{user_id}}&respondent={{item[3]}}" style="text-decoration: none; color:inherit;">Reply</a>
       		  </button>
       		</div>
     	</div>
