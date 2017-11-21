@@ -100,7 +100,8 @@ def inbox():
 @app.route('/chat', methods=["GET"])
 def chat():
 	user_id=request.args.get("user_id")
-	return render_template("chat.html",user_id=user_id)
+	respondent = request.args.get("respondent")
+	return render_template("chat.html",user_id=user_id,respondent=respondent)
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
