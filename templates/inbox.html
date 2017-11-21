@@ -18,7 +18,7 @@
 		<div class = "row" style = "height: 72px">
     <div class = "col-2">
         <div class="dropdown" style = "width: 500px">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red;">
               <div id = "text-center onboard"> <font size="+10" style = "color: white">{{count}}</font></div>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -39,7 +39,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
               <a class="dropdown-item" href="#">Profile</a>
               <a class="dropdown-item" href="achievement">Achievements</a>
-              <a class="dropdown-item" href="{{ url_for('request_page', user_id = user_id)}}">Request Task</a>
+              <a class="dropdown-item" href="{{ url_for('request_page', user_id = user_id)}}" font size = "25px">Request Task</a>
             </div>
         </div>
       </div>
@@ -55,17 +55,17 @@
   	</div>
     <div class="text-center" style="width:30%; margin: auto;">
       <div class="btn btn-primary btn-lg" style="width: 100%">
-        <a class="no-deco" href="{{ url_for('request_page', user_id = user_id)}}">Send Request</a>
+        <a class="no-deco" href="{{ url_for('request_page', user_id = user_id)}}" style = "font-size: 25px">Send Request</a>
       </div>
     </div>
   </div>
-	<span style = "margin-left: 70px; margin-top: 70px"> Expertise: </span>
-	<div class = "container" style= "margin-top: 3px; margin-left:50px">
+	<span class= "row" style = "margin-left: 70px; margin-top: 30px; font-size: 20px"> Expertise: </span>
+	<div class = "container" style= "margin-top: 3px; margin-left:50px; width: 120%">
 		<div class = "row">
 			<div class = "col-9">
 				<div class="dropdown" style = "width: 500px">
-  					<button class="btn btn-secondary dropdown-toggle btn-expertise" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "width: 300px">
-   		 				<span>{{expertise}}</span>
+  					<button class="btn btn-secondary dropdown-toggle btn-expertise" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "width: 300px; font-size: 20px">
+   		 				<span style = "font-size: 20px">{{expertise}}</span>
   					</button>
   					<div id="expertise_selection" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
    			 			<a class="dropdown-item expertise-item" href="#">Chemistry</a>
@@ -89,10 +89,10 @@
 	</div>
 		<div class = "col">
 	{% for item in rtable %}
-	  <div class="container requester_box" style= "margin-top: 10px" val={{item[4]}}>
-      <div class="w-100" style="margin-top: 30px; padding: 1px; background-color: #eee;" ></div>
+	  <div class="requester_box" style= "margin-top: 10px; width: inherit;" val='{{item[4]}}'>
+      <div class="w-100" style="margin-top: 15px; padding: 1px; background-color: #eee; width: 103%" ></div>
   		<div class ="row">
-    		<div class="img-circle col">
+    		<div class="img-circle col" style = "margin-top: 10px; margin-left: 30px">
       			<img
 					src = "static/img/compgeek.jpg"
 					alt = "chembee"
@@ -101,18 +101,18 @@
 			</div>
       <div class="col-9 respondent">
       		<div class = "row" style = "width: 30px">
-      			<span style="font-weight:bold; font-size:25px">{{item[3]}}</span>
+      			<span style="font-weight:bold; font-size:30px">{{item[3]}}</span>
       		</div>
-      		<div class = "row" style= "width: 450px; padding-left: 50px; overflow: hidden; text-overflow: ellipsis; white-space:nowrap; display: inline-block;">
+      		<div class = "row" style= "width: 450px; padding-left: 50px; overflow: hidden; text-overflow: ellipsis; white-space:nowrap; display: inline-block; font-size: 20px">
       			 {{item[1]}}
           </div>
-      		<div class = "row" style= "margin-top: 8px">
-      		<div class = "col-4" style = "padding-top: 5px"></div>
-      		  <button class = "select_requester col btn btn-success" style = "border-radius: 50px" data-toggle="modal" data-target="#previewtask" val='{{loop.index0}}' val2='{{item[1]}}'>
+      		<div class = "row" style= "margin-top: 25px">
+      		<div class = "col-4" style = "padding-top: 10px"></div>
+      		  <button class = "select_requester col btn btn-success" style = "border-radius: 50px; font-size: 20px" data-toggle="modal" data-target="#previewtask" val='{{loop.index0}}' val2='{{item[1]}}'>
       				Preview Task
       		  </button>
       		  <button class = "col btn btn-success" style = "border-radius: 50px; margin-left: 5px" href="chat">
-      		  <a href="chat?user_id={{user_id}}&respondent={{item[3]}}" style="text-decoration: none; color:inherit;">Reply</a>
+      		  <a href="chat?user_id={{user_id}}&respondent={{item[3]}}" style="text-decoration: none; color:inherit; font-size: 20px">Reply</a>
       		  </button>
       		</div>
     	</div>
