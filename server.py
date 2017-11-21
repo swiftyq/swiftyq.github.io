@@ -26,7 +26,7 @@ cur = conn.cursor()
 #cur.execute('''CREATE TABLE rating
 #				(id text, rating number, date text)''')
 #cur.execute('''CREATE TABLE achievement
-#				(id text, achievement number, date text)''')
+#				(id text, achievement number, date text, done number)''')
 #cur.execute('''CREATE TABLE session''')
 #cur.execute('''CREATE TABLE request
 				#(id number, question text, image text, requester text, expertise text, date text)''')
@@ -55,9 +55,16 @@ def login():
 		expertise = request.form['expertise']
 		expertise = expertise.split(",")[:-1]
 		print (request.form)
-		cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (email,password,user_id,0))
+		try:
+			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (email,password,user_id,0))
+		except sqlite3.IntegrityError:
+			return render_template("signup.html", warning="Sorry, email already taken.")
 		for e in expertise:
-			cur.execute("INSERT INTO expertise VALUES (?,?,?)", (email,user_id,e))
+			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (user_id,password,name,e))
+		#achievement generation
+		for achievement in achievement_l:
+			print(type(int(achievement['num'])))
+			cur.execute("INSERT INTO achievement VALUES (?,?,?,?)", (name,int(achievement['num']),"",0))
 		conn.commit()
 		return render_template("index.html")
 	else:
@@ -160,7 +167,20 @@ def msg(message,username):
 
 @app.route('/achievement')
 def achievement():
-	return render_template("achievement.html")
+	user_id = request.args.get("user_id")
+	print("yay")
+	cur.execute("SELECT * from achievement where id=?", (user_id,))
+	achievements = cur.fetchall()
+	cur.execute("SELECT * from achievement where id=? and done=? ORDER BY RANDOM() LIMIT 7", (user_id, 0,))
+	non_achieved = cur.fetchall()
+	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
+	achieve_num = cur.fetchall()
+	print(achievements)
+	non_to_send=[]
+	for non in non_achieved:
+		non_to_send.append(achievement_l[non[1]])
+		print(achievement_l[non[1]])
+	return render_template("achievement.html", user_id=user_id, achievements = achievements, non_achieved = non_to_send, achieve_num = achieve_num[0][0])
 
 
 
@@ -215,9 +235,9 @@ def request_paged(request):
 	return extract(user_id)
 
 
-@app.route('/achievement_list', methods=['POST'])
-def achievement_list():
-	return achievement_l
+#@app.route('/achievement_list', methods=['POST'])
+#def achievement_list():
+#	return achievement_l
 
 if __name__ == '__main__':
 	s = smtplib.SMTP('smtp.gmail.com',587)
