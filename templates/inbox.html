@@ -65,7 +65,13 @@
       </div>
       <div class = "img-circle col">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
-              <img src="static/propic/{{index[3]}}.png"
+              <img  
+              {% if img == 0 %}
+                src = "static/img/default.jpg"
+              {% endif %}
+              {% if img == 1 %}
+                src = "static/propic/{{user_id}}.png"
+              {% endif %}
                   style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -80,11 +86,11 @@
   <div class="container" style="margin-top:20px; margin-bottom: 20px;">
   	<div class = "img-circle text-center profile" style = "padding-top: 10px">
   		<img
-      {% if img is 0 %}
+      {% if img == 0 %}
   			src = "static/img/default.jpg"
       {% endif %}
-      {% if img is 1 %}
-        src = "static/propic/{{user_id}}.jpg"
+      {% if img == 1 %}
+        src = "static/propic/{{user_id}}.png"
       {% endif %}
   			alt= "John"
   			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" >
@@ -99,22 +105,21 @@
 	<span class= "row" style = "margin-left: 70px; margin-top: 30px; font-size: 23px"> Expertise: </span>
 	<div class = "box" style= "margin-top: 3px; margin-left:50px; width: inherit">
 		<div class = "row" style = "width: inherit">
-			<div class = "col-8">
+			<div class = "col-7">
 				<div class="dropdown" style = "width: 500px">
   					<button class="btn btn-secondary dropdown-toggle btn-expertise" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "width: 300px; font-size: 20px">
    		 				<span style = "font-size: 25px">{{expertise}}</span>
   					</button>
   					<div id="expertise_selection" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-   			 			<a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Chemistry</a>
-    		 			<a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Math</a>
+    		 			<a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Calculus</a>
    			 			<a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Physics</a>
               <a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Programming</a>
   					</div>
 				</div>
 			</div>
-			<div class = "col-3" style = "margin-left: 8%">
+			<div class = "col-4" style = "margin-left: 8%">
          <button class = "btn btn-success" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style = "background-color: white; border-width: 1px; border-color: black; color: black; font-size: 20px;">
-              Upload Photo
+              Upload Profile Picture
             </button>
           </div>
 				<div class = "row">
@@ -134,7 +139,7 @@
             src = "static/img/default.jpg"
           {% endif %}
           {% if req[loop.index0] == 1 %}
-            src = "static/propic/{{item[3]}}.jpg"
+            src = "static/propic/{{item[3]}}.png"
           {% endif %}
 					alt = "chembee"
 					style = "width: 120px; height: 120px;  border-radius: 1000px; border-style: solid; border-color: black"

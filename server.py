@@ -91,16 +91,17 @@ def extract(user_id):
 	count = cur.fetchone()[0]
 	mylist = []
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
+	img = cur.fetchone()[0]
+	print(img)
 
 	req = []
-	count = 0;
+	
 	for i in rtable:
-		cur.execute("SELECT image from user_info where id = ?", (i[0]))
-		image = fetchone()[0]
-		req[count] = image
-		count = count+1
+		print(i)
+		cur.execute("SELECT image from user_info where id = ?", (i[3],))
+		image = cur.fetchone()[0]
+		req.append(image)
 
-	img = cur.fetchone()[0]
 	return render_template("inbox.html", user_id=user_id, expertise = expertise[0], rtable=rtable, count = len(rtable), img = img, req = req)
 
 @app.route('/signup')
@@ -119,7 +120,7 @@ def inbox():
 		_file = request.files['image']
 		if _file:
 			_file.save(os.path.join("./static/propic", user_id + ".png"))
-			cur.execute("INSERT INTO user_info (image) VALUES (?) where id =?", (1, user_id,))
+			cur.execute("UPDATE user_info SET image = 1 WHERE id = ?", (user_id,))
 		else:
 			warning = "Question not specified. Please ask a question."
 			return render_template("inbox.html", warning=warning)
