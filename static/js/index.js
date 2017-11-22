@@ -5,7 +5,7 @@ $("u").on('click', function() {
 $( ".dropdown-menu a" ).on('click', function() {
   var target_input = $( ".form-group input[type='expertise']" )
   var old_val = target_input.val()
-  if (!(target_input.val().includes(old_val))) {
+  if (!(target_input.val().includes($(this).text()))) {
     target_input.val(old_val+$(this).text()+", ");
   }
 })

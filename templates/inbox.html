@@ -124,7 +124,7 @@
 	</div>
   <div class="w-100" style="margin-top: 2px; padding: 1px; background-color: #eee;"></div>
   <div class="container" style="margin-top:20px; margin-bottom: 20px;">
-  	<div class = "img-circle text-center profile" style = "padding-top: 10px">
+  	<div class = "text-center profile" style = "padding-top: 10px">
   		<img
       {% if img == 0 %}
   			src = "static/img/default.jpg"
@@ -135,6 +135,7 @@
   			alt= "John"
   			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" >
   		<h1>{{user_id}}</h1>
+      <h4>Your token: <span style="color: red">{{token}}</span></h4>
   	</div>
     <div class="text-center" style="width:30%; margin: auto;">
       <div class="btn btn-primary btn-lg" style="width: 100%">

@@ -19,17 +19,11 @@ from email.mime.text import MIMEText
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
-
-#cur.execute('''CREATE TABLE user_info (email text, password text, id text, image integer, CONSTRAINT email_id PRIMARY KEY (email,id))''')
-#cur.execute('''CREATE TABLE info
-#				(id text, password text, name text, expertise text)''')
-#cur.execute('''CREATE TABLE rating
-#				(id text, rating number, date text)''')
-#cur.execute('''CREATE TABLE achievement
-				#(id text, achievement number, date text, done number)''')
-#cur.execute('''CREATE TABLE session''')
-#cur.execute('''CREATE TABLE request
-				#(id number, question text, image text, requester text, expertise text, date text)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS user_info (email text, password text, id text, image integer, token integer,  CONSTRAINT email_id PRIMARY KEY (email,id))''')
+cur.execute('''CREATE TABLE IF NOT EXISTS request (id integer, question text, image text, requester text, expertise text)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS inboxinfo (id text, pic text, expertise text)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS expertise (email text, id text, expertise text)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS achievement (id text, achievement integer, date text, done integer)''')
 
 app = Flask(__name__)
 socket_io = SocketIO(app)
@@ -99,8 +93,8 @@ def extract(user_id):
 	mylist = []
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
-	print(img)
-
+	cur.execute("SELECT token from user_info where id=?", (user_id,))
+	token = cur.fetchone()[0]
 	req = []
 
 	for i in rtable:
@@ -109,7 +103,7 @@ def extract(user_id):
 		image = cur.fetchone()[0]
 		req.append(image)
 
-	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, rtable=rtable, count = len(rtable), img = img, req = req)
+	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, token=token, rtable=rtable, count = len(rtable), img = img, req = req)
 
 @app.route('/signup')
 def signup():
