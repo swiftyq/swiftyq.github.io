@@ -244,6 +244,7 @@ def request_paged(request):
 	else:
 		filename=""
 	cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,user_id,expertise,date,))
+	cur.execute("UPDATE user_info SET token=token-1 where id=?", (user_id,))
 	conn.commit()
 	cur.execute("SELECT email,id FROM expertise where expertise=?", (expertise,))
 	emails = cur.fetchall()
@@ -264,9 +265,6 @@ def request_paged(request):
 
 if __name__ == '__main__':
 	s = smtplib.SMTP('smtp.gmail.com',587)
-	s.ehlo()
 	s.starttls()
-	s.ehlo()
 	s.login('donotreplyswiftyq@gmail.com', 'swiftyqadmin')
-	s.ehlo()
 	socket_io.run(app, host='0.0.0.0', debug=True, port=3000)
