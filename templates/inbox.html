@@ -51,7 +51,7 @@
     <div class = "col-2">
         <div class="dropdown" style = "width: 500px">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red;">
-              <div id = "text-center onboard"> <font size="+10" style = "color: white">{{count}}</font></div>
+              <div id = "text-center onboard"> <font size="+10" style = "color: white">{{rtable|length}}</font></div>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							{% for item in rtable %}
@@ -125,9 +125,9 @@
 							</script>
   					</button>
   					<div id="expertise_selection" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    		 			<a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Calculus</a>
-   			 			<a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Physics</a>
-              <a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Programming</a>
+              {% for e in myexpertise %}
+                <a class="dropdown-item expertise-item" style = "font-size:25px" href="#">{{e}}</a>
+              {% endfor %}
   					</div>
 				</div>
 			</div>
