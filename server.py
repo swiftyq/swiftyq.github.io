@@ -51,7 +51,7 @@ def login():
 		expertise = [x.strip() for x in expertise]
 		expertise = list(set(expertise))
 		try:
-			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (email,password,user_id,0))
+			cur.execute("INSERT INTO user_info VALUES (?,?,?,?,?)", (email,password,user_id,0,0))
 		except sqlite3.IntegrityError:
 			return render_template("signup.html", warning="Sorry, email already taken.")
 		for e in expertise:
