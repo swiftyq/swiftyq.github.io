@@ -23,7 +23,6 @@
 
 <body style="height:100%; width: 100%;">
 
-  <form class="photorequest" action="{{ url_for('chat')}}" method="post" enctype="multipart/form-data">
 <div id="myModal" class="modal in" role="dialog" style = "padding-top:500px">
   <div class="modal-dialog">
 
@@ -37,14 +36,34 @@
        Hi
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" style = "background-color: white; color: black; border-width: 1px">Take a Quiz</button>
-        <button type="button" onclick="window.location.href='/chat'" class="btn btn-default" data-dismiss="modal" style = "background-color: white; color: black; border-width: 1px">I'm Good</button></a>
+        <button type="button" class="btn btn-default" id = "quiz" data-dismiss="modal" style = "background-color: white; color: black; border-width: 1px">Take a Quiz</button>
+        <div type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a href="/inbox?user_id={{user_id}}" style = "color: black">I'm Good</a></div>
       </div>
     </div>
 
   </div>
 </div>
-</form>
+
+<div id="myModal2" class="modal in" role="dialog" style = "padding-top:500px">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style = "background-color: gainsboro">
+      <div class="modal-header">
+        <h4 class="modal-title">Give Her a Quiz!</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+       Hi
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id = "quiz" data-dismiss="modal" style = "background-color: white; color: black; border-width: 1px">Take a Quiz</button>
+        <div type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a href="/inbox?user_id={{user_id}}" style = "color: black">I'm Good</a></div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
   <div id="header text-center" style="height: 200px; width:100%; padding-top: 80px; padding-bottom: 80px">
     <h1 class="text-center" id="user_id" >
@@ -99,16 +118,28 @@
       // console.log(type(msg));
       console.log(msg);
       if(msg.type === 'normal'){
+        console.log(msg.username, username);
         if (msg.username == username) {
           $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><span class="time-left" style = "color: gainsboro">'+msg.time+'</span></div>')
         }else {
           $("#messages").append('<div class="container" id="msgs" style = "width: 80%; margin-left: 2%;"><div class="col-2"><img src="/w3images/bandmember.jpg" alt="Avatar"></div><div class="col-9"><p id="msg_text">'+msg.message+'</p>{% if requester %}<button type="button" style = "background-color: green; color: white" data-toggle="modal" data-target="#myModal">Understood</button>{% endif %}<span class="time-right">11:00</span></div></div>')
         }
       }else{
-        if (msg.username != username) {
+        if (msg.type === 'connect'){
+          if(msg.username != username) {
           console.log(msg.username,username);
           $('#messages').append('<li>' + msg.message + '</li>');
         }
+      }
+        else if(msg.type === 'exit' {% if requester %} && true {% endif %} && msg.username!=username){
+         $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><div type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a href="/inbox?user_id={{respondent}}" style = "color: black">Exit</a></div><span class="time-left" style = "color: gainsboro">')
+        }
+        else{
+          if(msg.type === 'quiz' {% if requester %} && true {% endif %} && msg.username!=username){
+          $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><button type="button" style = "background-color: green; color: white" data-toggle="modal" data-target="#myModal">Make a Quiz</button><span class="time-left" style = "color: gainsboro">')
+        }
+        }
+        
       }
       console.log('Received Message : '+msg.type);
     });
@@ -117,6 +148,17 @@
       sock.send($('#user_msg').val(),username);
       $('#user_msg').val('');
     });
+
+    $('#exit').on('click', function(){
+      sock.send("You successfully helped your requester understand the question! You may exit the chat room now",username);
+    });
+
+    $('#quiz').on('click', function(){
+      sock.send("Your requester wants a quiz. Give him/her a good question!",username);
+    });
+
+
+
     $(document).keypress(function(e) {
         if(e.which == 13) {
           if ($("#user_msg").is(":focus")) {
