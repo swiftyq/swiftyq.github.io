@@ -55,6 +55,7 @@ def login():
 		expertise = request.form['expertise']
 		expertise = expertise.split(",")[:-1]
 		print (request.form)
+
 		try:
 			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (email,password,user_id,0))
 		except sqlite3.IntegrityError:
@@ -88,8 +89,6 @@ def extract(user_id):
 	cur.execute("SELECT * from request where expertise = ? and not requester=?", (expertise[0],user_id,))
 	rtable = cur.fetchall()
 	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
-	count = cur.fetchone()[0]
-	mylist = []
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
 	print(img)
