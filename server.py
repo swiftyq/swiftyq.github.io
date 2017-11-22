@@ -114,11 +114,15 @@ def signup():
 @app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
 	# this will have the rating on level of understanding
-	print (request.args.get("under"))
+	under = (request.args.get("under"))
 	# this will have rate of satisfaction
-	print (request.args.get("sat"))
+	sat = (request.args.get("sat"))
 	# if replied, this will have the respondent it
-	print (request.args.get("replied"))
+	replied = (request.args.get("replied"))
+	if replied:
+		adder = 1 if sat < 3 else 2
+		cur.execute("UPDATE user_info SET token=token+"+adder+" WHERE id=?",(replied,))
+		cur.commit()
 	user_id = request.args.get('user_id')
 	print(user_id)
 	var= request.method
