@@ -150,7 +150,7 @@ def chat():
 		#respondent handler
 		cur.execute("SELECT email from user_info where id='%s'" %respondent)
 		respondent_email = cur.fetchone()[0]
-		url = "http://115.68.222.144:3000/chat?user_id=%s&respondent=%s&flag=true" %(user_id,respondent)
+		url = "http://115.68.222.144:3000/chat?user_id=%s&respondent=%s&request=%s&flag=true" %(user_id,respondent,request_id)
 		msg = ("From %s\r\nTo: %s\r\nSubject:Your request is being responded\r\n\r\n %s is trying to help you. Log into chat in %s" %('donotreplyswiftyq@gmail.com',respondent_email,user_id,url))
 		s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
 	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester, question = request_obj[1], img = request_obj[2])
