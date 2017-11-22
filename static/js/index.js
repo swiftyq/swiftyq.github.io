@@ -4,10 +4,9 @@ $("u").on('click', function() {
 
 $( ".dropdown-menu a" ).on('click', function() {
   var target_input = $( ".form-group input[type='expertise']" )
-  var old_val = target_input.val()
-  if (!(target_input.val().includes(old_val))) {
-    target_input.val(old_val+$(this).text()+", ");
-  }
+  var old_val = String(target_input.val())
+  target_input.val(old_val+$(this).text()+", ");
+
 })
 $("#field_reset").on("click", function(){
 	 $('#expertise_button').prop('disabled', false);
