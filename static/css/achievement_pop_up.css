@@ -10,6 +10,9 @@
   z-index: 7;
   font-size: 60px;
 }
+#round_box{
+  border-radius: 20px;
+}
 #achievement_pop_up_container{
   position: fixed;
   top: 500px;

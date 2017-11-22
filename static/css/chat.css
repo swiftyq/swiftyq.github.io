@@ -114,3 +114,7 @@ body {
 .modal-backdrop{
   background-color:transparent; !important;
 }
+
+.checked {
+    color:orange;
+}

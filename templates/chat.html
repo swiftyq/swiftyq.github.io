@@ -3,7 +3,6 @@
 	<title>SwiftyQ</title>
 	<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- iOS fullscreen webapp -->
 	<meta name="mobile-web-app-capable" content="yes" /> <!-- Android Chrome fullscreen webapp -->
-
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 
   <!-- Importing fonts -->
@@ -30,11 +29,69 @@
     <!-- Modal content-->
     <div class="modal-content" style = "background-color: gainsboro">
       <div class="modal-header">
-        <h4 class="modal-title">Understood?</h4>
+        <h2 class="modal-title">Understood?</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" style="font-size: 2.2rem">
+       Take a Quiz or Leave
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id = "quiz" data-dismiss="modal" style = "background-color: white; color: black; border-width: 1px; font-size:2rem">Take a Quiz</button>
+        <button type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px; font-size:2rem" data-target="#ratingModal" data-toggle="modal" data-dismiss="modal">I'm Good</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="ratingModal" class="modal in" role="dialog" style = "padding-top:500px">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style = "background-color: gainsboro">
+      <div class="modal-header">
+        <h2 class="modal-title">Rating</h2>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body" style="font-size: 2.2rem">
+        <p>How much were you satisfied with the response?</p>
+        <div class="text-center">
+          <span class="fa fa-star under checked"></span>
+          <span class="fa fa-star under checked"></span>
+          <span class="fa fa-star under checked"></span>
+          <span class="fa fa-star under"></span>
+          <span class="fa fa-star under"></span>
+        </div>
+        <p>Self-evaluate your understanding</p>
+        <div class="text-center" >
+          <span class="fa fa-star sat checked"></span>
+          <span class="fa fa-star sat checked"></span>
+          <span class="fa fa-star sat checked"></span>
+          <span class="fa fa-star sat"></span>
+          <span class="fa fa-star sat"></span>
+        </div>
+        <div class="text-center"><small>Default will result in 3-points.</small></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a class="exitanchor" href="/inbox?replied={{respondent}}user_id={{user_id}}&under=3&sat=3" style = "color: black">Save and leave</a></button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div id="myModal2" class="modal in" role="dialog" style = "padding-top:500px">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content" style = "background-color: gainsboro">
+      <div class="modal-header">
+        <h4 class="modal-title">Give Her a Quiz!</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-       Take a Quiz or Leave
+       Hi
+>>>>>>> d1325830b68f6bc5c8798ad5e124f592513abe1e
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" id = "quiz" data-dismiss="modal" style = "background-color: white; color: black; border-width: 1px">Take a Quiz</button>
@@ -122,7 +179,7 @@
       console.log('Received Message : '+msg.type);
     });
 
-    $('#sendbutton').on('click', function(){
+    $('#send_button').on('click', function(){
       sock.send($('#user_msg').val(),username);
       $('#user_msg').val('');
     });
@@ -147,23 +204,22 @@
     });
   });
 
- $("#prompt form").submit(function(e) {
- 
-      // close the overlay
-      triggers.eq(1).overlay().close();
- 
-      // get user input
-      var input = $("input", this).val();
- 
-      // do something with the answer
-      triggers.eq(1).html(input);
- 
-      // do not submit the form
-      return e.preventDefault();
-  });
-
- $('#exit2').on('click', function(){
-      $(this).css('display','none');
-    });
-  
+  $(".fa.fa-star.under").on('click', function() {
+    $(this).prevAll(".fa.fa-star.under").addClass("checked");
+    $(this).addClass("checked");
+    $(this).nextAll(".fa.fa-star.under").removeClass("checked")
+    var leng_under = $.find(".fa.under.checked").length;
+    var leng_sat = $.find(".fa.sat.checked").length;
+    console.log(leng_under,leng_sat);
+    $(".exitanchor").attr("href","/inbox?user_id={{user_id}}&replied={{respondent}}&under="+leng_under+"&sat="+leng_sat);
+  })
+  $(".fa.fa-star.sat").on('click', function() {
+    $(this).prevAll(".fa.fa-star.sat").addClass("checked");
+    $(this).addClass("checked");
+    $(this).nextAll(".fa.fa-star.sat").removeClass("checked")
+    var leng_under = $.find(".fa.under.checked").length;
+    var leng_sat = $.find(".fa.sat.checked").length;
+    console.log(leng_under,leng_sat);
+    $(".exitanchor").attr("href","/inbox?user_id={{user_id}}&replied={{respondent}}&under="+leng_under+"&sat="+leng_sat);
+  })
 </script>
