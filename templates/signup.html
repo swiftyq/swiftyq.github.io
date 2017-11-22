@@ -51,9 +51,10 @@
       <input name="type" value="signup" style="display: none;">
        <div class="form-group">
         <label for="expertise">Expertise</label>
-        <input type="expertise" name='expertise' class="form-control form-control-lg title-lg" placeholder="Please select from below" readonly>
+        <input type="expertise" name='expertise' id='expertise-input' class="form-control form-control-lg title-lg" placeholder="Please select from below" readonly>
       </div>
       <div class="text-center" style="font-size: 60%;">Sorry, we only test Programming experts at the moment.</div>
+      <div class="btn btn-danger btn-lg title-lg btn-outline-danger btn-block" id="reset-btn" style="margin: 10px 0px">Reset expertise</div>
       <div class="dropdown">
         <button class="btn btn-block btn-lg title-lg btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Choose your expertise
@@ -194,5 +195,9 @@
     </div>
   </div>
   <script src="./static/js/index.js"></script>
-
+  <script>
+    $( "#reset-btn" ).on('click', function() {
+      $( "#expertise-input" ).val("");
+    })
+  </script>
 </body>

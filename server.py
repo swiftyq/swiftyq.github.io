@@ -54,8 +54,8 @@ def login():
 		user_id =  request.form['name']
 		expertise = request.form['expertise']
 		expertise = expertise.split(",")[:-1]
-		print (request.form)
-
+		expertise = [x.strip() for x in expertise]
+		expertise = list(set(expertise))
 		try:
 			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (email,password,user_id,0))
 		except sqlite3.IntegrityError:
