@@ -10,16 +10,59 @@
   <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
   <link rel="stylesheet" href="./static/css/inbox.css">
   <link rel="stylesheet" href="../static/css/fileinput.css">
-
+	<link rel="stylesheet" type="text/css" href='./static/css/achievement_pop_up.css' />
+	<link rel="stylesheet" type="text/css" href='./static/css/achievement.css' />
   <script src="../static/js/plugins/sortable.js" type="text/javascript"></script>
   <script src="../static/js/fileinput.js"></script>
   <script src="../static/themes/explorer-fa/theme.js" type="text/javascript"></script>
   <script src="../static/themes/fa/theme.js" type="text/javascript"></script>
 
+
+
 </head>
 
 <body>
 	<html>
+	<script>
+
+	achievement_pop_up = function(title, content){
+	  $('body').prepend("<div id='achievement_pop_up_container' class='col-md-12'></div>").prepend('<div id="achievement_pop_up_overlay"></div>')
+	  $('#achievement_pop_up_container').append("<div id='list_pop_up' class='achievement_entity_box row'>");
+	  $("#list_pop_up").append("<div class='col-md-2'></div><div id='list_sub_pop_up' class='achievement_entity_sub_box col-md-10 row'></div>")
+	  $("#list_sub_pop_up").append("<div id='list_image_pop_up' class='achievement_entity_image col-md-3'>")
+	  .append("<div id='list_content_pop_up' class='achievement_entity_exp col-md-9'>")
+	  $("#list_image_pop_up").append("<div id='list_image_sub_pop_up' class='achievement_entity_sub_image'></div>")
+	  $("#list_content_pop_up").append("<div id='list_content_head_pop_up' class='achievement_entity_head'></div>")
+	  .append("<div id='list_content_text_pop_up' class='achievement_entity_text'></div>")
+	  $("#list_content_head_pop_up").text(title);
+	  $("#list_content_text_pop_up").text(content);
+	  $("#achievement_pop_up_container").prepend("<div id='achievement_title_pop_up' class='achievement_head'></div>").append("<div id='achievement_orna_1'></div>")
+	  $("#achievement_title_pop_up").text("You made an achievement!")
+	  $("#list_content_pop_up").append("<button id='close_achievement' class='btn btn-success'>Yay!</button>")
+	  var rand2 = Math.floor(Math.random()*20)
+	  //https://d30y9cdsu7xlg0.cloudfront.net/png/149821-200.png
+	  $("#list_image_sub_pop_up").append("<img class='list_pop_img' src='static/achievement/icon/"+rand2.toString()+".png' width='0' height='0'></img>")
+	  $('#list_image_pop_up').outerHeight(function(){
+	    return $(this).outerWidth();
+	  })
+	  $('#list_image_sub_pop_up').outerHeight(function(){
+	    var height = $(this).width();
+	    var oh = $(this).outerWidth();
+	    //console.log($(this).outerWidth())
+	    $(".list_pop_img").outerWidth(height).outerHeight(height).css("margin-top", function(){
+	      return (oh-height)/2;
+	    });
+	    return $(this).outerWidth();
+	  })
+	  $("#close_achievement").on("click", function(){
+	    $("#achievement_pop_up_overlay").remove();
+	    $("#achievement_pop_up_container").remove();
+	    $("#achievement_pop_up_overlay").remove();
+	  })
+	}
+
+	</script>
+
  <form class="photorequest" action="{{ url_for('inbox', type = 'file', user_id=user_id)}}" method="post" enctype="multipart/form-data">
 <div id="myModal" class="modal fade" role="dialog" style = "padding-top:500px">
   <div class="modal-dialog">
@@ -84,7 +127,7 @@
 	</div>
   <div class="w-100" style="margin-top: 2px; padding: 1px; background-color: #eee;"></div>
   <div class="container" style="margin-top:20px; margin-bottom: 20px;">
-  	<div class = "img-circle text-center profile" style = "padding-top: 10px">
+  	<div class = "text-center profile" style = "padding-top: 10px">
   		<img
       {% if img == 0 %}
   			src = "static/img/default.jpg"
@@ -95,9 +138,10 @@
   			alt= "John"
   			style = "width:200px; height: 200px; border-radius: 1000px; border-style: solid;border-color: gainsboro;" >
   		<h1>{{user_id}}</h1>
+      <h4>Your token: <span id="token" style="color: red">{{token}}</span></h4>
   	</div>
     <div class="text-center" style="width:30%; margin: auto;">
-      <div class="btn btn-primary btn-lg" style="width: 100%">
+      <div class="btn btn-primary btn-lg request-btn" style="width: 100%">
         <a class="no-deco" href="{{ url_for('request_page', user_id = user_id)}}" style = "font-size: 25px">Send Request</a>
       </div>
     </div>
@@ -108,20 +152,22 @@
 			<div class = "col-7">
 				<div class="dropdown" style = "width: 500px">
   					<button class="btn btn-secondary dropdown-toggle btn-expertise" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "width: 300px; font-size: 20px">
-   		 				<span id = "expertise_span" style = "font-size: 25px">{{expertise}}</span>
+   		 				<span id = "expertise_span" style = "font-size: 25px">{{myexpertise[0]}}</span>
 							<script>
 								$(document).ready(function(){
-									var exp = '{{expertise}}'
-									$(".requester_box").css("visibility", function(){
-										if($(this).attr('val')==exp){
-											 $(this).css("position", "relative")
-											return "visible"
-										}else{
-											 $(this).css("position", "absolute")
-											return "hidden"
+									var exp = '{{myexpertise[0]}}'
+									$(".requester_box").css("display", function(){
+										if(!($(this).attr('val')==exp)){
+											return "none"
 										}
 									})
+									{% if achievement %}
+
+									achievement_pop_up("yes","good");
+									{% endif %}
+
 								})
+
 							</script>
   					</button>
   					<div id="expertise_selection" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -204,3 +250,11 @@
 </body>
 
 <script src="./static/js/inbox.js"></script>
+<script>
+  if (parseInt($("#token").text())<1){
+    $(".request-btn").removeClass("btn-primary");
+    $(".request-btn").addClass("btn-secondary");
+    $(".request-btn").css("pointer-events","none");
+    $(".request-btn a").css("pointer-events","none");
+  }
+</script>

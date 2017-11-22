@@ -19,17 +19,11 @@ from email.mime.text import MIMEText
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
-
-#cur.execute('''CREATE TABLE user_info (email text, password text, id text, image integer, CONSTRAINT email_id PRIMARY KEY (email,id))''')
-#cur.execute('''CREATE TABLE info
-#				(id text, password text, name text, expertise text)''')
-#cur.execute('''CREATE TABLE rating
-#				(id text, rating number, date text)''')
-#cur.execute('''CREATE TABLE achievement
-				#(id text, achievement number, date text, done number)''')
-#cur.execute('''CREATE TABLE session''')
-#cur.execute('''CREATE TABLE request
-				#(id number, question text, image text, requester text, expertise text, date text)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS user_info (email text, password text, id text, image integer, token integer,  CONSTRAINT email_id PRIMARY KEY (email,id))''')
+cur.execute('''CREATE TABLE IF NOT EXISTS request (id integer, question text, image text, requester text, expertise text)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS inboxinfo (id text, pic text, expertise text)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS expertise (email text, id text, expertise text)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS achievement (id text, achievement integer, date text, done integer)''')
 
 app = Flask(__name__)
 socket_io = SocketIO(app)
@@ -57,7 +51,7 @@ def login():
 		expertise = [x.strip() for x in expertise]
 		expertise = list(set(expertise))
 		try:
-			cur.execute("INSERT INTO user_info VALUES (?,?,?,?)", (email,password,user_id,0))
+			cur.execute("INSERT INTO user_info VALUES (?,?,?,?,?)", (email,password,user_id,0,5))
 		except sqlite3.IntegrityError:
 			return render_template("signup.html", warning="Sorry, email already taken.")
 		for e in expertise:
@@ -96,8 +90,8 @@ def extract(user_id):
 	rtable = cur.fetchall()
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
-	print(img)
-
+	cur.execute("SELECT token from user_info where id=?", (user_id,))
+	token = cur.fetchone()[0]
 	req = []
 
 	for i in rtable:
@@ -106,7 +100,7 @@ def extract(user_id):
 		image = cur.fetchone()[0]
 		req.append(image)
 
-	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, rtable=rtable, count = len(rtable), img = img, req = req)
+	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, token=token, rtable=rtable, count = len(rtable), img = img, req = req)
 
 @app.route('/signup')
 def signup():
@@ -115,6 +109,7 @@ def signup():
 @app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
 	user_id = request.args.get('user_id')
+	print(user_id)
 	var= request.method
 	print(var)
 	if request.args.get('type') == 'request' :
@@ -127,11 +122,12 @@ def inbox():
 			cur.execute("UPDATE user_info SET image = 1 WHERE id = ?", (user_id,))
 			conn.commit()
 		else:
-			warning = "Question not specified. Please ask a question."
+			warning = "Photo not specified"
 			return render_template("inbox.html", warning=warning)
 		return extract(user_id)
 
-	return render_template("inbox.html", user_id=user_id)
+	return extract(user_id)
+	#return render_template("inbox.html", user_id=user_id)
 @app.route('/chat', methods=["GET"])
 def chat():
 	user_id=request.args.get("user_id")
@@ -185,10 +181,17 @@ def achievement():
 	non_to_send=[]
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
-	cur.execute("SELECT * from expertise where id = ?", (user_id,))
-	expertise = cur.fetchone()
-	print(expertise[0])
-	cur.execute("SELECT * from request where expertise = ? and not requester=?", (expertise[2],user_id,))
+	cur.execute("SELECT expertise from expertise where id=?", (user_id,))
+	expertise = cur.fetchall()
+	expertise = [elt[0] for elt in expertise]
+	#if not expertise:
+		#print("no")
+	#lst=['a'.strip(),'b'.strip()]
+	_expertise=["expertise='"+x+"'" for x in expertise]
+	_expertise =  " or ".join(_expertise)
+	print(expertise)
+	print("SELECT * from request where "+_expertise+" and not requester=?")
+	cur.execute("SELECT * from request where "+_expertise+" and not requester=?", (user_id,))
 	rtable = cur.fetchall()
 	print(rtable)
 	for non in non_achieved:
