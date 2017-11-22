@@ -23,6 +23,7 @@
 
 <body style="height:100%; width: 100%;">
 
+
 <div id="myModal" class="modal in" role="dialog" style = "padding-top:500px">
   <div class="modal-dialog">
 
@@ -33,28 +34,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
-       Hi
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" id = "quiz" data-dismiss="modal" style = "background-color: white; color: black; border-width: 1px">Take a Quiz</button>
-        <div type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a href="/inbox?user_id={{user_id}}" style = "color: black">I'm Good</a></div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div id="myModal2" class="modal in" role="dialog" style = "padding-top:500px">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content" style = "background-color: gainsboro">
-      <div class="modal-header">
-        <h4 class="modal-title">Give Her a Quiz!</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-       Hi
+       Take a Quiz or Leave
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" id = "quiz" data-dismiss="modal" style = "background-color: white; color: black; border-width: 1px">Take a Quiz</button>
@@ -76,9 +56,6 @@
 		<h2 class="container-fluid">
 			{{question}}
 		</h2>
-		{% if img %}
-		<img class="container-fluid" src='static/upload/{{img}}'></img>
-		{% endif%}
     <div class="text-center"><div class = "onlinecircle text-center" style="display: inline-block;"></div><span style="font-size: 25px;">&nbsp&nbsponline</span></div>
   </div>
   <div class="w-100" style="position: relative; top: 10px; height: 5px; background-color: #eee;"></div>
@@ -120,9 +97,10 @@
       if(msg.type === 'normal'){
         console.log(msg.username, username);
         if (msg.username == username) {
-          $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><span class="time-left" style = "color: gainsboro">'+msg.time+'</span></div>')
+          $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><p id="msg_text">'+msg.message+'</p><span class="time-left" style = "color: gainsboro">'+msg.time+'</span></div>')
         }else {
-          $("#messages").append('<div class="container" id="msgs" style = "width: 80%; margin-left: 2%;"><div class="col-2"><img src="/w3images/bandmember.jpg" alt="Avatar"></div><div class="col-9"><p id="msg_text">'+msg.message+'</p>{% if requester %}<button type="button" style = "background-color: green; color: white" data-toggle="modal" data-target="#myModal">Understood</button>{% endif %}<span class="time-right">11:00</span></div></div>')
+          $(".understood").css('visibility','hidden');
+          $("#messages").append('<div class="container" id="msgs" style = "width: 80%; margin-left: 2%;"><div class="col-2"></div><div class="col-9"><p id="msg_text">'+msg.message+'</p>{% if requester %}<button class = "understood" type="button" style = "background-color: green; color: white" data-toggle="modal" data-target="#myModal">Understood</button>{% endif %}<span class="time-right">'+msg.time+'</span></div></div>')
         }
       }else{
         if (msg.type === 'connect'){
@@ -132,11 +110,11 @@
         }
       }
         else if(msg.type === 'exit' {% if requester %} && true {% endif %} && msg.username!=username){
-         $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><div type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a href="/inbox?user_id={{respondent}}" style = "color: black">Exit</a></div><span class="time-left" style = "color: gainsboro">')
+         $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><div type="button" class="btn btn-default" id = "quiz2" style = "background-color: white; color: black; border-width: 1px"><a href="/inbox?user_id={{respondent}}" style = "color: black">Exit</a></div><span class="time-left" style = "color: gainsboro">')
         }
         else{
           if(msg.type === 'quiz' {% if requester %} && true {% endif %} && msg.username!=username){
-          $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><button type="button" style = "background-color: green; color: white" data-toggle="modal" data-target="#myModal">Make a Quiz</button><span class="time-left" style = "color: gainsboro">')
+          $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><div type="button" class="btn btn-default" id = "exit2" style = "background-color: white; color: black; border-width: 1px">OK</a></div><span class="time-left" style = "color: gainsboro">')
         }
         }
         
@@ -168,4 +146,24 @@
         }
     });
   });
+
+ $("#prompt form").submit(function(e) {
+ 
+      // close the overlay
+      triggers.eq(1).overlay().close();
+ 
+      // get user input
+      var input = $("input", this).val();
+ 
+      // do something with the answer
+      triggers.eq(1).html(input);
+ 
+      // do not submit the form
+      return e.preventDefault();
+  });
+
+ $('#exit2').on('click', function(){
+      $(this).css('display','none');
+    });
+  
 </script>
