@@ -133,8 +133,8 @@ def inbox():
 			warning = "Question not specified. Please ask a question."
 			return render_template("inbox.html", warning=warning)
 		return extract(user_id)
+	return extract(user_id)
 
-	return render_template("inbox.html", user_id=user_id)
 @app.route('/chat', methods=["GET"])
 def chat():
 	user_id=request.args.get("user_id")
@@ -188,10 +188,17 @@ def achievement():
 	non_to_send=[]
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
-	cur.execute("SELECT * from expertise where id = ?", (user_id,))
-	expertise = cur.fetchone()
-	print(expertise[0])
-	cur.execute("SELECT * from request where expertise = ? and not requester=?", (expertise[2],user_id,))
+	cur.execute("SELECT expertise from expertise where id=?", (user_id,))
+	expertise = cur.fetchall()
+	expertise = [elt[0] for elt in expertise]
+	#if not expertise:
+		#print("no")
+	#lst=['a'.strip(),'b'.strip()]
+	_expertise=["expertise='"+x+"'" for x in expertise]
+	_expertise =  " or ".join(_expertise)
+	print(expertise)
+	print("SELECT * from request where "+_expertise+" and not requester=?")
+	cur.execute("SELECT * from request where "+_expertise+" and not requester=?", (user_id,))
 	rtable = cur.fetchall()
 	print(rtable)
 	for non in non_achieved:
