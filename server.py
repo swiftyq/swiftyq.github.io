@@ -20,7 +20,7 @@ conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
 cur.execute('''CREATE TABLE IF NOT EXISTS user_info (email text, password text, id text, image integer, token integer,  CONSTRAINT email_id PRIMARY KEY (email,id))''')
-cur.execute('''CREATE TABLE IF NOT EXISTS request (id integer, question text, image text, requester text, expertise text)''')
+cur.execute('''CREATE TABLE IF NOT EXISTS request (id integer, question text, image text, requester text, expertise text, date text)''')
 cur.execute('''CREATE TABLE IF NOT EXISTS inboxinfo (id text, pic text, expertise text)''')
 cur.execute('''CREATE TABLE IF NOT EXISTS expertise (email text, id text, expertise text)''')
 cur.execute('''CREATE TABLE IF NOT EXISTS achievement (id text, achievement integer, date text, done integer)''')
@@ -243,7 +243,7 @@ def request_paged(request):
 		filename = _id+".png"
 	else:
 		filename=""
-	cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,user_id,expertise,date))
+	cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,user_id,expertise,date,))
 	conn.commit()
 	cur.execute("SELECT email,id FROM expertise where expertise=?", (expertise,))
 	emails = cur.fetchall()
