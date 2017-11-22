@@ -113,6 +113,12 @@ def signup():
 
 @app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
+	# this will have the rating on level of understanding
+	print (request.args.get("under"))
+	# this will have rate of satisfaction
+	print (request.args.get("sat"))
+	# if replied, this will have the respondent it
+	print (request.args.get("replied"))
 	user_id = request.args.get('user_id')
 	print(user_id)
 	var= request.method
@@ -158,11 +164,10 @@ def chat():
 		url = "http://115.68.222.144:3000/chat?user_id=%s&respondent=%s&request=%s&flag=true" %(user_id,respondent,request_id)
 		msg = ("From %s\r\nTo: %s\r\nSubject:Your request is being responded\r\n\r\n %s is trying to help you. Log into chat in %s" %('donotreplyswiftyq@gmail.com',respondent_email,user_id,url))
 		s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
-	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester, question = request_obj[1], img = request_obj[2])
+	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester	, question = request_obj[1], img = request_obj[2])
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
-
 	print("message : "+ message)
 	print("username :"+ username)
 	to_client = dict()
@@ -175,8 +180,15 @@ def msg(message,username):
 		to_client['message'] = message
 		to_client['username'] = username
 		to_client['type'] = 'normal'
+		#print(message)
+		if "You successfully helped your requester" in message:
+			to_client['type'] = 'exit'
+		elif "Your requester wants a quiz" in message:
+			to_client['type'] = 'quiz'
 		to_client['time'] = "%02d:%02d" %(datetime.datetime.now().hour%12,datetime.datetime.now().minute)
 	# emit("response", {'data': message['data'], 'username': session['username']}, broadcast=True)
+	print("type: " + to_client['type'])
+	print (to_client)
 	send(to_client, broadcast=True)
 
 @app.route('/achievement')
@@ -249,6 +261,7 @@ def request_paged(request):
 	else:
 		filename=""
 	cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,user_id,expertise,date,))
+	cur.execute("UPDATE user_info SET token=token-1 where id=?", (user_id,))
 	conn.commit()
 	cur.execute("SELECT email,id FROM expertise where expertise=?", (expertise,))
 	emails = cur.fetchall()
@@ -327,9 +340,6 @@ def achievement_decision(user_id):
 
 if __name__ == '__main__':
 	s = smtplib.SMTP('smtp.gmail.com',587)
-	s.ehlo()
 	s.starttls()
-	s.ehlo()
 	s.login('donotreplyswiftyq@gmail.com', 'swiftyqadmin')
-	s.ehlo()
 	socket_io.run(app, host='0.0.0.0', debug=True, port=3000)
