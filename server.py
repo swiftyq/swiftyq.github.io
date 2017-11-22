@@ -233,7 +233,7 @@ def request_paged(request):
 		print (i[0])
 		msg = ("From %s\r\nTo: %s\r\nSubject:SwiftyQ Request\r\n\r\n Someone needs your help for %s" %('donotreplyswiftyq@gmail.com',i[0],expertise))
 		s.sendmail('donotreplyswiftyq@gmail.com',i[0],msg)
-	s.quit()
+	
 	return extract(user_id)
 
 
