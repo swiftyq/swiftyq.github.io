@@ -19,7 +19,8 @@ from email.mime.text import MIMEText
 conn = sqlite3.connect('./static/db/userinfo.db',check_same_thread=False)
 cur = conn.cursor()
 
-cur.execute('''CREATE TABLE IF NOT EXISTS user_info (email text, password text, id text, image integer, token integer,  CONSTRAINT email_id PRIMARY KEY (email,id))''')
+cur.execute('''CREATE TABLE IF NOT EXISTS user_info (email text, password text, id text, image integer, token integer, CONSTRAINT email_id PRIMARY KEY (email,id))''')
+cur.execute('''CREATE TABLE IF NOT EXISTS rating (id text, threestar integer, fourstar integer, fivestar integer, totalstar integer,fivestarstrak integer, solutionaday integer)''')
 cur.execute('''CREATE TABLE IF NOT EXISTS request (id text, question text, image text, requester text, expertise text, date text)''')
 cur.execute('''CREATE TABLE IF NOT EXISTS inboxinfo (id text, pic text, expertise text)''')
 cur.execute('''CREATE TABLE IF NOT EXISTS expertise (email text, id text, expertise text)''')
@@ -57,6 +58,7 @@ def login():
 		for e in expertise:
 			cur.execute("INSERT INTO expertise VALUES (?,?,?)", (email,user_id,e))
 		#achievement generation
+		cur.execute("INSERT INTO rating VALUES (?,?,?,?,?,?,?)", (user_id, 0,0,0,0,0,0))
 		for achievement in achievement_l:
 			print(type(int(achievement['num'])))
 			cur.execute("INSERT INTO achievement VALUES (?,?,?,?)", (user_id,int(achievement['num']),"",0))
@@ -94,13 +96,16 @@ def extract(user_id):
 	token = cur.fetchone()[0]
 	req = []
 
+	achievements = achievement_decision(user_id)
+	print("achievements")
+	print(achievements)
 	for i in rtable:
 		print(i)
 		cur.execute("SELECT image from user_info where id = ?", (i[3],))
 		image = cur.fetchone()[0]
 		req.append(image)
 
-	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, token=token, rtable=rtable, count = len(rtable), img = img, req = req)
+	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, token=token, rtable=rtable, count = len(rtable), img = img, req = req, achievements = achievements)
 
 @app.route('/signup')
 def signup():
@@ -257,6 +262,64 @@ def request_paged(request):
 		s.sendmail('donotreplyswiftyq@gmail.com',i[0],msg)
 	return extract(user_id)
 
+def update_achievements(user_id,achievements,number):
+	#cur.execute("SELECT * FROM achievement where id = ? and achievement = ?", (user_id, number))
+	#achiev = cur.fetchone()
+	achievements.append(achievement_l[number])
+	cur.execute("UPDATE achievement SET done = 1 WHERE id = ? and achievement = ?", (user_id, number))
+	return achievements
+
+def achievement_decision(user_id):
+	cur.execute("SELECT * from rating where id=?", (user_id,))
+	rating = cur.fetchone()
+	achievements = []
+	##(id text, threestar integer, fourstar integer, fivestar integer, totalstar integer,fivestarstrak integer, solutionaday integer
+	# 0 get first three star from user rating
+	if rating[1] == 1:
+		achievements = update_achievements(user_id,achievements,0)
+	# 1 get first four star from user rating
+	if rating[2] == 1:
+		achievements = update_achievements(user_id,achievements,1)
+	# 2 get first five star from user rating
+	if rating[3] == 1:
+		achievements = update_achievements(user_id,achievements,2)
+	# 3 exchange 100 utterances with a person
+	# 4 explain 10 problems
+	if rating[4] == 10:
+		achievements = update_achievements(user_id,achievements,4)
+	# 5 explain 30 problems
+	if rating[4] == 30:
+		achievements = update_achievements(user_id,achievements,5)
+	# 6 explain 50 problems
+	if rating[4] == 50:
+		achievements = update_achievements(user_id,achievements,6)
+	# 7 explain 100 problems
+	if rating[4] == 100 :
+		achievements = update_achievements(user_id,achievements,7)
+	# 8 explain 10 problems a day
+	if rating[6] == 10:
+		achievements = update_achievements(user_id,achievements,8)
+	# 9 explain 20 problems for 20 days
+	# 10 get 3 five stars consecutively
+	if rating[5] == 3:
+		achievements = update_achievements(user_id,achievements,10)
+	# 11 get 4 stars by solving a problem in 5 minutes
+	# 12 get 5 stars by solving a problem in 5 minutes
+	# 13 get 5 five stars from user rating
+	if rating[3] == 5:
+		achievements = update_achievements(user_id,achievements,13)
+	# 14 get 10 five stars from user rating
+	if rating[3] == 10:
+		achievements = update_achievements(user_id,achievements,14)
+	# 15 get 20 five stars from user rating
+	if rating[3] == 20:
+		achievements = update_achievements(user_id,achievements,15)
+	# 16 get one star from user rating
+	# 17 post a question for 20 days
+	# 18 ask 5 questions a day
+	# 19 ask 10 questions a day
+	#conn.commit()
+	return achievements
 
 #@app.route('/achievement_list', methods=['POST'])
 #def achievement_list():
