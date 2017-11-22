@@ -94,13 +94,6 @@ def extract(user_id):
 	print("SELECT * from request where "+_expertise+" and not requester=?")
 	cur.execute("SELECT * from request where "+_expertise+" and not requester=?", (user_id,))
 	rtable = cur.fetchall()
-<<<<<<< HEAD
-	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
-=======
-	#cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
-	#count = cur.fetchone()[0]
-	mylist = []
->>>>>>> 7f76546c8cf6baa4b86aac147b76537eff4d8fe4
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
 	print(img)

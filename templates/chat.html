@@ -23,22 +23,22 @@
 
 <body style="height:100%; width: 100%;">
 
-  <form class="photorequest" action="{{ url_for('inbox', type = 'file', user_id=user_id)}}" method="post" enctype="multipart/form-data">
-<div id="myModal" class="modal fade" role="dialog" style = "padding-top:500px">
+  <form class="photorequest" action="{{ url_for('chat')}}" method="post" enctype="multipart/form-data">
+<div id="myModal" class="modal in" role="dialog" style = "padding-top:500px">
   <div class="modal-dialog">
 
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" style = "background-color: gainsboro">
       <div class="modal-header">
-        <h4 class="modal-title">Upload Profile Picture</h4>
+        <h4 class="modal-title">Understood?</h4>
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
        Hi
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-default">Submit</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" style = "background-color: white; color: black; border-width: 1px">Take a Quiz</button>
+        <a href= "{{url_for('inbox')}}"><button type="submit" class="btn btn-default" data-dismiss="modal" style = "background-color: white; color: black; border-width: 1px">I'm Good</button></a>
       </div>
     </div>
 
