@@ -118,6 +118,7 @@ def signup():
 @app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
 	user_id = request.args.get('user_id')
+	print(user_id)
 	var= request.method
 	print(var)
 	if request.args.get('type') == 'request' :
@@ -130,11 +131,12 @@ def inbox():
 			cur.execute("UPDATE user_info SET image = 1 WHERE id = ?", (user_id,))
 			conn.commit()
 		else:
-			warning = "Question not specified. Please ask a question."
+			warning = "Photo not specified"
 			return render_template("inbox.html", warning=warning)
 		return extract(user_id)
-	return extract(user_id)
 
+	return extract(user_id)
+	#return render_template("inbox.html", user_id=user_id)
 @app.route('/chat', methods=["GET"])
 def chat():
 	user_id=request.args.get("user_id")
