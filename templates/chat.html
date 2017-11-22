@@ -5,7 +5,7 @@
 	<meta name="mobile-web-app-capable" content="yes" /> <!-- Android Chrome fullscreen webapp -->
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  
+
   <!-- Importing fonts -->
   <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
@@ -30,12 +30,18 @@
         {{respondent}}
       {% endif %}
     </h1>
+		<h2 class="container-fluid">
+			{{question}}
+		</h2>
+		{% if img %}
+		<img class="container-fluid" src='static/upload/{{img}}'></img>
+		{% endif%}
     <div class="text-center"><div class = "onlinecircle text-center" style="display: inline-block;"></div><span style="font-size: 25px;">&nbsp&nbsponline</span></div>
   </div>
   <div class="w-100" style="position: relative; top: 10px; height: 5px; background-color: #eee;"></div>
   <div class="container" id="messages" style = "height: 1242px; margin-top: 20px; overflow: scroll">
   </div>
-    
+
   <div id="footer" style = "height: 250px;">
      <div class="w-100" style="height: 2px; background-color: #eee;"></div>
      <div class="row" style = "height: 100%">
@@ -47,7 +53,7 @@
           Send
         </div>
       </div>
-    </div> 
+    </div>
     </div>
 </body>
 <script type="text/javascript">
