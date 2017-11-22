@@ -131,6 +131,13 @@ def inbox():
 @app.route('/chat', methods=["GET"])
 def chat():
 	user_id=request.args.get("user_id")
+	request_id = request.args.get("request")
+	print(request_id)
+	cur.execute("SELECT * from request where id='%s'" %request_id)
+	request_obj = cur.fetchone()
+	print("request object")
+	print(request_obj)
+
 	respondent = request.args.get("respondent")
 	requester = ""
 	flag = request.args.get("flag")
@@ -146,7 +153,7 @@ def chat():
 		url = "http://115.68.222.144:3000/chat?user_id=%s&respondent=%s&flag=true" %(user_id,respondent)
 		msg = ("From %s\r\nTo: %s\r\nSubject:Your request is being responded\r\n\r\n %s is trying to help you. Log into chat in %s" %('donotreplyswiftyq@gmail.com',respondent_email,user_id,url))
 		s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
-	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester)
+	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester, question = request_obj[1], img = request_obj[2])
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
