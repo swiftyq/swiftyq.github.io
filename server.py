@@ -108,6 +108,12 @@ def signup():
 
 @app.route('/inbox',methods=['GET', 'POST'])
 def inbox():
+	# this will have the rating on level of understanding
+	print (request.args.get("under"))
+	# this will have rate of satisfaction
+	print (request.args.get("sat"))
+	# if replied, this will have the respondent it
+	print (request.args.get("replied"))
 	user_id = request.args.get('user_id')
 	print(user_id)
 	var= request.method
