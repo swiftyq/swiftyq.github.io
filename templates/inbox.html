@@ -55,7 +55,7 @@
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 							{% for item in rtable %}
-              	<a class="dropdown-item select_requester" data-toggle = "modal" data-target="#previewtask" val='{{loop.index0}}' val2='{{item[1]}}'>{{item[3]}}</a>
+              	<a class="dropdown-item select_requester" data-toggle = "modal" data-target="#previewtask{{loop.index0}}" val='{{loop.index0}}' val2='{{item[1]}}'>{{item[3]}}</a>
               {% endfor %}
             </div>
         </div>
@@ -65,7 +65,7 @@
       </div>
       <div class = "img-circle col">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
-              <img  
+              <img
               {% if img == 0 %}
                 src = "static/img/default.jpg"
               {% endif %}
@@ -109,6 +109,20 @@
 				<div class="dropdown" style = "width: 500px">
   					<button class="btn btn-secondary dropdown-toggle btn-expertise" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "width: 300px; font-size: 20px">
    		 				<span id = "expertise_span" style = "font-size: 25px">{{expertise}}</span>
+							<script>
+								$(document).ready(function(){
+									var exp = '{{expertise}}'
+									$(".requester_box").css("visibility", function(){
+										if($(this).attr('val')==exp){
+											 $(this).css("position", "relative")
+											return "visible"
+										}else{
+											 $(this).css("position", "absolute")
+											return "hidden"
+										}
+									})
+								})
+							</script>
   					</button>
   					<div id="expertise_selection" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     		 			<a class="dropdown-item expertise-item" style = "font-size:25px" href="#">Calculus</a>
@@ -164,11 +178,13 @@
     	</div>
   		</div>
   	</div>
-    <div class="modal fade" id="previewtask" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style= "padding-top:500px">
+		{% endfor %}
+		{% for item in rtable %}
+    <div class="modal fade" id="previewtask{{loop.index0}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style= "padding-top:500px">
     <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <strong><h5 class="modal-title" id="exampleModalLabel">Preview Task</h5></strong>
+        <strong><h5 class="modal-title" id="exampleModalLabel">Preview {{item[3]}} Task</h5></strong>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -178,7 +194,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary"><a href="{{ url_for('request_page', user_id = user_id)}}" style="text-decoration: none; color:inherit;">Reply</a></button>
+        <div type="button" class="btn btn-secondary"><a href="chat?user_id={{user_id}}&respondent={{item[3]}}" style="text-decoration: none; color:inherit;">Reply</a></div>
       </div>
       </div>
     </div>

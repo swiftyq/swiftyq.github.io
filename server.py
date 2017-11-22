@@ -85,7 +85,7 @@ def extract(user_id):
 	expertise = cur.fetchone()
 	#if not expertise:
 		#print("no")
-	cur.execute("SELECT * from request where expertise = ? and not requester=?", (expertise[0],user_id,))
+	cur.execute("SELECT * from request where not requester=?", (user_id,))
 	rtable = cur.fetchall()
 	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
 	count = cur.fetchone()[0]
@@ -177,12 +177,20 @@ def achievement():
 	non_achieved = cur.fetchall()
 	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
 	achieve_num = cur.fetchall()
-	print(achievements)
+	#print(achievements)
 	non_to_send=[]
+	cur.execute("SELECT image from user_info where id = ?", (user_id,))
+	img = cur.fetchone()[0]
+	cur.execute("SELECT * from expertise where id = ?", (user_id,))
+	expertise = cur.fetchone()
+	print(expertise[0])
+	cur.execute("SELECT * from request where expertise = ? and not requester=?", (expertise[2],user_id,))
+	rtable = cur.fetchall()
+	print(rtable)
 	for non in non_achieved:
 		non_to_send.append(achievement_l[non[1]])
-		print(achievement_l[non[1]])
-	return render_template("achievement.html", user_id=user_id, achievements = achievements, non_achieved = non_to_send, achieve_num = achieve_num[0][0])
+		#print(achievement_l[non[1]])
+	return render_template("achievement.html", user_id=user_id, achievements = achievements, non_achieved = non_to_send, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
 
 
 

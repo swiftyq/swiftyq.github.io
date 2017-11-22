@@ -4,10 +4,10 @@ $( ".expertise-item" ).on('click', function() {
 	$( "#expertise_span" ).text(expertise);
 	$(".requester_box").css("visibility", function(){
 		if($(this).attr('val')==expertise){
-			// $(this).css("position", "relative")
+			 $(this).css("position", "relative")
 			return "visible"
 		}else{
-			// $(this).css("position", "absolute")
+			 $(this).css("position", "absolute")
 			return "hidden"
 		}
 	})
