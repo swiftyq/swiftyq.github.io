@@ -83,12 +83,24 @@ def login():
 
 def extract(user_id):
 	cur.execute("SELECT expertise from expertise where id=?", (user_id,))
-	expertise = cur.fetchone()
+	expertise = cur.fetchall()
+	expertise = [elt[0] for elt in expertise]
 	#if not expertise:
 		#print("no")
-	cur.execute("SELECT * from request where expertise = ? and not requester=?", (expertise[0],user_id,))
+	#lst=['a'.strip(),'b'.strip()]
+	_expertise=["expertise='"+x+"'" for x in expertise]
+	_expertise =  " or ".join(_expertise)
+	print(expertise)
+	print("SELECT * from request where "+_expertise+" and not requester=?")
+	cur.execute("SELECT * from request where "+_expertise+" and not requester=?", (user_id,))
 	rtable = cur.fetchall()
+<<<<<<< HEAD
 	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
+=======
+	#cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
+	#count = cur.fetchone()[0]
+	mylist = []
+>>>>>>> 7f76546c8cf6baa4b86aac147b76537eff4d8fe4
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
 	print(img)
@@ -101,7 +113,7 @@ def extract(user_id):
 		image = cur.fetchone()[0]
 		req.append(image)
 
-	return render_template("inbox.html", user_id=user_id, expertise = expertise[0], rtable=rtable, count = len(rtable), img = img, req = req)
+	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, rtable=rtable, count = len(rtable), img = img, req = req)
 
 @app.route('/signup')
 def signup():
@@ -176,12 +188,20 @@ def achievement():
 	non_achieved = cur.fetchall()
 	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
 	achieve_num = cur.fetchall()
-	print(achievements)
+	#print(achievements)
 	non_to_send=[]
+	cur.execute("SELECT image from user_info where id = ?", (user_id,))
+	img = cur.fetchone()[0]
+	cur.execute("SELECT * from expertise where id = ?", (user_id,))
+	expertise = cur.fetchone()
+	print(expertise[0])
+	cur.execute("SELECT * from request where expertise = ? and not requester=?", (expertise[2],user_id,))
+	rtable = cur.fetchall()
+	print(rtable)
 	for non in non_achieved:
 		non_to_send.append(achievement_l[non[1]])
-		print(achievement_l[non[1]])
-	return render_template("achievement.html", user_id=user_id, achievements = achievements, non_achieved = non_to_send, achieve_num = achieve_num[0][0])
+		#print(achievement_l[non[1]])
+	return render_template("achievement.html", user_id=user_id, achievements = achievements, non_achieved = non_to_send, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
 
 
 

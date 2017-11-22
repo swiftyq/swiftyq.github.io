@@ -85,38 +85,44 @@
 </head>
 <body id="body_achievement">
 	<html id="html_achievement">
-	<!-- Your content here -->
+
 	<div class = "container" style= "margin-top: 10px">
 		<div class = "row" style = "height: 72px">
-		<div class = "col-2">
-				<div class="dropdown" style = "width: 500px">
-						<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red">
-							<div id = "text-center onboard"> <font size="+10" style = "color: white">4</font></div>
-						</button>
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">ChemistryBee</a>
-							<a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">ComputerGeek</a>
-							<a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">OrchemKing</a>
-							<a class="dropdown-item" data-toggle = "modal" data-target="#previewtask">PhizWhiz</a>
-						</div>
-				</div>
-			</div>
-			<div class = "text-center col-8" style = "margin-top: 5px">
-				<h1>Achievement</h1>
-			</div>
-			<div class = "img-circle col">
-					<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
-							<img src="static/img/annie.png"
-									style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
-						</button>
-						<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							<a class="dropdown-item" href="#">Profile</a>
-							<a class="dropdown-item" href="{{ url_for('inbox', user_id=user_id)}}">Inbox</a>
-							<a class="dropdown-item" href="#">Scores</a>
-						</div>
-				</div>
-			</div>
+    <div class = "col-2">
+        <div class="dropdown" style = "width: 500px">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red;">
+              <div id = "text-center onboard"> <font size="+10" style = "color: white">{{rtable|length}}</font></div>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+							{% for item in rtable %}
+              	<a class="dropdown-item select_requester" data-toggle = "modal" data-target="#previewtask{{loop.index0}}" val='{{loop.index0}}' val2='{{item[1]}}'>{{item[3]}}</a>
+              {% endfor %}
+            </div>
+        </div>
+      </div>
+      <div class = "text-center col-8" style = "margin-top: 5px">
+        <h1>Achievements</h1>
+      </div>
+      <div class = "img-circle col">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
+              <img
+              {% if img == 0 %}
+                src = "static/img/default.jpg"
+              {% endif %}
+              {% if img == 1 %}
+                src = "static/propic/{{user_id}}.png"
+              {% endif %}
+                  style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="#">Profile</a>
+              <a class="dropdown-item" href="{{ url_for('inbox', user_id=user_id)}}">Achievements</a>
+              <a class="dropdown-item" href="/">Logout</a>
+            </div>
+        </div>
+      </div>
 	</div>
+
 		<div id="content" class="container-fluid">
 			<div id="achievement_vis" class="container-fluid">
 				<div id="achievement_title" class="row">
@@ -134,5 +140,29 @@
 				</div>
 			</div>
 		</div>
+
+
+		{% for item in rtable %}
+		<div class="modal fade" id="previewtask{{loop.index0}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style= "padding-top:500px">
+    <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <strong><h5 class="modal-title" id="exampleModalLabel">Preview Task</h5></strong>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div id="previewtask_content" class="modal-body">
+         {{item[1]}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary"><a href="chat?user_id={{user_id}}&respondent={{item[3]}}" style="text-decoration: none; color:inherit;">Reply</a></button>
+      </div>
+      </div>
+    </div>
+    </div>
+
+		{% endfor %}
 	</html>
 </body>
