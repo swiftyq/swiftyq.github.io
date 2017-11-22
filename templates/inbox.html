@@ -108,17 +108,13 @@
 			<div class = "col-7">
 				<div class="dropdown" style = "width: 500px">
   					<button class="btn btn-secondary dropdown-toggle btn-expertise" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "width: 300px; font-size: 20px">
-   		 				<span id = "expertise_span" style = "font-size: 25px">{{expertise}}</span>
+   		 				<span id = "expertise_span" style = "font-size: 25px">{{myexpertise[0]}}</span>
 							<script>
 								$(document).ready(function(){
-									var exp = '{{expertise}}'
-									$(".requester_box").css("visibility", function(){
-										if($(this).attr('val')==exp){
-											 $(this).css("position", "relative")
-											return "visible"
-										}else{
-											 $(this).css("position", "absolute")
-											return "hidden"
+									var exp = '{{myexpertise[0]}}'
+									$(".requester_box").css("display", function(){
+										if(!($(this).attr('val')==exp)){
+											return "none"
 										}
 									})
 								})
