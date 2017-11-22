@@ -83,13 +83,19 @@ def login():
 
 def extract(user_id):
 	cur.execute("SELECT expertise from expertise where id=?", (user_id,))
-	expertise = cur.fetchone()
+	expertise = cur.fetchall()
+	expertise = [elt[0] for elt in expertise]
 	#if not expertise:
 		#print("no")
-	cur.execute("SELECT * from request where not requester=?", (user_id,))
+	#lst=['a'.strip(),'b'.strip()]
+	_expertise=["expertise='"+x+"'" for x in expertise]
+	_expertise =  " or ".join(_expertise)
+	print(expertise)
+	print("SELECT * from request where "+_expertise+" and not requester=?")
+	cur.execute("SELECT * from request where "+_expertise+" and not requester=?", (user_id,))
 	rtable = cur.fetchall()
-	cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
-	count = cur.fetchone()[0]
+	#cur.execute("SELECT COUNT(id) from request where expertise = ?", (expertise[0],))
+	#count = cur.fetchone()[0]
 	mylist = []
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
@@ -103,7 +109,7 @@ def extract(user_id):
 		image = cur.fetchone()[0]
 		req.append(image)
 
-	return render_template("inbox.html", user_id=user_id, expertise = expertise[0], rtable=rtable, count = len(rtable), img = img, req = req)
+	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, rtable=rtable, count = len(rtable), img = img, req = req)
 
 @app.route('/signup')
 def signup():
