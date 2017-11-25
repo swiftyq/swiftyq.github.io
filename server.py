@@ -123,6 +123,24 @@ def inbox():
 		adder = 1 if sat < 3 else 2
 		cur.execute("UPDATE user_info SET token=token+"+adder+" WHERE id=?",(replied,))
 		cur.commit()
+		# TODO do sth with achievement
+		# update user's achievement related info
+		# cur.execute('''CREATE TABLE IF NOT EXISTS rating (id text, threestar integer, fourstar integer, fivestar integer, totalstar integer,fivestarstrak integer, solutionaday integer)''')
+		cur.execute("UPDATE rating SET totalstar=totalstar+1 WHERE id=?", (replied,))
+		if sat ==1 :
+			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (replied,))
+		elif sat ==2 :
+			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (replied,))
+
+		elif sat == 3:
+			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (replied,))
+			cur.execute("UPDATE rating SET threestar=threestar+1 WHERE id=?", (replied,))
+		elif sat == 4:
+			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (replied,))
+			cur.execute("UPDATE rating SET fourstar=fourstar+1 WHERE id=?", (replied,))
+		elif sat == 5:
+			cur.execute("UPDATE rating SET fivestarstrak=fivestarstrak+1 WHERE id=?", (replied,))
+			cur.execute("UPDATE rating SET fivestar=fivestar+1 WHERE id=?", (replied,))
 	user_id = request.args.get('user_id')
 	print(user_id)
 	var= request.method
