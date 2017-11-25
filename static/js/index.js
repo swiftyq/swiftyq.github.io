@@ -4,8 +4,8 @@ $("u").on('click', function() {
 
 $( ".dropdown-menu" ).on('click', function() {
   var target_input = $( ".form-group input[type='expertise']" )
-  var old_val = String(target_input.val())
-  target_input.val(old_val+$(this).text()+", ");
+  var old_val = target_input.val()
+  target_input.val(old_val + $(this).menu + ", ");
 
 })
 $("#field_reset").on("click", function(){
