@@ -120,9 +120,11 @@ def inbox():
 	# if replied, this will have the respondent it
 	replied = (request.args.get("replied"))
 	if replied:
+		under = int(under)
+		sat = int(sat)
 		adder = 1 if sat < 3 else 2
-		cur.execute("UPDATE user_info SET token=token+"+adder+" WHERE id=?",(replied,))
-		cur.commit()
+		cur.execute("UPDATE user_info SET token=token+"+str(adder)+" WHERE id=?",(replied,))
+		conn.commit()
 		# TODO do sth with achievement
 		# update user's achievement related info
 		# cur.execute('''CREATE TABLE IF NOT EXISTS rating (id text, threestar integer, fourstar integer, fivestar integer, totalstar integer,fivestarstrak integer, solutionaday integer)''')
