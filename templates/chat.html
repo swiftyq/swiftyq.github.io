@@ -73,7 +73,7 @@
         <div class="text-center"><small>Default will result in 3-points.</small></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a class="exitanchor" href="/inbox?replied={{respondent}}user_id={{user_id}}&under=3&sat=3" style = "color: black">Save and leave</a></button>
+        <button type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a class="exitanchor" href="/inbox?replied={{respondent}}&user_id={{user_id}}&under=3&sat=3&request_time={{request_time}}" style = "color: black">Save and leave</a></button>
       </div>
     </div>
 
@@ -173,7 +173,7 @@
           $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><div type="button" class="btn btn-default" id = "exit2" style = "background-color: white; color: black; border-width: 1px">OK</a></div><span class="time-left" style = "color: gainsboro">')
         }
         }
-        
+
       }
       console.log('Received Message : '+msg.type);
     });
@@ -210,7 +210,7 @@
     var leng_under = $.find(".fa.under.checked").length;
     var leng_sat = $.find(".fa.sat.checked").length;
     console.log(leng_under,leng_sat);
-    $(".exitanchor").attr("href","/inbox?user_id={{user_id}}&replied={{respondent}}&under="+leng_under+"&sat="+leng_sat);
+    $(".exitanchor").attr("href","/inbox?user_id={{user_id}}&replied={{respondent}}&under="+leng_under+"&sat="+leng_sat+"&request_time={{request_time}}");
   })
   $(".fa.fa-star.sat").on('click', function() {
     $(this).prevAll(".fa.fa-star.sat").addClass("checked");
@@ -219,6 +219,6 @@
     var leng_under = $.find(".fa.under.checked").length;
     var leng_sat = $.find(".fa.sat.checked").length;
     console.log(leng_under,leng_sat);
-    $(".exitanchor").attr("href","/inbox?user_id={{user_id}}&replied={{respondent}}&under="+leng_under+"&sat="+leng_sat);
+    $(".exitanchor").attr("href","/inbox?user_id={{user_id}}&replied={{respondent}}&under="+leng_under+"&sat="+leng_sat+"&request_time={{request_time}}");
   })
 </script>

@@ -11,6 +11,7 @@ import achievement_list_opener
 import sqlite3
 import os
 import datetime
+
 import random
 import string
 import smtplib
@@ -77,7 +78,7 @@ def login():
 			return render_template("index.html", warning=warning)
 		return extract(user_info[0][2])
 
-def extract(user_id):
+def extract(user_id, rq_time = None, rating = None):
 	cur.execute("SELECT expertise from expertise where id=?", (user_id,))
 	expertise = cur.fetchall()
 	expertise = [elt[0] for elt in expertise]
@@ -95,8 +96,10 @@ def extract(user_id):
 	cur.execute("SELECT token from user_info where id=?", (user_id,))
 	token = cur.fetchone()[0]
 	req = []
-
-	achievements = achievement_decision(user_id)
+	if rq_time :
+		achievements = achievement_decision(user_id, rq_time, rating)
+	else:
+		achievements = []
 	print("achievements")
 	print(achievements)
 	for i in rtable:
@@ -119,31 +122,34 @@ def inbox():
 	sat = (request.args.get("sat"))
 	# if replied, this will have the respondent it
 	replied = (request.args.get("replied"))
+	user_id = request.args.get('user_id')
 	if replied:
 		under = int(under)
 		sat = int(sat)
 		adder = 1 if sat < 3 else 2
-		cur.execute("UPDATE user_info SET token=token+"+str(adder)+" WHERE id=?",(replied,))
+		cur.execute("UPDATE user_info SET token=token+"+str(adder)+" WHERE id=?",(user_id,))
 		conn.commit()
 		# TODO do sth with achievement
 		# update user's achievement related info
 		# cur.execute('''CREATE TABLE IF NOT EXISTS rating (id text, threestar integer, fourstar integer, fivestar integer, totalstar integer,fivestarstrak integer, solutionaday integer)''')
-		cur.execute("UPDATE rating SET totalstar=totalstar+1 WHERE id=?", (replied,))
+		cur.execute("UPDATE rating SET totalstar=totalstar+1 WHERE id=?", (user_id,))
 		if sat ==1 :
-			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (replied,))
+			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (user_id,))
 		elif sat ==2 :
-			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (replied,))
+			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (user_id,))
 
 		elif sat == 3:
-			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (replied,))
-			cur.execute("UPDATE rating SET threestar=threestar+1 WHERE id=?", (replied,))
+			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (user_id,))
+			cur.execute("UPDATE rating SET threestar=threestar+1 WHERE id=?", (user_id,))
 		elif sat == 4:
-			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (replied,))
-			cur.execute("UPDATE rating SET fourstar=fourstar+1 WHERE id=?", (replied,))
+			cur.execute("UPDATE rating SET fivestarstrak=0 WHERE id=?", (user_id,))
+			cur.execute("UPDATE rating SET fourstar=fourstar+1 WHERE id=?", (user_id,))
 		elif sat == 5:
-			cur.execute("UPDATE rating SET fivestarstrak=fivestarstrak+1 WHERE id=?", (replied,))
-			cur.execute("UPDATE rating SET fivestar=fivestar+1 WHERE id=?", (replied,))
-	user_id = request.args.get('user_id')
+			cur.execute("UPDATE rating SET fivestarstrak=fivestarstrak+1 WHERE id=?", (user_id,))
+			cur.execute("UPDATE rating SET fivestar=fivestar+1 WHERE id=?", (user_id,))
+		conn.commit()
+		return extract(user_id, request.args.get("request_time"), sat)
+
 	print(user_id)
 	var= request.method
 	print(var)
@@ -188,7 +194,7 @@ def chat():
 		url = "http://115.68.222.144:3000/chat?user_id=%s&respondent=%s&request=%s&flag=true" %(user_id,respondent,request_id)
 		msg = ("From %s\r\nTo: %s\r\nSubject:Your request is being responded\r\n\r\n %s is trying to help you. Log into chat in %s" %('donotreplyswiftyq@gmail.com',respondent_email,user_id,url))
 		s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
-	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester	, question = request_obj[1], img = request_obj[2])
+	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester	, question = request_obj[1], img = request_obj[2], request_time = request_obj[5])
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
@@ -300,16 +306,21 @@ def request_paged(request):
 	return extract(user_id)
 
 def update_achievements(user_id,achievements,number):
-	#cur.execute("SELECT * FROM achievement where id = ? and achievement = ?", (user_id, number))
-	#achiev = cur.fetchone()
-	achievements.append(achievement_l[number])
-	cur.execute("UPDATE achievement SET done = 1 WHERE id = ? and achievement = ?", (user_id, number))
+	cur.execute("SELECT * FROM achievement where id = ? and achievement = ?", (user_id, number))
+	achiev = cur.fetchone()
+	if achiev[3] ==0:
+		achievements.append(achievement_l[number])
+		cur.execute("UPDATE achievement SET done = 1 WHERE id = ? and achievement = ?", (user_id, number))
 	return achievements
 
-def achievement_decision(user_id):
+def achievement_decision(user_id, rq_time, single_rating):
 	cur.execute("SELECT * from rating where id=?", (user_id,))
 	rating = cur.fetchone()
 	achievements = []
+	#2017-11-25T22:13:35.868550
+	rq_dt = datetime.datetime.strptime(rq_time, '%Y-%m-%dT%H:%M:%S.%f')
+	cur_dt = datetime.datetime.now()
+	dt_diff = (cur_dt - rq_dt).seconds/60
 	##(id text, threestar integer, fourstar integer, fivestar integer, totalstar integer,fivestarstrak integer, solutionaday integer
 	# 0 get first three star from user rating
 	if rating[1] == 1:
@@ -341,7 +352,11 @@ def achievement_decision(user_id):
 	if rating[5] == 3:
 		achievements = update_achievements(user_id,achievements,10)
 	# 11 get 4 stars by solving a problem in 5 minutes
+	if single_rating == 4 and dt_diff<5:
+		achievements = update_achievements(user_id, achievements, 11)
 	# 12 get 5 stars by solving a problem in 5 minutes
+	if single_rating == 5 and dt_diff<5:
+		achievements = update_achievements(user_id, achievements, 12)
 	# 13 get 5 five stars from user rating
 	if rating[3] == 5:
 		achievements = update_achievements(user_id,achievements,13)
@@ -352,10 +367,12 @@ def achievement_decision(user_id):
 	if rating[3] == 20:
 		achievements = update_achievements(user_id,achievements,15)
 	# 16 get one star from user rating
+	if single_rating == 1:
+		achievements = update_achievements(user_id, achievements, 16)
 	# 17 post a question for 20 days
 	# 18 ask 5 questions a day
 	# 19 ask 10 questions a day
-	#conn.commit()
+	conn.commit()
 	return achievements
 
 #@app.route('/achievement_list', methods=['POST'])
