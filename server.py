@@ -53,16 +53,16 @@ def login():
 		expertise = [x.strip() for x in expertise]
 		expertise = list(set(expertise))
 		try:
-			cur.execute("INSERT INTO user_info VALUES (?,?,?,?,?)", (email,password,user_id,0,5))
+			cur.execute("INSERT INTO user_info VALUES (?,?,?,?,?)", (email.strip(),password.strip(),user_id.strip(),0,5))
 		except sqlite3.IntegrityError:
 			return render_template("signup.html", warning="Sorry, email already taken.")
 		for e in expertise:
-			cur.execute("INSERT INTO expertise VALUES (?,?,?)", (email,user_id,e))
+			cur.execute("INSERT INTO expertise VALUES (?,?,?)", (email.strip(),user_id.strip(),e.strip()))
 		#achievement generation
-		cur.execute("INSERT INTO rating VALUES (?,?,?,?,?,?,?)", (user_id, 0,0,0,0,0,0))
+		cur.execute("INSERT INTO rating VALUES (?,?,?,?,?,?,?)", (user_id.strip(), 0,0,0,0,0,0))
 		for achievement in achievement_l:
 			print(type(int(achievement['num'])))
-			cur.execute("INSERT INTO achievement VALUES (?,?,?,?)", (user_id,int(achievement['num']),"",0))
+			cur.execute("INSERT INTO achievement VALUES (?,?,?,?)", (user_id.strip(),int(achievement['num']),"",0))
 		conn.commit()
 		return render_template("index.html")
 	else:
@@ -298,7 +298,7 @@ def request_paged(request):
 		filename = _id+".png"
 	else:
 		filename=""
-	cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id,question,filename,user_id,expertise,date,))
+	cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id.strip(),question.strip(),filename.strip(),user_id.strip(),expertise.strip(),date.strip(),))
 	cur.execute("UPDATE user_info SET token=token-1 where id=?", (user_id,))
 	conn.commit()
 	cur.execute("SELECT email,id FROM expertise where expertise=?", (expertise,))
