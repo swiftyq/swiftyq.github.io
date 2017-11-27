@@ -259,7 +259,7 @@ def achievement():
 		non_to_send.append(achievement_l[non[1]])
 		#print(achievement_l[non[1]])
 	print(achievement_l)
-	return render_template("achievement.html", user_id=user_id, achievements = achievement_l, non_achieved = non_achieved, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
+	return render_template("achievement.html", user_id=user_id, achievements = achievement_l, ach=achievements, non_achieved = non_achieved, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
 
 
 
