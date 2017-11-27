@@ -10,30 +10,30 @@ Question-answer websites are often too slow to answer and do not allow direct in
 
 ### Instruction:
 1. Sign-up: Register as one of our valuable crowd-workers! You can enter in your expertise on which you can help your fellow Swifties by answering their questions!
-<img src="img/screenshot1.png"/>
+<img src="img/1.png"/>
 
 
 
 2. Profile-Inbox: Here, you can see a brief summary of your status—your profile picture, expertise, and achievement tokens—and view a list of questions you can answer.
-<img src="img/screenshot2.png"/>
-<img src="img/screenshot3.png"/>
-<img src="img/screenshot4.png"/>
+<img src="img/2.png"/>
+<img src="img/3.png"/>
+<img src="img/4.png"/>
 
 
 
 3. Request: You can make a request—ask a question—directly on this page.
-<img src="img/screenshot5.png"/>
-<img src="img/screenshot6.png"/>
+<img src="img/5.png"/>
+<img src="img/6.png"/>
 
  Every request you make will land in the emails of all Swifties with corresponding expertise. Just send a question and wait for a worker to answer you!
-<img src="img/screenshot7.png"/>
-<img src="img/screenshot8.png"/>
+<img src="img/7.png"/>
+<img src="img/8.png"/>
 
 
 
 4. Chat page: chat with your fellow Swifty (either a requester or a worker) to answer questions or ask questions! If you are a requester, you can click the “understood” button following the explanation to let your answerer know he/she has finished their job. If you are a worker, help your requester understand and earn tokens for a job well done!
-<img src="img/screenshot9.png"/>
-<img src="img/screenshot10.png"/>
+<img src="img/9.png"/>
+<img src="img/10.png"/>
 
 5. Achievement : Achieve various awards that will motivate you to be a swift and reliable helper! If you get high ratings from other users by solving problems, or if you are really quick and responsive to other’s call for help, then you can accomplish awards that SwiftyQ prepared for you! Feel content with what you achieved by viewing achievement panel, and try harder to become a better problem solver!
 
