@@ -200,10 +200,11 @@
         }else{
            $(".understood").css('visibility','hidden');
            $("#messages").append('<div class="container col-12"><div class="container lighter" id="msgs" style = "width: 70%; float: left;"><div class="col-12"><p id="msg_text">'+msg.message +'</p>{% if not requester %}<button type="button" id = "answer" style = "margin-bottom: 8px; background-color: green; color: white">Good!</button>{% endif %}<span class="time-right">'+msg.time+'</span></div></div></div>')
+           
            $('#answer').on('click', function(){
               sock.send("You have successfully answered the quiz! Good Job!",username);
               $(this).css('display','none');
-               $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id = "exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block">Exit</button><span class="time-right-sys">'+msg.time+'</span></div></div>')
+               $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id = "exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block"><a href="/inbox?user_id={{respondent}}" style = "color: black">Exit</a></button><span class="time-right-sys">'+msg.time+'</span></div></div>')
               understood = 1;
 
             });
@@ -235,7 +236,9 @@
         }
 
       }
-
+      if(msg.type == 'exit'){
+        $(".onlinecircle").css('background-color', 'white');
+      }
       console.log('Received Message : '+msg.type);
     });
 
