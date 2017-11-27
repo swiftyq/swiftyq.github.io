@@ -125,11 +125,13 @@ def inbox():
 	# if replied, this will have the respondent it
 	replied = (request.args.get("replied"))
 	user_id = request.args.get('user_id')
+	request_id = (request.args.get('request_id'))
 	if replied:
 		under = int(under)
 		sat = int(sat)
 		adder = 1 if sat < 3 else 2
 		cur.execute("UPDATE user_info SET token=token+"+str(adder)+" WHERE id=?",(user_id,))
+		cur.execute("DELETE FROM request WHERE id = ?", (request_id,))
 		conn.commit()
 		# TODO do sth with achievement
 		# update user's achievement related info
@@ -196,7 +198,7 @@ def chat():
 		url = "http://115.68.222.144:3000/chat?user_id=%s&respondent=%s&request=%s&flag=true" %(user_id,respondent,request_id)
 		msg = ("From %s\r\nTo: %s\r\nSubject:Your request is being responded\r\n\r\n %s is trying to help you. Log into chat in %s" %('donotreplyswiftyq@gmail.com',respondent_email,user_id,url))
 		s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
-	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester, question = request_obj[1], img = request_obj[2], request_time = request_obj[5])
+	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester, question = request_obj[1], img = request_obj[2], request_time = request_obj[5], request_id = request_id)
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
