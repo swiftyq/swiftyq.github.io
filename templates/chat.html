@@ -198,6 +198,7 @@
         $(".onlinecircle").css('background-color', 'white');
       }
       console.log('Received Message : '+msg.type);
+			scroll_bottom();
     });
 
     $('#send_button').on('click', function(){
@@ -252,4 +253,10 @@
     $('#messages').toggle();
     $("#image").toggle();
   })
+
+	scroll_bottom = function(){
+		$("#messages").scrollTop($("#messages").prop("scrollHeight"))
+
+		console.log("i")
+	}
 </script>
