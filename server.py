@@ -378,7 +378,7 @@ def achievement_decision(user_id, rq_time, single_rating):
 	# 18 ask 5 questions a day
 	# 19 ask 10 questions a day
 	conn.commit()
-	console.log(achievements)
+	
 	return achievements
 
 #@app.route('/achievement_list', methods=['POST'])

@@ -72,8 +72,10 @@ body {
 
 /* Darker chat container */
 .darker {
-    border-color: #ccc;
-    background-color: blue;
+    border-color: transparent;
+    color : black;
+    background-color: #afe4ff;
+    border-radius: 20px;
 }
 
 /* Clear floats */
