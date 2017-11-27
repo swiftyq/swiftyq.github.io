@@ -134,9 +134,12 @@
 		<h2 class="container-fluid" style="font-size: 35pt">
 			{{question}}
 		</h2>
-    <h3 class="text-center"><div class = "onlinecircle text-center" style="display: inline-block;"></div><span style="font-size: 25px;">&nbsp&nbsponline</span></h3>
+
+    <h3 class="text-center"><div class = "onlinecircle" style="display: inline-block;"></div><span style="font-size: 25px;">&nbsp&nbsponline</span></h3>
   </div>
+
   <div class="container-fluid" id="messages" style = "height: 1242px; margin-top: 20px; margin-right: 0px; margin-left: 0px; overflow: scroll">
+
   </div>
   <div class="container" id="image" style="height: 1242px; margin-top: 20px; display: none;">
     <div class="text-center"><h1>The requester uploaded the photo:</h1></div>
@@ -167,12 +170,15 @@
   //var button = $(document).getElementByID("exit2");
   var understood = 0;
   var username = $("#user_id").text();
+ 
   console.log(username);
   $(document).ready(function(){
     var sock = io.connect('/chat');
+
     sock.on('connect', function(){
       var connect_string = 'new_connect';
       sock.send(connect_string,username);
+  
     });
 
     sock.on('hello', function(msg){
@@ -194,16 +200,19 @@
         }else{
            $(".understood").css('visibility','hidden');
            $("#messages").append('<div class="container col-12"><div class="container lighter" id="msgs" style = "width: 70%; float: left;"><div class="col-12"><p id="msg_text">'+msg.message +'</p>{% if not requester %}<button type="button" id = "answer" style = "margin-bottom: 8px; background-color: green; color: white">Good!</button>{% endif %}<span class="time-right">'+msg.time+'</span></div></div></div>')
+           
            $('#answer').on('click', function(){
               sock.send("You have successfully answered the quiz! Good Job!",username);
               $(this).css('display','none');
-               $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id = "exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block">Exit</button><span class="time-right-sys">'+msg.time+'</span></div></div>')
+               $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id = "exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block"><a href="/inbox?user_id={{respondent}}" style = "color: black">Exit</a></button><span class="time-right-sys">'+msg.time+'</span></div></div>')
               understood = 1;
+
             });
         }
       }
       }else{
         if (msg.type === 'connect'){
+          $(".onlinecircle").css('background-color', 'green');
           if(msg.username != username) {
           console.log(msg.username,username);
           $('#messages').append('<li id="msg_text" class="col-12">' + msg.message + '</li>');
@@ -218,6 +227,7 @@
               $(this).css('display','none');
             });
           understood = 1;
+          
         }else if(msg.type == 'answer' && msg.username != username){
              $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+msg.message+'</p><button type="button" class="btn btn-secondary" id = "exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block" data-target="#ratingModal" data-toggle="modal" data-dismiss="modal">Exit</button><span class="time-right-sys">'+msg.time+'</span></div></div>')
               $('#exit').on('click', function(){
@@ -226,7 +236,9 @@
         }
 
       }
-
+      if(msg.type == 'exit'){
+        $(".onlinecircle").css('background-color', 'white');
+      }
       console.log('Received Message : '+msg.type);
 			scroll_bottom();
     });
