@@ -102,13 +102,15 @@ def extract(user_id, rq_time = None, rating = None):
 		achievements = []
 	print("achievements")
 	print(achievements)
+	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
+	achieve_num = cur.fetchall()[0][0]*5
 	for i in rtable:
 		print(i)
 		cur.execute("SELECT image from user_info where id = ?", (i[3],))
 		image = cur.fetchone()[0]
 		req.append(image)
 
-	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, token=token, rtable=rtable, count = len(rtable), img = img, req = req, achievements = achievements)
+	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, token=token, rtable=rtable, count = len(rtable), img = img, req = req, achievements = achievements, achieve_num=achieve_num)
 
 @app.route('/signup')
 def signup():
@@ -231,7 +233,7 @@ def achievement():
 	non_achieved = cur.fetchall()
 	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
 	achieve_num = cur.fetchall()
-	#print(achievements)
+	print(achievements)
 	non_to_send=[]
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
@@ -251,7 +253,8 @@ def achievement():
 	for non in non_achieved:
 		non_to_send.append(achievement_l[non[1]])
 		#print(achievement_l[non[1]])
-	return render_template("achievement.html", user_id=user_id, achievements = achievements, non_achieved = non_to_send, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
+	print(achievement_l)
+	return render_template("achievement.html", user_id=user_id, achievements = achievement_l, non_achieved = non_achieved, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
 
 
 
@@ -373,6 +376,7 @@ def achievement_decision(user_id, rq_time, single_rating):
 	# 18 ask 5 questions a day
 	# 19 ask 10 questions a day
 	conn.commit()
+	console.log(achievements)
 	return achievements
 
 #@app.route('/achievement_list', methods=['POST'])

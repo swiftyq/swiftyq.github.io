@@ -150,6 +150,15 @@
       </div>
     </div>
   </div>
+	<div class="container" style="background-color: white;">
+		<div style="font-size : xx-large">
+			You made {{achieve_num}}% of achievements.
+		</div>
+		<div class="progress">
+			<div class="progress-bar" aria-valuenow="{{achieve_num}}" aria-valuemin="0" aria-valuemax="100" style="width: {{achieve_num}}%">
+			</div>
+		</div>
+	</div>
 	<span class= "row" style = "margin-left: 70px; margin-top: 30px; font-size: 23px"> Expertise: </span>
 	<div class = "box" style= "margin-top: 3px; margin-left:50px; width: inherit">
 		<div class = "row" style = "width: inherit">
@@ -250,6 +259,7 @@
     </div>
     </div>
     {% endfor %}
+
   </html>
 </body>
 
