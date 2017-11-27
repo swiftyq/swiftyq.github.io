@@ -123,7 +123,7 @@
   </div>
 </div>
 
-  <div id="header text-center" style="height: 200px; width:100%; padding-top: 80px; padding-bottom: 80px">
+  <div id="header text-center" style="width:100%; padding-top: 80px; border-bottom: solid #eeeeee 3px;">
     <h1 class="text-center" id="user_id" >
       {% if requester %}
         {{user_id}}
@@ -134,9 +134,8 @@
 		<h2 class="container-fluid" style="font-size: 35pt">
 			{{question}}
 		</h2>
-    <div class="text-center"><div class = "onlinecircle text-center" style="display: inline-block;"></div><span style="font-size: 25px;">&nbsp&nbsponline</span></div>
+    <h3 class="text-center"><div class = "onlinecircle text-center" style="display: inline-block;"></div><span style="font-size: 25px;">&nbsp&nbsponline</span></h3>
   </div>
-  <div class="w-100" style="position: relative; top: 10px; height: 5px; background-color: #eee;"></div>
   <div class="container-fluid" id="messages" style = "height: 1242px; margin-top: 20px; margin-right: 0px; margin-left: 0px; overflow: scroll">
   </div>
   <div class="container" id="image" style="height: 1242px; margin-top: 20px; display: none;">
@@ -191,7 +190,7 @@
         }else {
           if(understood == 0){
             $(".understood").css('visibility','hidden');
-            $("#messages").append('<div class="container col-12"><div class="container lighter" id="msgs" style = "width: 70%; float: left;"><div class="col-12"><p id="msg_text">'+msg.message+'</p>{% if requester %}<button class = "understood" type="button" style = "margin-bottom: 8px; background-color: green; color: white" data-toggle="modal" data-target="#myModal">Understood</button>{% endif %}<span class="time-right">'+msg.time+'</span></div></div></div>')
+            $("#messages").append('<div class="container col-12"><div class="container lighter" id="msgs" style = "width: 70%; float: left;"><div class="col-12"><p id="msg_text">'+msg.message+'</p>{% if requester %}<button class = "understood btn" type="button" style = "margin-bottom: 8px; background-color: #20d665; font-size: xx-large; color: white" data-toggle="modal" data-target="#myModal">Understood</button>{% endif %}<span class="time-right">'+msg.time+'</span></div></div></div>')
         }else{
            $(".understood").css('visibility','hidden');
            $("#messages").append('<div class="container col-12"><div class="container lighter" id="msgs" style = "width: 70%; float: left;"><div class="col-12"><p id="msg_text">'+msg.message +'</p>{% if not requester %}<button type="button" id = "answer" style = "margin-bottom: 8px; background-color: green; color: white">Good!</button>{% endif %}<span class="time-right">'+msg.time+'</span></div></div></div>')
