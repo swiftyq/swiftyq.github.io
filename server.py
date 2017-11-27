@@ -200,8 +200,6 @@ def chat():
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
-	print("message : "+ message)
-	print("username :"+ username)
 	to_client = dict()
 	if message == 'new_connect':
 		to_client['message'] = username+" has entered the room."
@@ -219,6 +217,9 @@ def msg(message,username):
 			to_client['type'] = 'quiz'
 		elif "You have successfully answered" in message:
 			to_client['type'] = 'answer'
+		elif "offline" in message:
+			to_client['type'] = 'offline'
+			send(to_client, broadcast=True)
 		to_client['time'] = "%02d:%02d" %(datetime.datetime.now().hour%12,datetime.datetime.now().minute)
 	# emit("response", {'data': message['data'], 'username': session['username']}, broadcast=True)
 	print("type: " + to_client['type'])
