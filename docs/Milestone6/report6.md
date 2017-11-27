@@ -27,12 +27,13 @@ Question-answer websites are often too slow to answer and do not allow direct in
 
  Every request you make will land in the emails of all Swifties with corresponding expertise. Just send a question and wait for a worker to answer you!
 <img src="img/screenshot7.png"/>
+<img src="img/screenshot8.png"/>
 
 
 
 4. Chat page: chat with your fellow Swifty (either a requester or a worker) to answer questions or ask questions! If you are a requester, you can click the “understood” button following the explanation to let your answerer know he/she has finished their job. If you are a worker, help your requester understand and earn tokens for a job well done!
-<img src="img/screenshot8.png"/>
 <img src="img/screenshot9.png"/>
+<img src="img/screenshot10.png"/>
 
 5. Achievement : Achieve various awards that will motivate you to be a swift and reliable helper! If you get high ratings from other users by solving problems, or if you are really quick and responsive to other’s call for help, then you can accomplish awards that SwiftyQ prepared for you! Feel content with what you achieved by viewing achievement panel, and try harder to become a better problem solver!
 
