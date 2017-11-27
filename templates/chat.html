@@ -73,55 +73,13 @@
         <div class="text-center"><small>Default will result in 3-points.</small></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a class="exitanchor" href="/inbox?replied={{respondent}}&user_id={{user_id}}&under=3&sat=3&request_time={{request_time}}" style = "color: black">Save and leave</a></button>
+        <button type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a class="exitanchor" href="/inbox?replied={{user_id}}&user_id={{respondent}}&under=3&sat=3&request_time={{request_time}}" style = "color: black">Save and leave</a></button>
       </div>
     </div>
 
   </div>
 </div>
 
-<div id="myModal2" class="modal in" role="dialog" style = "padding-top:500px">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content" style = "background-color: gainsboro">
-      <div class="modal-header">
-        <h4 class="modal-title">Give Her a Quiz!</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-       Hi
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" id = "quiz" data-dismiss="modal" style = "background-color: white; color: black; border-width: 1px">Take a Quiz</button>
-        <div type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a href="/inbox?user_id={{user_id}}" style = "color: black">I'm Good</a></div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-
-<div id="myModal2" class="modal in" role="dialog" style = "padding-top:500px">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content" style = "background-color: gainsboro">
-      <div class="modal-header">
-        <h4 class="modal-title">Give Her a Quiz!</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-       Hi
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" id = "quiz" data-dismiss="modal" style = "background-color: white; color: black; border-width: 1px">Take a Quiz</button>
-        <div type="button" class="btn btn-default" id = "exit" style = "background-color: white; color: black; border-width: 1px"><a href="/inbox?user_id={{user_id}}" style = "color: black">I'm Good</a></div>
-      </div>
-    </div>
-
-  </div>
-</div>
 
   <div id="header text-center" style="width:100%; padding-top: 80px; border-bottom: solid #eeeeee 3px;">
     <h1 class="text-center" id="user_id" >
@@ -204,7 +162,7 @@
            $('#answer').on('click', function(){
               sock.send("You have successfully answered the quiz! Good Job!",username);
               $(this).css('display','none');
-               $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id = "exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block"><a href="/inbox?user_id={{respondent}}" style = "color: black">Exit</a></button><span class="time-right-sys">'+msg.time+'</span></div></div>')
+               $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id = "exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block"><a href="/inbox?user_id={{user_id}}" style = "color: black">Exit</a></button><span class="time-right-sys">'+msg.time+'</span></div></div>')
               understood = 1;
 
             });
@@ -218,7 +176,7 @@
           $('#messages').append('<li id="msg_text" class="col-12">' + msg.message + '</li>');
         }
       }else if(msg.type === 'exit' && msg.username!=username){
-         $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12"><p id="msg_text">'+msg.message+'</p><button type="button" class="btn btn-secondary" id = "quiz2" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block"><a href="/inbox?user_id={{respondent}}" style = "color: black">Exit</a></button><span class="time-right-sys">'+msg.time+'</span></div></div>')
+         $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12"><p id="msg_text">'+msg.message+'</p><button type="button" class="btn btn-secondary" id = "quiz2" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block"><a href="/inbox?user_id={{user_id}}" style = "color: black">Exit</a></button><span class="time-right-sys">'+msg.time+'</span></div></div>')
         }
         else if(msg.type === 'quiz'&& msg.username!=username) {
           $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+msg.message+'</p><button type="button" class = "exit2" id = "exit2" style = "background-color: white; color: black; border-width: 1px; margin-bottom: 8px; font-size: 30px; display: block">OK</button><span class="time-right-sys">'+msg.time+'</span></div></div>')
