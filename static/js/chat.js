@@ -12,4 +12,4 @@
       // do not submit the form
       return e.preventDefault();
   });
-  
+    //var button = $(document).getElementByID("exit2");

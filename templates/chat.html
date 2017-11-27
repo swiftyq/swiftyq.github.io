@@ -132,7 +132,10 @@
     </div>
     </div>
 </body>
-<script type="text/javascript">
+
+<!--script type="text/javascript">
+  //var button = $(document).getElementByID("exit2");
+  var understood = 0;
   var username = $("#user_id").text();
   console.log(username);
   $(document).ready(function(){
@@ -153,11 +156,15 @@
       if(msg.type === 'normal'){
         console.log(msg.username, username);
         if (msg.username == username) {
-          $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><p id="msg_text">'+msg.message+'</p><span class="time-left" style = "color: gainsboro">'+msg.time+'</span></div>')
+          $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white;"><p id="msg_text">'+msg.message+'</p><span class="time-left" style = "color: gainsboro">'+msg.time+'</span></div>')
         }else {
-          $(".understood").css('visibility','hidden');
-          $("#messages").append('<div class="container" id="msgs" style = "width: 80%; margin-left: 2%;"><div class="col-2"></div><div class="col-9"><p id="msg_text">'+msg.message+'</p>{% if requester %}<button class = "understood" type="button" style = "background-color: green; color: white" data-toggle="modal" data-target="#myModal">Understood</button>{% endif %}<span class="time-right">'+msg.time+'</span></div></div>')
+          if(understood == 0){
+            $(".understood").css('visibility','hidden');
+            $("#messages").append('<div class="container" id="msgs" style = "width: 100%; margin-right: 20%; color: black;"><div class="col-2"></div><div class="col-9"><p id="msg_text">'+msg.message+'</p>{% if requester %}<button class = "understood" type="button" style = "margin-bottom: 8px; background-color: green; color: white" data-toggle="modal" data-target="#myModal">Understood</button>{% endif %}<span class="time-right">'+msg.time+'</span></div></div>')
+        }else if(understood == 1){
+          $("#messages").append('<div class="container" id="msgs" style = "width: 100%; margin-right: 20%; color: black;"><div class="col-2"></div><div class="col-9"><p id="msg_text">'+msg.message+'</p><span class="time-right">'+msg.time+'</span></div></div>')
         }
+      }
       }else{
         if (msg.type === 'connect'){
           if(msg.username != username) {
@@ -166,11 +173,11 @@
         }
       }
         else if(msg.type === 'exit' {% if requester %} && true {% endif %} && msg.username!=username){
-         $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><div type="button" class="btn btn-default" id = "quiz2" style = "background-color: white; color: black; border-width: 1px"><a href="/inbox?user_id={{respondent}}" style = "color: black">Exit</a></div><span class="time-left" style = "color: gainsboro">')
+         $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><p id="msg_text">'+msg.message+'</p><div type="button" class="btn btn-secondary" id = "quiz2" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 25px"><a href="/inbox?user_id={{respondent}}" style = "color: black">Exit</a></div><span class="time-left" style = "color: gainsboro">')
         }
         else{
           if(msg.type === 'quiz' {% if requester %} && true {% endif %} && msg.username!=username){
-          $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white"><img src="./static/img/avatar_g2.jpg" alt="Avatar" class="right"><p id="msg_text">'+msg.message+'</p><div type="button" class="btn btn-default" id = "exit2" style = "background-color: white; color: black; border-width: 1px">OK</a></div><span class="time-left" style = "color: gainsboro">')
+          $('#messages').append('<div class="container darker" id="msgs" style = "width: 100%; margin-left: 20%; color: white">'+msg.message+'</p><button type="button" class = "exit2" id = "exit2" style = "background-color: white; color: black; border-width: 1px; margin-bottom: 8px; font-size: 25px">OK</button><span class="time-left" style = "color: gainsboro">')
         }
         }
         
@@ -189,9 +196,12 @@
 
     $('#quiz').on('click', function(){
       sock.send("Your requester wants a quiz. Give him/her a good question!",username);
+      understood = 1;
     });
 
-
+    $(".exit2").on('click', function(){
+      $(this).css('visibility','hidden'); 
+   });
 
     $(document).keypress(function(e) {
         if(e.which == 13) {
