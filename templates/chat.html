@@ -137,7 +137,7 @@
     <div class="text-center"><div class = "onlinecircle text-center" style="display: inline-block;"></div><span style="font-size: 25px;">&nbsp&nbsponline</span></div>
   </div>
   <div class="w-100" style="position: relative; top: 10px; height: 5px; background-color: #eee;"></div>
-  <div class="container-fluid" id="messages" style = "height: 900px; margin-top: 20px; margin-right: 0px; margin-left: 0px; overflow: scroll">
+  <div class="container-fluid" id="messages" style = "height: 1242px; margin-top: 20px; margin-right: 0px; margin-left: 0px; overflow: scroll">
   </div>
   <div class="container" id="image" style="height: 1242px; margin-top: 20px; display: none;">
     <div class="text-center"><h1>The requester uploaded the photo:</h1></div>
@@ -197,6 +197,8 @@
            $("#messages").append('<div class="container col-12"><div class="container" id="msgs" style = "width: 70%; float: left; color: black;"><div class="col-12"><p id="msg_text">'+msg.message +'</p>{% if not requester %}<button type="button" id = "answer" style = "margin-bottom: 8px; background-color: green; color: white">Good!</button>{% endif %}<span class="time-right">'+msg.time+'</span></div></div></div>')
            $('#answer').on('click', function(){
               sock.send("You have successfully answered the quiz! Good Job!",username);
+              $(this).css('display','none');
+               $('#messages').append('<div class="container col-12"><div class="container" id="msgs" style = "width: 70%; float: left; color: black; font-size: 30px">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id = "exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block">Exit</button><span class="time-right" style = "color: gainsboro">'+msg.time+'</span></div>')
               understood = 1;
             });
         }
@@ -218,7 +220,10 @@
             });
           understood = 1;
         }else if(msg.type == 'answer' && msg.username != username){
-             $('#messages').append('<div class="container col-12"><div class="container" id="msgs" style = "width: 70%; float: left; color: black; font-size: 30px">'+msg.message+'</p><span class="time-right" style = "color: gainsboro">'+msg.time+'</span></div>')
+             $('#messages').append('<div class="container col-12"><div class="container" id="msgs" style = "width: 70%; float: left; color: black; font-size: 30px">'+msg.message+'</p><button type="button" class="btn btn-secondary" id = "exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block" data-target="#ratingModal" data-toggle="modal" data-dismiss="modal">Exit</button><span class="time-right" style = "color: gainsboro">'+msg.time+'</span></div>')
+              $('#exit').on('click', function(){
+                sock.send("You successfully helped your requester understand the question! You may exit the chat room now",username);
+              });
         }
 
       }
