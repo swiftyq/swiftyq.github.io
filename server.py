@@ -129,12 +129,11 @@ def inbox():
 	user_id = request.args.get('user_id')
 	request_id = (request.args.get('request_id'))
 	if replied and (under is not None) and (sat is not None):
-
 		under = int(under)
 		sat = int(sat)
 		adder = 1 if sat < 3 else 2
 		cur.execute("UPDATE user_info SET token=token+"+str(adder)+" WHERE id=?",(replied,))
-		cur.execute("DELETE FROM request WHERE id = ?", (request_id,))
+		cur.execute("DELETE FROM request WHERE id=?", (request_id,))
 		conn.commit()
 		# TODO do sth with achievement
 		# update user's achievement related info
