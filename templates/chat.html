@@ -178,10 +178,7 @@
       }
       else{
         if (msg.type === 'connect'){
-          if(msg.username == username) {
-            $('#messages').append('<li id="msg_text" class="col-12">' + msg.message + '</li>');
-          }
-          else {
+          if(msg.username != username) {
             $(".onlinecircle").css('background-color', 'green');
             $(".onlinecircle").next("span").text("online")
           }
