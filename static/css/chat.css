@@ -59,23 +59,41 @@ body {
     margin: 10px 0;
     max-width: none !important; font-size:20px;
 }*/
-
+#user_msg{
+  font-size: 30pt;
+}
 #msg_text {
-    font-size: 30px;
+    font-size: 30pt;
 }
 
 #msgs {
     margin-bottom: 10px;
     font-size: 25px;
-    border: 1px solid #ababab;
 }
 
 /* Darker chat container */
 .darker {
-    border-color: #ccc;
-    background-color: blue;
+    border-color: transparent;
+    color :white;
+    background-color: #3286ff;
+    border-radius: 20px;
+}
+.lighter {
+  border: solid 1px black;
+  color: black;
+  background-color: white;
+  border-radius: 20px;
+}
+.system{
+  border-color: transparent;
+  color: white;
+  background-color: #4747ff;
+  border-radius: 20px;
 }
 
+.time-right-sys{
+  color: #ddd;
+}
 /* Clear floats */
 .container::after {
     content: "";
@@ -108,7 +126,7 @@ body {
 /* Style time text */
 .time-left {
     float: left;
-    color: #999;
+    color: #eee;
 }
 
 .modal-backdrop{
