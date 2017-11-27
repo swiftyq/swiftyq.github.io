@@ -73,7 +73,7 @@
         <div class="text-center"><small>Default will result in 3-points.</small></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="exit2" style = "background-color: white; color: black; border-width: 1px"><a class="exitanchor" href="/inbox?user_id={{respondent}}&under=3&sat=3" style = "color: black">Save and leave</a></button>
+        <button type="button" class="btn btn-default" id="exit2" style = "background-color: white; color: black; border-width: 1px"><a class="exitanchor" href="/inbox?user_id={{respondent}}&under=3&sat=3&request_time={{request_time}}&request_id ={{request_id}}" style = "color: black">Save and leave</a></button>
       </div>
     </div>
 
@@ -169,7 +169,7 @@
            $('#answer').on('click', function(){
               sock.send("You have successfully answered the quiz! Good Job!",username);
               $(this).css('display','none');
-               $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id="exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block"><a href="/inbox?replied={{user_id}}&user_id={{respondent}}&request_time={{request_time}}&request_id ={{request_id}}" style = "color: black">Exit</a></button><span class="time-right-sys">'+msg.time+'</span></div></div>')
+               $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id="exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block"><a href="/inbox?user_id={{user_id}}" style = "color: black">Exit</a></button><span class="time-right-sys">'+msg.time+'</span></div></div>')
               understood = 1;
 
             });
@@ -255,7 +255,7 @@
     var leng_under = $.find(".fa.under.checked").length;
     var leng_sat = $.find(".fa.sat.checked").length;
     console.log(leng_under,leng_sat);
-    $(".exitanchor").attr("href","/inbox?user_id={{respondent}}&under="+leng_under+"&sat="+leng_sat+"&request_time={{request_time}}");
+    $(".exitanchor").attr("href","/inbox?&request_time={{request_time}}&request_id ={{request_id}}&user_id={{respondent}}&replied={{user_id}}&under="+leng_under+"&sat="+leng_sat+"&request_time={{request_time}}");
   })
   $(".fa.fa-star.sat").on('click', function() {
     $(this).prevAll(".fa.fa-star.sat").addClass("checked");
@@ -264,7 +264,7 @@
     var leng_under = $.find(".fa.under.checked").length;
     var leng_sat = $.find(".fa.sat.checked").length;
     console.log(leng_under,leng_sat);
-    $(".exitanchor").attr("href","/inbox?user_id={{respondent}}&under="+leng_under+"&sat="+leng_sat+"&request_time={{request_time}}");
+    $(".exitanchor").attr("href","/inbox?user_id={{respondent}}&&request_time={{request_time}}&request_id ={{request_id}}&replied={{user_id}}&under="+leng_under+"&sat="+leng_sat+"&request_time={{request_time}}");
   })
   $("#show_image").on('click', function() {
     $('#messages').toggle();
