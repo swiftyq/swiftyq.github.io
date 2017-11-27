@@ -1,0 +1,1065 @@
+WebSocket transport not available. Install eventlet or gevent and gevent-websocket for improved performance.
+ * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
+ * Restarting with stat
+WebSocket transport not available. Install eventlet or gevent and gevent-websocket for improved performance.
+ * Debugger is active!
+ * Debugger PIN: 304-192-156
+143.248.48.96 - - [27/Nov/2017 23:45:17] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:45:17] "GET /static/css/style.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:45:17] "GET /static/css/bootstrap-social.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:45:17] "GET /static/js/index.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:45:19] "GET /favicon.ico HTTP/1.1" 404 -
+143.248.48.96 - - [27/Nov/2017 23:55:00] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:55:00] "GET /static/css/bootstrap-social.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:55:00] "GET /static/css/style.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:55:00] "GET /static/js/index.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:55:05] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:55:28] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:55:28] "GET /static/css/style.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:55:28] "GET /static/css/bootstrap-social.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:55:28] "GET /static/js/index.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:55:29] "GET /favicon.ico HTTP/1.1" 404 -
+143.248.48.96 - - [27/Nov/2017 23:58:30] "GET / HTTP/1.1" 200 -
+211.231.103.91 - - [27/Nov/2017 23:58:54] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:21] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:21] "GET /static/css/inbox.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:21] "GET /static/css/fileinput.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:21] "GET /static/css/achievement.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:21] "GET /static/js/plugins/sortable.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:21] "GET /static/css/achievement_pop_up.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:21] "GET /static/js/fileinput.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:21] "GET /static/themes/fa/theme.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:21] "GET /static/themes/explorer-fa/theme.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:21] "GET /static/js/inbox.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:22] "GET /static/img/default.jpg HTTP/1.1" 200 -
+/home/john/venv/lib/python3.5/site-packages/werkzeug/filesystem.py:63: BrokenFilesystemWarning: Detected a misconfigured UNIX filesystem: Will use UTF-8 as filesystem encoding instead of 'ascii'
+  BrokenFilesystemWarning)
+143.248.48.96 - - [27/Nov/2017 23:59:27] "GET /chat?user_id=chaec0803&respondent=chaec0804&request=YzwTI4yIDG HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 200, in chat
+    s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
+  File "/usr/lib/python3.5/smtplib.py", line 862, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (451, b'4.4.2 Timeout - closing connection. i3sm42475180pgc.88 - gsmtp', 'donotreplyswiftyq@gmail.com')
+143.248.48.96 - - [27/Nov/2017 23:59:27] "GET /chat?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:27] "GET /chat?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:27] "GET /chat?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:27] "GET /chat?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:28] "GET /chat?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:28] "GET /chat?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:34] "GET /chat?user_id=chaec0803&respondent=chaec0802&request=tpb5CcCiVm HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 200, in chat
+    s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
+  File "/usr/lib/python3.5/smtplib.py", line 856, in sendmail
+    (code, resp) = self.mail(from_addr, esmtp_opts)
+  File "/usr/lib/python3.5/smtplib.py", line 533, in mail
+    self.putcmd("mail", "FROM:%s%s" % (quoteaddr(sender), optionlist))
+  File "/usr/lib/python3.5/smtplib.py", line 366, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.5/smtplib.py", line 358, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+143.248.48.96 - - [27/Nov/2017 23:59:34] "GET /chat?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:34] "GET /chat?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:34] "GET /chat?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:34] "GET /chat?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:34] "GET /chat?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:53] "GET /chat?user_id=chaec0803&respondent=chaec0804&request=YzwTI4yIDG HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 200, in chat
+    s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
+  File "/usr/lib/python3.5/smtplib.py", line 856, in sendmail
+    (code, resp) = self.mail(from_addr, esmtp_opts)
+  File "/usr/lib/python3.5/smtplib.py", line 533, in mail
+    self.putcmd("mail", "FROM:%s%s" % (quoteaddr(sender), optionlist))
+  File "/usr/lib/python3.5/smtplib.py", line 366, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.5/smtplib.py", line 358, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+143.248.48.96 - - [27/Nov/2017 23:59:53] "GET /chat?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:53] "GET /chat?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:53] "GET /chat?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:54] "GET /chat?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.48.96 - - [27/Nov/2017 23:59:54] "GET /chat?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:00:01] "GET /chat?user_id=chaec0803&respondent=chaec0802&request=tpb5CcCiVm HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 200, in chat
+    s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
+  File "/usr/lib/python3.5/smtplib.py", line 856, in sendmail
+    (code, resp) = self.mail(from_addr, esmtp_opts)
+  File "/usr/lib/python3.5/smtplib.py", line 533, in mail
+    self.putcmd("mail", "FROM:%s%s" % (quoteaddr(sender), optionlist))
+  File "/usr/lib/python3.5/smtplib.py", line 366, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.5/smtplib.py", line 358, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+143.248.48.96 - - [28/Nov/2017 00:00:01] "GET /chat?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:00:01] "GET /chat?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:00:01] "GET /chat?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:00:01] "GET /chat?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:00:02] "GET /chat?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:00:14] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:01:34] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:01:37] "GET /chat?user_id=chaec0803&respondent=chaec0802&request=tpb5CcCiVm HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 200, in chat
+    s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
+  File "/usr/lib/python3.5/smtplib.py", line 856, in sendmail
+    (code, resp) = self.mail(from_addr, esmtp_opts)
+  File "/usr/lib/python3.5/smtplib.py", line 533, in mail
+    self.putcmd("mail", "FROM:%s%s" % (quoteaddr(sender), optionlist))
+  File "/usr/lib/python3.5/smtplib.py", line 366, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.5/smtplib.py", line 358, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+143.248.48.96 - - [28/Nov/2017 00:01:37] "GET /chat?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:01:37] "GET /chat?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:01:37] "GET /chat?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:01:37] "GET /chat?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:01:37] "GET /chat?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:03:09] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:03:11] "GET /signup HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:03:25] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:03:46] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:04:03] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:04:41] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:04:45] "GET / HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:05:51] "GET / HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:05:52] "GET /static/css/style.css HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:05:52] "GET /static/css/bootstrap-social.css HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:05:52] "GET /static/js/index.js HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:05:53] "GET /favicon.ico HTTP/1.1" 404 -
+110.76.77.96 - - [28/Nov/2017 00:05:55] "GET /signup HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:05:58] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:06:04] "GET /signup HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:06:23] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:06:28] "GET /signup HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:06:36] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:06:56] "POST / HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 56, in login
+    cur.execute("INSERT INTO user_info VALUES (?,?,?,?,?)", (email,password,user_id,0,5))
+sqlite3.OperationalError: attempt to write a readonly database
+143.248.48.96 - - [28/Nov/2017 00:06:56] "GET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:06:56] "GET /?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:06:56] "GET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:06:57] "GET /?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:06:57] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:06:57] "GET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+ImmutableMultiDict([('password', '1234'), ('type', 'login'), ('email', 'chaec0803@gmail.com')])
+SELECT * from user_info where email='chaec0803@gmail.com' and password='1234'
+[('chaec0803@gmail.com', '1234', 'chaec0803', 0, 5)]
+['Calculus']
+SELECT * from request where expertise='Calculus' and not requester=?
+achievements
+[]
+('YzwTI4yIDG', 'What is the derivative of 2x^2 - 3?', '', 'chaec0804', 'Calculus', '2017-11-27T22:28:30.683190')
+('tpb5CcCiVm', 'What is the local minimum value of the function f(x) = x^3(x + 4)', '', 'chaec0802', 'Calculus', '2017-11-27T22:29:40.811339')
+YzwTI4yIDG
+request object
+('YzwTI4yIDG', 'What is the derivative of 2x^2 - 3?', '', 'chaec0804', 'Calculus', '2017-11-27T22:28:30.683190')
+None
+tpb5CcCiVm
+request object
+('tpb5CcCiVm', 'What is the local minimum value of the function f(x) = x^3(x + 4)', '', 'chaec0802', 'Calculus', '2017-11-27T22:29:40.811339')
+None
+YzwTI4yIDG
+request object
+('YzwTI4yIDG', 'What is the derivative of 2x^2 - 3?', '', 'chaec0804', 'Calculus', '2017-11-27T22:28:30.683190')
+None
+tpb5CcCiVm
+request object
+('tpb5CcCiVm', 'What is the local minimum value of the function f(x) = x^3(x + 4)', '', 'chaec0802', 'Calculus', '2017-11-27T22:29:40.811339')
+None
+ImmutableMultiDict([('password', '1234'), ('type', 'login'), ('email', 'chaec0803@gmail.com')])
+SELECT * from user_info where email='chaec0803@gmail.com' and password='1234'
+[('chaec0803@gmail.com', '1234', 'chaec0803', 0, 5)]
+['Calculus']
+SELECT * from request where expertise='Calculus' and not requester=?
+achievements
+[]
+('YzwTI4yIDG', 'What is the derivative of 2x^2 - 3?', '', 'chaec0804', 'Calculus', '2017-11-27T22:28:30.683190')
+('tpb5CcCiVm', 'What is the local minimum value of the function f(x) = x^3(x + 4)', '', 'chaec0802', 'Calculus', '2017-11-27T22:29:40.811339')
+tpb5CcCiVm
+request object
+('tpb5CcCiVm', 'What is the local minimum value of the function f(x) = x^3(x + 4)', '', 'chaec0802', 'Calculus', '2017-11-27T22:29:40.811339')
+None
+ImmutableMultiDict([('name', 'chaec0803'), ('expertise', 'Calculus, '), ('email', 'chaec0803@gmail.com'), ('password1', '1234'), ('password2', '1234'), ('type', 'signup')])
+ImmutableMultiDict([('name', 'chaec0803'), ('expertise', 'Calculus, '), ('email', 'chaec0803@gmail.com'), ('password1', '1234'), ('password2', '1234'), ('type', 'signup')])
+ImmutableMultiDict([('name', 'chaec0803'), ('expertise', 'Calculus, '), ('email', 'chaec0803@gmail.com'), ('password1', '1234'), ('password2', '1234'), ('type', 'signup')])
+ImmutableMultiDict([('name', 'chaec0803'), ('expertise', 'Calculus, '), ('email', 'chaec0803@gmail.com'), ('password1', '1234'), ('password2', '1234'), ('type', 'signup')])
+ImmutableMultiDict([('name', 'chaec0803'), ('expertise', 'Programming, '), ('email', 'chaec0803@gmail.com'), ('password1', '1234'), ('password2', '1234'), ('type', 'signup')])
+ImmutableMultiDict([('name', 'kyungjejo'), ('expertise', 'Programming, '), ('email', 'kyungjejo@gmail.com'), ('password1', '1234'), ('password2', '1234'), ('type', 'signup')])
+Traceback (most recent call last):
+  File "server.py", line 3, in <module>
+    from flask import Flask, render_template
+ImportError: No module named flask
+WebSocket transport not available. Install eventlet or gevent and gevent-websocket for improved performance.
+ * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
+ * Restarting with stat
+WebSocket transport not available. Install eventlet or gevent and gevent-websocket for improved performance.
+ * Debugger is active!
+ * Debugger PIN: 304-192-156
+143.248.48.96 - - [28/Nov/2017 00:08:40] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:08:44] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:08:49] "GET /signup HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:08:49] "GET /signup HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:08:59] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:37] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:43] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:44] "GET /static/css/inbox.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:44] "GET /static/css/fileinput.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:44] "GET /static/css/achievement_pop_up.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:44] "GET /static/css/achievement.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:44] "GET /static/js/plugins/sortable.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:44] "GET /static/js/fileinput.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:44] "GET /static/themes/fa/theme.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:44] "GET /static/themes/explorer-fa/theme.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:44] "GET /static/js/inbox.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:09:44] "GET /static/img/default.jpg HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:09:48] "GET / HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:09:48] "GET / HTTP/1.1" 200 -
+WebSocket transport not available. Install eventlet or gevent and gevent-websocket for improved performance.
+ * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
+ * Restarting with stat
+WebSocket transport not available. Install eventlet or gevent and gevent-websocket for improved performance.
+ * Debugger is active!
+ * Debugger PIN: 304-192-156
+143.248.48.96 - - [28/Nov/2017 00:11:10] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:11:17] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:11:19] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:11:21] "GET /signup HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:11:24] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:11:48] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:11:53] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:11:57] "GET /request_page?user_id=chaec0803 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:11:57] "GET /static/themes/explorer-fa/theme.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:11:57] "GET /static/js/request.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:06] "POST /inbox?type=request&user_id=chaec0803 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:07] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:12] "GET /chat?user_id=John&respondent=chaec0803&request=WfzZTAepPJ HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:13] "GET /static/css/chat.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:13] "GET /static/upload/ HTTP/1.1" 404 -
+143.248.48.96 - - [28/Nov/2017 00:12:14] "GET /socket.io/?EIO=3&transport=polling&t=L_-2IfB HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:14] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Ig2&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:14] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Ig5&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:14] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Igd&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:14] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Igf&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:19] "POST /socket.io/?EIO=3&transport=polling&t=L_-2JyV&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:19] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Ih9&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:20] "POST /socket.io/?EIO=3&transport=polling&t=L_-2KBW&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:20] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Jz4&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:21] "POST /socket.io/?EIO=3&transport=polling&t=L_-2KPU&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:21] "GET /socket.io/?EIO=3&transport=polling&t=L_-2KC7&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:23] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Kj0&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:23] "GET /socket.io/?EIO=3&transport=polling&t=L_-2KRL&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:27] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Lj4&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:27] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Kl6&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:27] "GET /chat?user_id=John&respondent=chaec0803&request=WfzZTAepPJ&flag=true HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:28] "GET /static/css/chat.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:28] "GET /static/upload/ HTTP/1.1" 404 -
+143.248.48.96 - - [28/Nov/2017 00:12:28] "POST /socket.io/?EIO=3&transport=polling&t=L_-2M5Y&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:28] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Ljk&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:28] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Le4 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:28] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Lf0&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:28] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Lf2&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:28] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Lg7&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:28] "GET /socket.io/?EIO=3&transport=polling&t=L_-2M6A&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:28] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Lg8&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:29] "POST /socket.io/?EIO=3&transport=polling&t=L_-2MHc&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:29] "GET /socket.io/?EIO=3&transport=polling&t=L_-2MAf&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:29] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Lh1&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:30] "POST /socket.io/?EIO=3&transport=polling&t=L_-2MVB&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:30] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Lp7&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:30] "GET /socket.io/?EIO=3&transport=polling&t=L_-2MII&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:30] "POST /socket.io/?EIO=3&transport=polling&t=L_-2MhN&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:30] "GET /socket.io/?EIO=3&transport=polling&t=L_-2MVn&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:31] "GET /socket.io/?EIO=3&transport=polling&t=L_-2MJt&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:35] "POST /socket.io/?EIO=3&transport=polling&t=L_-2NoS&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:35] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Mi8&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:35] "GET /socket.io/?EIO=3&transport=polling&t=L_-2MKq&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:36] "POST /socket.io/?EIO=3&transport=polling&t=L_-2NVW&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:36] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Np6&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:36] "GET /socket.io/?EIO=3&transport=polling&t=L_-2NJ_&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:37] "POST /socket.io/?EIO=3&transport=polling&t=L_-2OCB&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:37] "GET /socket.io/?EIO=3&transport=polling&t=L_-2N__&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:37] "GET /socket.io/?EIO=3&transport=polling&t=L_-2NWN&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:39] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Omn&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:39] "GET /socket.io/?EIO=3&transport=polling&t=L_-2OD8&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:45] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Q9x&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:45] "GET /socket.io/?EIO=3&transport=polling&t=L_-2OnH&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:45] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Nje&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:46] "POST /socket.io/?EIO=3&transport=polling&t=L_-2QMs&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:46] "GET /socket.io/?EIO=3&transport=polling&t=L_-2QAg&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:46] "GET /socket.io/?EIO=3&transport=polling&t=L_-2PhS&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:47] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Qdn&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:47] "GET /socket.io/?EIO=3&transport=polling&t=L_-2QNa&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:47] "GET /socket.io/?EIO=3&transport=polling&t=L_-2PuH&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:48] "POST /socket.io/?EIO=3&transport=polling&t=L_-2QOc&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:48] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Qhu&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:48] "GET /socket.io/?EIO=3&transport=polling&t=L_-2QCz&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:48] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Q-G&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:48] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Qv4&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:48] "GET /socket.io/?EIO=3&transport=polling&t=L_-2QPQ&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:49] "POST /socket.io/?EIO=3&transport=polling&t=L_-2RG3&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:49] "GET /socket.io/?EIO=3&transport=polling&t=L_-2R1E&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:49] "GET /socket.io/?EIO=3&transport=polling&t=L_-2QXr&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:52] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Rpt&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:52] "GET /socket.io/?EIO=3&transport=polling&t=L_-2RHv&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:52] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Qoq&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:53] "POST /socket.io/?EIO=3&transport=polling&t=L_-2Rlg&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:53] "GET /socket.io/?EIO=3&transport=polling&t=L_-2RLb&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:59] "GET /inbox?user_id=chaec0803&under=5&sat=5&request_time=2017-11-28T00:12:02.726873 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:59] "POST /socket.io/?EIO=3&transport=polling&t=L_-2T9i&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:59] "GET /socket.io/?EIO=3&transport=polling&t=L_-2RmC&sid=0437d4cc73434718aa52f61237a93b34 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:12:59] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Rqe&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 200 -
+/home/john/venv/lib/python3.5/site-packages/werkzeug/filesystem.py:63: BrokenFilesystemWarning: Detected a misconfigured UNIX filesystem: Will use UTF-8 as filesystem encoding instead of 'ascii'
+  BrokenFilesystemWarning)
+143.248.48.96 - - [28/Nov/2017 00:13:01] "GET /inbox?replied=John&user_id=chaec0803&request_time=2017-11-28T00:12:02.726873&request_id%20=WfzZTAepPJ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 130, in inbox
+    under = int(under)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+143.248.48.96 - - [28/Nov/2017 00:13:03] "GET /inbox?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:03] "GET /inbox?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:03] "GET /inbox?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:03] "GET /inbox?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:03] "GET /inbox?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+ImmutableMultiDict([('email', 'johnr0hol@gmail.com'), ('password', '1234'), ('type', 'login')])
+SELECT * from user_info where email='johnr0hol@gmail.com' and password='1234'
+[]
+ImmutableMultiDict([('name', 'chaec0803'), ('password1', '1234'), ('type', 'signup'), ('password2', '1234'), ('email', 'chaec0803@gmail.com'), ('expertise', 'Calculus, ')])
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+ImmutableMultiDict([('email', 'chaec0803@gmail.com'), ('password', '1234'), ('type', 'login')])
+SELECT * from user_info where email='chaec0803@gmail.com' and password='1234'
+[('chaec0803@gmail.com', '1234', 'chaec0803', 0, 5)]
+['Calculus']
+SELECT * from request where expertise='Calculus' and not requester=?
+achievements
+[]
+ImmutableMultiDict([('name', 'John'), ('password1', '1234'), ('type', 'signup'), ('password2', '1234'), ('email', 'johnr0hol@gmail.com'), ('expertise', 'Calculus, ')])
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+<class 'int'>
+ImmutableMultiDict([('email', 'johnr0hol@gmail.com'), ('password', '1234'), ('type', 'login')])
+SELECT * from user_info where email='johnr0hol@gmail.com' and password='1234'
+[('johnr0hol@gmail.com', '1234', 'John', 0, 5)]
+['Calculus']
+SELECT * from request where expertise='Calculus' and not requester=?
+achievements
+[]
+rrrequest!
+chaec0803
+chaec0803
+POST
+POST
+guaack
+<FileStorage: '' ('application/octet-stream')>
+2017-11-28T00:12:02.726873
+[('chaec0803@gmail.com', 'chaec0803'), ('johnr0hol@gmail.com', 'John')]
+chaec0803@gmail.com
+johnr0hol@gmail.com
+['Calculus']
+SELECT * from request where expertise='Calculus' and not requester=?
+achievements
+[]
+ImmutableMultiDict([('email', 'johnr0hol@gmail.com'), ('password', '1234'), ('type', 'login')])
+SELECT * from user_info where email='johnr0hol@gmail.com' and password='1234'
+[('johnr0hol@gmail.com', '1234', 'John', 0, 5)]
+['Calculus']
+SELECT * from request where expertise='Calculus' and not requester=?
+achievements
+[]
+('WfzZTAepPJ', 'qerqwer', '', 'chaec0803', 'Calculus', '2017-11-28T00:12:02.726873')
+WfzZTAepPJ
+request object
+('WfzZTAepPJ', 'qerqwer', '', 'chaec0803', 'Calculus', '2017-11-28T00:12:02.726873')
+None
+type: connect
+{'message': '\n      \n        chaec0803\n      \n     has entered the room.', 'username': '\n      \n        chaec0803\n      \n    ', 'type': 'connect'}
+type: normal
+{'message': 'hahah', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': '\nhahaha', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': '\naht', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': '\nhat', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': '\nhhaahah', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+WfzZTAepPJ
+request object
+('WfzZTAepPJ', 'qerqwer', '', 'chaec0803', 'Calculus', '2017-11-28T00:12:02.726873')
+true
+True
+type: normal
+{'message': '\nahhahaha', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: connect
+{'message': '\n      \n        John\n      \n     has entered the room.', 'username': '\n      \n        John\n      \n    ', 'type': 'connect'}
+type: normal
+{'message': '\nahah', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': '\nahahah', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': '\nahaha', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': '\nhit understood!', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: quiz
+{'message': 'Your requester wants a quiz. Give him/her a good question!', 'time': '00:12', 'type': 'quiz', 'username': '\n      \n        John\n      \n    '}
+type: normal
+{'message': '\nhahaha', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': '\nsolve', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': '\nthis', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': '\nproblem', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': 'yes.', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        John\n      \n    '}
+type: normal
+{'message': '\n&*', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+type: answer
+{'message': 'You have successfully answered the quiz! Good Job!', 'time': '00:12', 'type': 'answer', 'username': '\n      \n        chaec0803\n      \n    '}
+type: normal
+{'message': 'gogg!\n', 'time': '00:12', 'type': 'normal', 'username': '\n      \n        chaec0803\n      \n    '}
+chaec0803
+GET
+['Calculus']
+SELECT * from request where expertise='Calculus' and not requester=?
+achievements
+[]
+type: offline
+{'message': 'offline', 'time': '00:12', 'type': 'offline', 'username': '\n      \n        John\n      \n    '}
+yay
+[('chaec0803', 0, '', 0), ('chaec0803', 1, '', 0), ('chaec0803', 2, '', 0), ('chaec0803', 3, '', 0), ('chaec0803', 4, '', 0), ('chaec0803', 5, '', 0), ('chaec0803', 6, '', 0), ('chaec0803', 7, '', 0), ('chaec0803', 8, '', 0), ('chaec0803', 9, '', 0), ('chaec0803', 10, '', 0), ('chaec0803', 11, '', 0), ('chaec0803', 12, '', 0), ('chaec0803', 13, '', 0), ('chaec0803', 14, '', 0), ('chaec0803', 15, '', 0), ('chaec0803', 16, '', 0), ('chaec0803', 17, '', 0), ('chaec0803', 18, '', 0), ('chaec0803', 19, '', 0)]
+['Calculus']
+SELECT * from request where expertise='Calculus' and not requester=?
+[]
+[{'title': 'First Three Star!', 'content': 'Get first three star from user rating', 'num': '0'}, {'title': 'First Four Star!', 'content': 'Get first four star from user rating', 'num': '1'}, {'title': 'First Five Star!', 'content': 'Get first five star from user rating', 'num': '2'}, {'title': 'Be talkative to explain!', 'content': 'Exchange 100 utterances with a person in a session', 'num': '3'}, {'title': 'You are an apprentice!', 'content': 'Explain 10 problems', 'num': '4'}, {'title': 'You helped for a month?', 'content': 'Explain 30 problems', 'num': '5'}, {'title': 'You are an experienced!', 'content': 'Explain 50 problems', 'num': '6'}, {'title': 'You are a master!', 'content': 'Explain 100 problems', 'num': '7'}, {'title': 'Heated explainer!', 'content': 'Explain 10 problems a day', 'num': '8'}, {'title': 'How consistent you are!', 'content': 'Explain 20 problems for 20 days', 'num': '9'}, {'title': 'Five star streak!', 'content': 'Get 3 five stars consecutively', 'num': '10'}, {'title': 'Swift four stars', 'content': 'Get 4 stars by solving a problem in 5 minutes after requester post a question', 'num': '11'}, {'title': 'Swift five stars', 'content': 'Get 5 stars by solving a problem in 5 minutes after requester post a question', 'num': '12'}, {'title': 'Oh, you know how to explain', 'content': 'Get 5 five stars from user rating', 'num': '13'}, {'title': 'Oh, you are a bit good at explaining', 'content': 'Get 10 five stars from user rating', 'num': '14'}, {'title': 'Oh, you are outstanding at explaining!', 'content': 'Get 20 five stars from user rating', 'num': '15'}, {'title': 'Failure is also a good experience', 'content': 'Get one star from user rating', 'num': '16'}, {'title': 'Frequent asker?', 'content': 'Post a question for 20 days', 'num': '17'}, {'title': 'Before the deadline?', 'content': 'Ask 5 questions a day', 'num': '18'}, {'title': 'Before the exam?', 'content': 'Ask 10 questions a day', 'num': '19'}]143.248.48.96 - - [28/Nov/2017 00:13:32] "GET /achievement?user_id=chaec0803 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:32] "GET /static/js/achievement.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:32] "GET /static/js/achievement_pop_up.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:32] "GET /static/js/jquery.csv.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/1.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/0.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/4.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/2.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/5.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/3.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/7.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/18.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/10.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/13.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/17.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/14.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/6.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/12.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:33] "GET /static/achievement/icon/9.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:34] "GET /static/achievement/icon/16.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:34] "GET /static/achievement/icon/15.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:34] "GET /static/achievement/icon/8.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:34] "GET /static/achievement/icon/11.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:34] "GET /static/achievement/icon/19.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:13:59] "GET /socket.io/?EIO=3&transport=polling&t=L_-2Tg9&sid=9845026d8ded4084bbfae6016954abf7 HTTP/1.1" 400 -
+192.249.29.26 - - [28/Nov/2017 00:14:46] "GET / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:14:46] "GET /static/css/style.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:14:46] "GET /static/js/index.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:14:46] "GET /static/css/bootstrap-social.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:14:49] "GET /favicon.ico HTTP/1.1" 404 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "POST / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "GET /static/js/plugins/sortable.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "GET /static/css/fileinput.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "GET /static/css/achievement_pop_up.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "GET /static/css/achievement.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "GET /static/css/inbox.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "GET /static/js/fileinput.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "GET /static/themes/explorer-fa/theme.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "GET /static/themes/fa/theme.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "GET /static/js/inbox.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:07] "GET /static/img/default.jpg HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:50] "GET /inbox?type=file&user_id=chaec0803 HTTP/1.1" 400 -
+192.249.29.26 - - [28/Nov/2017 00:15:56] "GET / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:56] "GET /static/js/index.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:56] "GET /static/css/style.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:56] "GET /static/css/bootstrap-social.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:15:58] "GET /favicon.ico HTTP/1.1" 404 -
+143.248.48.96 - - [28/Nov/2017 00:16:12] "POST /inbox?type=file&user_id=chaec0803 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:16:12] "GET /static/propic/chaec0803.png HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:31] "GET / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:31] "GET /static/css/bootstrap-social.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:31] "GET /static/css/style.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:31] "GET /static/js/index.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:33] "GET /favicon.ico HTTP/1.1" 404 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "POST / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "GET /static/css/fileinput.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "GET /static/css/inbox.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "GET /static/css/achievement.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "GET /static/js/plugins/sortable.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "GET /static/css/achievement_pop_up.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "GET /static/js/fileinput.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "GET /static/themes/fa/theme.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "GET /static/themes/explorer-fa/theme.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "GET /static/js/inbox.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:17:48] "GET /static/propic/chaec0803.png HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:20:04] "GET / HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:20:39] "GET / HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:20:39] "GET /static/css/style.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:20:39] "GET /static/css/bootstrap-social.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:20:39] "GET /static/js/index.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:20:42] "GET /favicon.ico HTTP/1.1" 404 -
+143.248.217.105 - - [28/Nov/2017 00:21:04] "GET /signup HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:21:23] "GET / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:21:24] "GET /static/css/bootstrap-social.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:21:24] "GET /static/css/style.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:21:24] "GET /static/js/index.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:21:31] "GET /favicon.ico HTTP/1.1" 404 -
+192.249.29.26 - - [28/Nov/2017 00:21:38] "POST / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:21:50] "POST / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:21:55] "GET /signup HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:21:56] "GET / HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:21:57] "GET / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:38] "POST / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "POST / HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "GET /static/css/inbox.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "GET /static/css/fileinput.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "GET /static/css/achievement_pop_up.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "GET /static/js/plugins/sortable.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "GET /static/js/fileinput.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "GET /static/themes/explorer-fa/theme.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "GET /static/themes/fa/theme.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "GET /static/css/achievement.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "GET /static/js/inbox.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:54] "GET /static/propic/chaec0803.png HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:58] "GET /request_page?user_id=chaec0803 HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:58] "GET /static/themes/explorer-fa/theme.css HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:22:58] "GET /static/js/request.js HTTP/1.1" 200 -
+192.249.29.26 - - [28/Nov/2017 00:23:17] "POST /inbox?type=request&user_id=chaec0803 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:24:44] "GET /signup HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:29] "POST / HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "POST / HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/css/inbox.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/css/fileinput.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/js/plugins/sortable.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/css/achievement_pop_up.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/css/achievement.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/js/fileinput.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/themes/explorer-fa/theme.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/themes/fa/theme.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/js/inbox.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/img/default.jpg HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:25:45] "GET /static/propic/chaec0803.png HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:26:05] "GET /request_page?user_id=Aaron HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:26:05] "GET /static/themes/explorer-fa/theme.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:26:05] "GET /static/js/request.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:26:39] "POST /inbox?type=request&user_id=Aaron HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 162, in inbox
+    return request_paged(request)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 313, in request_paged
+    s.sendmail('donotreplyswiftyq@gmail.com',i[0],msg)
+  File "/usr/lib/python3.5/smtplib.py", line 862, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (451, b'4.4.2 Timeout - closing connection. c24sm53327099pfl.2 - gsmtp', 'donotreplyswiftyq@gmail.com')
+143.248.217.105 - - [28/Nov/2017 00:26:39] "GET /inbox?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:26:39] "GET /inbox?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:26:39] "GET /inbox?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:26:39] "GET /inbox?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:26:39] "GET /inbox?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:26:40] "GET /inbox?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:27:48] "GET /request_page?user_id=chaec0803 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:28:01] "POST /inbox?type=request&user_id=chaec0803 HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 162, in inbox
+    return request_paged(request)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 313, in request_paged
+    s.sendmail('donotreplyswiftyq@gmail.com',i[0],msg)
+  File "/usr/lib/python3.5/smtplib.py", line 856, in sendmail
+    (code, resp) = self.mail(from_addr, esmtp_opts)
+  File "/usr/lib/python3.5/smtplib.py", line 533, in mail
+    self.putcmd("mail", "FROM:%s%s" % (quoteaddr(sender), optionlist))
+  File "/usr/lib/python3.5/smtplib.py", line 366, in putcmd
+    self.send(str)
+  File "/usr/lib/python3.5/smtplib.py", line 358, in send
+    raise SMTPServerDisconnected('please run connect() first')
+smtplib.SMTPServerDisconnected: please run connect() first
+143.248.48.96 - - [28/Nov/2017 00:28:01] "GET /inbox?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:28:01] "GET /inbox?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:28:01] "GET /inbox?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:28:02] "GET /inbox?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:28:02] "GET /inbox?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:28:02] "GET /inbox?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+WebSocket transport not available. Install eventlet or gevent and gevent-websocket for improved performance.
+ * Running on http://0.0.0.0:3000/ (Press CTRL+C to quit)
+ * Restarting with stat
+WebSocket transport not available. Install eventlet or gevent and gevent-websocket for improved performance.
+ * Debugger is active!
+ * Debugger PIN: 304-192-156
+143.248.48.96 - - [28/Nov/2017 00:31:59] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:32:06] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:32:15] "GET /inbox?user_id=chaec0803 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:34:13] "GET /request_page?user_id=chaec0803 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:34:20] "POST /inbox?type=request&user_id=chaec0803 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:39] "GET / HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:39] "GET /static/css/style.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:39] "GET /static/css/bootstrap-social.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:39] "GET /static/js/index.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:41] "GET /favicon.ico HTTP/1.1" 404 -
+143.248.217.105 - - [28/Nov/2017 00:35:51] "POST / HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:51] "GET /static/css/inbox.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:51] "GET /static/css/achievement_pop_up.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:51] "GET /static/js/plugins/sortable.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:51] "GET /static/css/achievement.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:51] "GET /static/css/fileinput.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:51] "GET /static/js/fileinput.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:51] "GET /static/themes/fa/theme.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:51] "GET /static/themes/explorer-fa/theme.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:51] "GET /static/js/inbox.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:52] "GET /static/img/default.jpg HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:35:52] "GET /static/propic/chaec0803.png HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:07] "GET /chat?user_id=Aaron&respondent=chaec0803&request=HPbgmdv4cz HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:07] "GET /static/css/chat.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:08] "GET /static/upload/ HTTP/1.1" 404 -
+143.248.217.105 - - [28/Nov/2017 00:36:08] "GET /socket.io/?EIO=3&transport=polling&t=L_-8OaR HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:08] "POST /socket.io/?EIO=3&transport=polling&t=L_-8ObZ&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:08] "GET /socket.io/?EIO=3&transport=polling&t=L_-8Obh&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:08] "POST /socket.io/?EIO=3&transport=polling&t=L_-8OcI&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:08] "GET /socket.io/?EIO=3&transport=polling&t=L_-8OcL&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:12] "GET / HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:14] "GET / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:15] "GET /signup HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "POST / HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "GET /static/css/fileinput.css HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "GET /static/css/inbox.css HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "GET /static/css/achievement_pop_up.css HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "GET /static/css/achievement.css HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "GET /static/js/fileinput.js HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "GET /static/js/plugins/sortable.js HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "GET /static/themes/explorer-fa/theme.js HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "GET /static/themes/fa/theme.js HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "GET /static/js/inbox.js HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:22] "GET /static/img/default.jpg HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:23] "GET /static/propic/chaec0803.png HTTP/1.1" 200 -
+110.76.77.96 - - [28/Nov/2017 00:36:27] "GET /inbox?user_id=Aaron HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:33] "POST / HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:33] "POST /socket.io/?EIO=3&transport=polling&t=L_-8UiO&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:33] "GET /socket.io/?EIO=3&transport=polling&t=L_-8OhG&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:43] "GET /chat?user_id=Aaron&respondent=chaec0803&request=HPbgmdv4cz&flag=true HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:43] "GET /static/upload/ HTTP/1.1" 404 -
+143.248.48.96 - - [28/Nov/2017 00:36:44] "GET /socket.io/?EIO=3&transport=polling&t=L_-7vbQ HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:44] "POST /socket.io/?EIO=3&transport=polling&t=L_-7vcN&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:44] "GET /socket.io/?EIO=3&transport=polling&t=L_-7vcQ&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:44] "POST /socket.io/?EIO=3&transport=polling&t=L_-7vd9&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:44] "GET /socket.io/?EIO=3&transport=polling&t=L_-8UjT&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:44] "GET /socket.io/?EIO=3&transport=polling&t=L_-7vdB&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:46] "POST /socket.io/?EIO=3&transport=polling&t=L_-8XuU&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:46] "GET /socket.io/?EIO=3&transport=polling&t=L_-8XSM&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:46] "GET /socket.io/?EIO=3&transport=polling&t=L_-7vdu&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:58] "POST /socket.io/?EIO=3&transport=polling&t=L_-7z3r&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:58] "GET /socket.io/?EIO=3&transport=polling&t=L_-8XvU&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:36:58] "GET /socket.io/?EIO=3&transport=polling&t=L_-7w77&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:59] "POST /socket.io/?EIO=3&transport=polling&t=L_-8au8&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:36:59] "GET /socket.io/?EIO=3&transport=polling&t=L_-8auL&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:00] "POST /socket.io/?EIO=3&transport=polling&t=L_-7zPV&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:00] "GET /socket.io/?EIO=3&transport=polling&t=L_-8auq&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:00] "GET /socket.io/?EIO=3&transport=polling&t=L_-7z4Z&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:03] "POST /socket.io/?EIO=3&transport=polling&t=L_-8c0x&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:03] "GET /socket.io/?EIO=3&transport=polling&t=L_-8bEa&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:03] "GET /socket.io/?EIO=3&transport=polling&t=L_-7zQK&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:08] "POST /socket.io/?EIO=3&transport=polling&t=L_-8d1b&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:08] "GET /socket.io/?EIO=3&transport=polling&t=L_-8c21&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:08] "GET /socket.io/?EIO=3&transport=polling&t=L_-7-Fs&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:09] "POST /socket.io/?EIO=3&transport=polling&t=L_-7_j2&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:09] "GET /socket.io/?EIO=3&transport=polling&t=L_-7_Ja&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:10] "POST /socket.io/?EIO=3&transport=polling&t=L_-7_xR&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:10] "GET /socket.io/?EIO=3&transport=polling&t=L_-8d6I&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:10] "GET /socket.io/?EIO=3&transport=polling&t=L_-7_jk&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:13] "POST /socket.io/?EIO=3&transport=polling&t=L_-80WE&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:13] "GET /socket.io/?EIO=3&transport=polling&t=L_-8drp&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:13] "GET /socket.io/?EIO=3&transport=polling&t=L_-7_yE&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:14] "POST /socket.io/?EIO=3&transport=polling&t=L_-8eYd&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:14] "GET /socket.io/?EIO=3&transport=polling&t=L_-8eL3&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:14] "GET /socket.io/?EIO=3&transport=polling&t=L_-80XA&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:17] "POST /socket.io/?EIO=3&transport=polling&t=L_-81dN&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:17] "GET /socket.io/?EIO=3&transport=polling&t=L_-8eZa&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:17] "GET /socket.io/?EIO=3&transport=polling&t=L_-80nE&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:22] "POST /socket.io/?EIO=3&transport=polling&t=L_-8gaI&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:22] "GET /socket.io/?EIO=3&transport=polling&t=L_-8fS2&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:22] "GET /socket.io/?EIO=3&transport=polling&t=L_-81eA&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:24] "POST /socket.io/?EIO=3&transport=polling&t=L_-8g_b&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:24] "GET /socket.io/?EIO=3&transport=polling&t=L_-8gbA&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:28] "POST /socket.io/?EIO=3&transport=polling&t=L_-84JV&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:28] "GET /socket.io/?EIO=3&transport=polling&t=L_-8h0v&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:28] "GET /socket.io/?EIO=3&transport=polling&t=L_-82ov&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:31] "POST /socket.io/?EIO=3&transport=polling&t=L_-855k&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:31] "GET /socket.io/?EIO=3&transport=polling&t=L_-8i8i&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:31] "GET /socket.io/?EIO=3&transport=polling&t=L_-84KE&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:32] "POST /socket.io/?EIO=3&transport=polling&t=L_-85FP&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:32] "GET /socket.io/?EIO=3&transport=polling&t=L_-8ivv&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:32] "GET /socket.io/?EIO=3&transport=polling&t=L_-856j&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:34] "POST /socket.io/?EIO=3&transport=polling&t=L_-85qO&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:34] "GET /socket.io/?EIO=3&transport=polling&t=L_-85GB&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:35] "POST /socket.io/?EIO=3&transport=polling&t=L_-861I&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:35] "GET /socket.io/?EIO=3&transport=polling&t=L_-8j3y&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:35] "GET /socket.io/?EIO=3&transport=polling&t=L_-85q-&sid=98cf5c6b684d45508250d37beb021a1b HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:37:35] "GET /inbox?user_id=chaec0803&under=3&sat=3 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:43] "POST /socket.io/?EIO=3&transport=polling&t=L_-8ld3&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:43] "GET /socket.io/?EIO=3&transport=polling&t=L_-8jy2&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:49] "POST /socket.io/?EIO=3&transport=polling&t=L_-8n7X&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:49] "GET /socket.io/?EIO=3&transport=polling&t=L_-8lf6&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+/home/john/venv/lib/python3.5/site-packages/werkzeug/filesystem.py:63: BrokenFilesystemWarning: Detected a misconfigured UNIX filesystem: Will use UTF-8 as filesystem encoding instead of 'ascii'
+  BrokenFilesystemWarning)
+143.248.217.105 - - [28/Nov/2017 00:37:51] "GET /inbox?replied=Aaron&user_id=chaec0803&request_time=2017-11-28T00:28:01.754746&request_id%20=HPbgmdv4cz HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 130, in inbox
+    under = int(under)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+143.248.217.105 - - [28/Nov/2017 00:37:51] "GET /inbox?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:51] "GET /inbox?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:51] "GET /inbox?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:51] "GET /inbox?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:51] "GET /inbox?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:52] "GET /inbox?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:59] "GET /socket.io/?EIO=3&transport=polling&t=L_-8pct HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:59] "POST /socket.io/?EIO=3&transport=polling&t=L_-8pe5&sid=7b19d5ffdd7d4fca975c867328ba9c20 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:59] "GET /socket.io/?EIO=3&transport=polling&t=L_-8pe9&sid=7b19d5ffdd7d4fca975c867328ba9c20 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:59] "POST /socket.io/?EIO=3&transport=polling&t=L_-8pe-&sid=7b19d5ffdd7d4fca975c867328ba9c20 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:59] "GET /socket.io/?EIO=3&transport=polling&t=L_-8n8H&sid=f182313c082d4d2883037491358e5773 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:37:59] "GET /socket.io/?EIO=3&transport=polling&t=L_-8pf0&sid=7b19d5ffdd7d4fca975c867328ba9c20 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:38:00] "POST /socket.io/?EIO=3&transport=polling&t=L_-8pna&sid=7b19d5ffdd7d4fca975c867328ba9c20 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:38:02] "GET /inbox?user_id=chaec0803&under=3&sat=3 HTTP/1.1" 200 -
+143.248.217.105 - - [28/Nov/2017 00:38:59] "GET /socket.io/?EIO=3&transport=polling&t=L_-8pfq&sid=7b19d5ffdd7d4fca975c867328ba9c20 HTTP/1.1" 400 -
+143.248.48.96 - - [28/Nov/2017 00:43:02] "GET /socket.io/?EIO=3&transport=polling&t=L_-9Lr4 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:02] "POST /socket.io/?EIO=3&transport=polling&t=L_-9Lr-&sid=fcdbd0ee477343419ac412a2299ad534 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:02] "GET /socket.io/?EIO=3&transport=polling&t=L_-9Ls1&sid=fcdbd0ee477343419ac412a2299ad534 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:02] "POST /socket.io/?EIO=3&transport=polling&t=L_-9Lsi&sid=fcdbd0ee477343419ac412a2299ad534 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:02] "GET /socket.io/?EIO=3&transport=polling&t=L_-9Lsj&sid=fcdbd0ee477343419ac412a2299ad534 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:09] "GET /chat?user_id=Aaron&respondent=chaec0803&request=HPbgmdv4cz&flag=true HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:09] "GET /static/upload/ HTTP/1.1" 404 -
+143.248.48.96 - - [28/Nov/2017 00:43:10] "GET /socket.io/?EIO=3&transport=polling&t=L_-9Nhs HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:10] "POST /socket.io/?EIO=3&transport=polling&t=L_-9Nid&sid=da3253334eb641dc88d5ae7f71a0ede0 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:10] "GET /socket.io/?EIO=3&transport=polling&t=L_-9Nig&sid=da3253334eb641dc88d5ae7f71a0ede0 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:10] "POST /socket.io/?EIO=3&transport=polling&t=L_-9Njd&sid=da3253334eb641dc88d5ae7f71a0ede0 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:10] "GET /socket.io/?EIO=3&transport=polling&t=L_-9NjY&sid=da3253334eb641dc88d5ae7f71a0ede0 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:43:10] "GET /socket.io/?EIO=3&transport=polling&t=L_-9Ltc&sid=fcdbd0ee477343419ac412a2299ad534 HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:44:10] "GET /socket.io/?EIO=3&transport=polling&t=L_-9Nkp&sid=da3253334eb641dc88d5ae7f71a0ede0 HTTP/1.1" 400 -
+143.248.48.96 - - [28/Nov/2017 00:45:30] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:45:40] "POST / HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:47:38] "GET /chat?user_id=chaec0803&respondent=chaec0803&request=WfzZTAepPJ HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1997, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask_socketio/__init__.py", line 42, in __call__
+    start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/engineio/middleware.py", line 49, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1985, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1540, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/john/venv/lib/python3.5/site-packages/flask/_compat.py", line 33, in reraise
+    raise value
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/john/venv/lib/python3.5/site-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/john/Crowdsourcing/hifi/swiftyq.github.io/server.py", line 200, in chat
+    s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
+  File "/usr/lib/python3.5/smtplib.py", line 862, in sendmail
+    raise SMTPSenderRefused(code, resp, from_addr)
+smtplib.SMTPSenderRefused: (451, b'4.4.2 Timeout - closing connection. 77sm51938291pfh.43 - gsmtp', 'donotreplyswiftyq@gmail.com')
+143.248.48.96 - - [28/Nov/2017 00:47:38] "GET /chat?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:47:38] "GET /chat?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:47:38] "GET /chat?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:47:39] "GET /chat?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+143.248.48.96 - - [28/Nov/2017 00:47:39] "GET /chat?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+  File "server.py", line 62
+    <<<<<<< HEAD
+     ^
+SyntaxError: invalid syntax

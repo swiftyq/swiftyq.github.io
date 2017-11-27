@@ -59,11 +59,8 @@ def login():
 		for e in expertise:
 			cur.execute("INSERT INTO expertise VALUES (?,?,?)", (email.strip(),user_id.strip(),e.strip()))
 		#achievement generation
-<<<<<<< HEAD
-		cur.execute("INSERT INTO rating VALUES (?,?,?,?,?,?,?,?,?)", (user_id, 0,0,0,0,0,0,0,0))
-=======
-		cur.execute("INSERT INTO rating VALUES (?,?,?,?,?,?,?)", (user_id.strip(), 0,0,0,0,0,0))
->>>>>>> 2a39dabd6fd36603ed7a70f23c557911f49d525b
+
+		cur.execute("INSERT INTO rating VALUES (?,?,?,?,?,?,?,?,?)", (user_id.strip(), 0,0,0,0,0,0,0,0))
 		for achievement in achievement_l:
 			print(type(int(achievement['num'])))
 			cur.execute("INSERT INTO achievement VALUES (?,?,?,?)", (user_id.strip(),int(achievement['num']),"",0))
@@ -82,13 +79,9 @@ def login():
 			return render_template("index.html", warning=warning)
 		return extract(user_info[0][2])
 
-<<<<<<< HEAD
-def extract(user_id, rq_time = None):
 	cur.execute("SELECT expertise from expertise where id=?", (user_id,))
-=======
-def extract(user_id, rq_time = None, rating = None):
+def extract(user_id, rq_time = None):
 	cur.execute("SELECT expertise from expertise where id=?", (user_id.strip(),))
->>>>>>> 2a39dabd6fd36603ed7a70f23c557911f49d525b
 	expertise = cur.fetchall()
 	expertise = [elt[0] for elt in expertise]
 	#if not expertise:
