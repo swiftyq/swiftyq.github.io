@@ -180,7 +180,7 @@ def chat():
 	print(request_obj)
 
 	respondent = request.args.get("respondent")
-	requester = ""
+	requester = False
 	flag = request.args.get("flag")
 	print (flag)
 	if request.args.get("flag"):
@@ -215,6 +215,8 @@ def msg(message,username):
 			to_client['type'] = 'exit'
 		elif "Your requester wants a quiz" in message:
 			to_client['type'] = 'quiz'
+		elif "You have successfully answered" in message:
+			to_client['type'] = 'answer'
 		to_client['time'] = "%02d:%02d" %(datetime.datetime.now().hour%12,datetime.datetime.now().minute)
 	# emit("response", {'data': message['data'], 'username': session['username']}, broadcast=True)
 	print("type: " + to_client['type'])
