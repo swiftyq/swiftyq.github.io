@@ -233,7 +233,7 @@ def achievement():
 	non_achieved = cur.fetchall()
 	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
 	achieve_num = cur.fetchall()
-	#print(achievements)
+	print(achievements)
 	non_to_send=[]
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
@@ -253,7 +253,8 @@ def achievement():
 	for non in non_achieved:
 		non_to_send.append(achievement_l[non[1]])
 		#print(achievement_l[non[1]])
-	return render_template("achievement.html", user_id=user_id, achievements = achievements, non_achieved = non_to_send, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
+	print(achievement_l)
+	return render_template("achievement.html", user_id=user_id, achievements = achievement_l, non_achieved = non_achieved, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
 
 
 
