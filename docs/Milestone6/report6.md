@@ -5,6 +5,7 @@
 
 **John Joon Young Chung Audit**
 ## [link to our prototype - mobile interface](http://115.68.222.144:3000/)
+## [link to github](https://github.com/swiftyq/swiftyq.github.io)
 ## Project Summary
 Question-answer websites are often too slow to answer and do not allow direct interaction between the requester and worker. SwityQ is a real-time chatting Q&A interface in which the requesters can actively ask questions directly to the workers who will help them understand the problem. The application allows for fast and accurate answers by sending emails once a request is paged and encouraging workers through an entertaining achievement system.
 
