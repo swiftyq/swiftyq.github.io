@@ -68,7 +68,7 @@ def login():
 	else:
 		user_id = request.form['email']
 		password = request.form['password']
-		query = "SELECT * from user_info where email='%s' and password='%s'" %(user_id,password)
+		query = "SELECT * from user_info where email='%s' and password='%s'" %(user_id.strip(),password.strip())
 		print (query)
 		cur.execute(query)
 		user_info = cur.fetchall()
@@ -79,7 +79,7 @@ def login():
 		return extract(user_info[0][2])
 
 def extract(user_id, rq_time = None, rating = None):
-	cur.execute("SELECT expertise from expertise where id=?", (user_id,))
+	cur.execute("SELECT expertise from expertise where id=?", (user_id.strip(),))
 	expertise = cur.fetchall()
 	expertise = [elt[0] for elt in expertise]
 	#if not expertise:
@@ -89,11 +89,11 @@ def extract(user_id, rq_time = None, rating = None):
 	_expertise =  " or ".join(_expertise)
 	print(expertise)
 	print("SELECT * from request where "+_expertise+" and not requester=?")
-	cur.execute("SELECT * from request where "+_expertise+" and not requester=?", (user_id,))
+	cur.execute("SELECT * from request where "+_expertise+" and not requester=?", (user_id.strip(),))
 	rtable = cur.fetchall()
-	cur.execute("SELECT image from user_info where id = ?", (user_id,))
+	cur.execute("SELECT image from user_info where id = ?", (user_id.strip(),))
 	img = cur.fetchone()[0]
-	cur.execute("SELECT token from user_info where id=?", (user_id,))
+	cur.execute("SELECT token from user_info where id=?", (user_id.strip(),))
 	token = cur.fetchone()[0]
 	req = []
 	if rq_time :
@@ -102,11 +102,11 @@ def extract(user_id, rq_time = None, rating = None):
 		achievements = []
 	print("achievements")
 	print(achievements)
-	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
+	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id.strip(), 1,))
 	achieve_num = cur.fetchall()[0][0]*5
 	for i in rtable:
 		print(i)
-		cur.execute("SELECT image from user_info where id = ?", (i[3],))
+		cur.execute("SELECT image from user_info where id = ?", (i[3].strip(),))
 		image = cur.fetchone()[0]
 		req.append(image)
 
@@ -178,7 +178,7 @@ def chat():
 	user_id=request.args.get("user_id")
 	request_id = request.args.get("request")
 	print(request_id)
-	cur.execute("SELECT * from request where id='%s'" %request_id)
+	cur.execute("SELECT * from request where id='%s'" %request_id.strip())
 	request_obj = cur.fetchone()
 	print("request object")
 	print(request_obj)
@@ -193,7 +193,7 @@ def chat():
 		print (requester)
 	else:
 		#respondent handler
-		cur.execute("SELECT email from user_info where id='%s'" %respondent)
+		cur.execute("SELECT email from user_info where id='%s'" %respondent.strip())
 		respondent_email = cur.fetchone()[0]
 		url = "http://115.68.222.144:3000/chat?user_id=%s&respondent=%s&request=%s&flag=true" %(user_id,respondent,request_id)
 		msg = ("From %s\r\nTo: %s\r\nSubject:Your request is being responded\r\n\r\n %s is trying to help you. Log into chat in %s" %('donotreplyswiftyq@gmail.com',respondent_email,user_id,url))
@@ -232,27 +232,27 @@ def msg(message,username):
 def achievement():
 	user_id = request.args.get("user_id")
 	print("yay")
-	cur.execute("SELECT * from achievement where id=?", (user_id,))
+	cur.execute("SELECT * from achievement where id=?", (user_id.strip(),))
 	achievements = cur.fetchall()
-	cur.execute("SELECT * from achievement where id=? and done=? ORDER BY RANDOM() LIMIT 7", (user_id, 0,))
+	cur.execute("SELECT * from achievement where id=? and done=? ORDER BY RANDOM() LIMIT 7", (user_id.strip(), 0,))
 	non_achieved = cur.fetchall()
-	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
+	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id.strip(), 1,))
 	achieve_num = cur.fetchall()
 	print(achievements)
 	non_to_send=[]
-	cur.execute("SELECT image from user_info where id = ?", (user_id,))
+	cur.execute("SELECT image from user_info where id = ?", (user_id.strip(),))
 	img = cur.fetchone()[0]
-	cur.execute("SELECT expertise from expertise where id=?", (user_id,))
+	cur.execute("SELECT expertise from expertise where id=?", (user_id.strip(),))
 	expertise = cur.fetchall()
 	expertise = [elt[0] for elt in expertise]
 	#if not expertise:
 		#print("no")
 	#lst=['a'.strip(),'b'.strip()]
-	_expertise=["expertise='"+x+"'" for x in expertise]
+	_expertise=["expertise='"+x.strip()+"'" for x in expertise]
 	_expertise =  " or ".join(_expertise)
 	print(expertise)
 	print("SELECT * from request where "+_expertise+" and not requester=?")
-	cur.execute("SELECT * from request where "+_expertise+" and not requester=?", (user_id,))
+	cur.execute("SELECT * from request where "+_expertise+" and not requester=?", (user_id.strip(),))
 	rtable = cur.fetchall()
 	print(rtable)
 	for non in non_achieved:
@@ -301,7 +301,7 @@ def request_paged(request):
 	cur.execute("INSERT INTO request VALUES (?,?,?,?,?,?)", (_id.strip(),question.strip(),filename.strip(),user_id.strip(),expertise.strip(),date.strip(),))
 	cur.execute("UPDATE user_info SET token=token-1 where id=?", (user_id,))
 	conn.commit()
-	cur.execute("SELECT email,id FROM expertise where expertise=?", (expertise,))
+	cur.execute("SELECT email,id FROM expertise where expertise=?", (expertise.strip(),))
 	emails = cur.fetchall()
 	print (emails)
 
@@ -314,7 +314,7 @@ def request_paged(request):
 	return extract(user_id)
 
 def update_achievements(user_id,achievements,number):
-	cur.execute("SELECT * FROM achievement where id = ? and achievement = ?", (user_id, number))
+	cur.execute("SELECT * FROM achievement where id = ? and achievement = ?", (user_id.strip(), number))
 	achiev = cur.fetchone()
 	if achiev[3] ==0:
 		achievements.append(achievement_l[number])
@@ -322,7 +322,7 @@ def update_achievements(user_id,achievements,number):
 	return achievements
 
 def achievement_decision(user_id, rq_time, single_rating):
-	cur.execute("SELECT * from rating where id=?", (user_id,))
+	cur.execute("SELECT * from rating where id=?", (user_id.strip(),))
 	rating = cur.fetchone()
 	achievements = []
 	#2017-11-25T22:13:35.868550
