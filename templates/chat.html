@@ -169,7 +169,7 @@
            $('#answer').on('click', function(){
               sock.send("You have successfully answered the quiz! Good Job!",username);
               $(this).css('display','none');
-               $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id="exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block"><a href="/inbox?replied={{user_id}}&user_id={{respondent}}&under=3&sat=3&request_time={{request_time}}&request_id ={{request_id}}" style = "color: black">Exit</a></button><span class="time-right-sys">'+msg.time+'</span></div></div>')
+               $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+'You successfully helped your requester understand the question! You may exit the chat room now'+'</p><button type="button" class="btn btn-secondary" id="exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block"><a href="/inbox?replied={{user_id}}&user_id={{respondent}}&request_time={{request_time}}&request_id ={{request_id}}" style = "color: black">Exit</a></button><span class="time-right-sys">'+msg.time+'</span></div></div>')
               understood = 1;
 
             });
@@ -189,7 +189,7 @@
           $(".onlinecircle").next("span").text("offline")
         }
         else if(msg.type === 'exit' && msg.username!=username){
-           $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12"><p id="msg_text">'+msg.message+'</p><a href="/inbox?user_id={{user_id}}" id="exit3" style = "color: black"><button type="button" class="btn btn-secondary" id="exit3" style="background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block">Exit</button></a><span class="time-right-sys">'+msg.time+'</span></div></div>');
+           $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12"><p id="msg_text">'+msg.message+'</p><button type="button" class="btn btn-secondary" id="exit3" style="background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block" data-target="#ratingModal" data-toggle="modal">Exit</button><span class="time-right-sys">'+msg.time+'</span></div></div>');
             $("#exit3").on('click', function() {
               sock.send("offline",username);
             });
