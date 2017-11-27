@@ -29,11 +29,12 @@
 			$("#grid_"+i.toString()+"_"+j.toString()).append("<img class='grid_img' src='static/achievement/icon/"+(i*10+j).toString()+".png' width='0' height='0'></img>")
 		}
 	}
+	console.log('{{ach}}')
 	$('[data-toggle="tooltip"]').tooltip();
 	{% for a in achievements %}
-		console.log('{{a[3]}}')
+		console.log('{{a}}')
 		console.log('{{loop.index0%10}}')
-		$("#grid_"+parseInt('{{(loop.index0/10)|round(0,"floor")}}').toString()+"_"+'{{loop.index0%10}}').attr("data-original-title", "{{a['title']}}<br>{{a['content']}}").css("background-color", grid_colors['{{a[3]}}'])
+		$("#grid_"+parseInt('{{(loop.index0/10)|round(0,"floor")}}').toString()+"_"+'{{loop.index0%10}}').attr("data-original-title", "{{a['title']}}<br>{{a['content']}}").css("background-color", grid_colors['{{ach[loop.index0][3]}}'])
 	{% endfor %}
 	$(".grid").outerHeight(function(){
 		var height = $(this).width();

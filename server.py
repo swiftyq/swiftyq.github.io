@@ -202,8 +202,6 @@ def chat():
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
-	print("message : "+ message)
-	print("username :"+ username)
 	to_client = dict()
 	if message == 'new_connect':
 		to_client['message'] = username+" has entered the room."
@@ -221,6 +219,9 @@ def msg(message,username):
 			to_client['type'] = 'quiz'
 		elif "You have successfully answered" in message:
 			to_client['type'] = 'answer'
+		elif "offline" in message:
+			to_client['type'] = 'offline'
+			send(to_client, broadcast=True)
 		to_client['time'] = "%02d:%02d" %(datetime.datetime.now().hour%12,datetime.datetime.now().minute)
 	# emit("response", {'data': message['data'], 'username': session['username']}, broadcast=True)
 	print("type: " + to_client['type'])
@@ -258,7 +259,7 @@ def achievement():
 		non_to_send.append(achievement_l[non[1]])
 		#print(achievement_l[non[1]])
 	print(achievement_l)
-	return render_template("achievement.html", user_id=user_id, achievements = achievement_l, non_achieved = non_achieved, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
+	return render_template("achievement.html", user_id=user_id, achievements = achievement_l, ach=achievements, non_achieved = non_achieved, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
 
 
 
