@@ -102,13 +102,15 @@ def extract(user_id, rq_time = None, rating = None):
 		achievements = []
 	print("achievements")
 	print(achievements)
+	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
+	achieve_num = cur.fetchall()[0][0]*5
 	for i in rtable:
 		print(i)
 		cur.execute("SELECT image from user_info where id = ?", (i[3],))
 		image = cur.fetchone()[0]
 		req.append(image)
 
-	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, token=token, rtable=rtable, count = len(rtable), img = img, req = req, achievements = achievements)
+	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, token=token, rtable=rtable, count = len(rtable), img = img, req = req, achievements = achievements, achieve_num=achieve_num)
 
 @app.route('/signup')
 def signup():
@@ -373,6 +375,7 @@ def achievement_decision(user_id, rq_time, single_rating):
 	# 18 ask 5 questions a day
 	# 19 ask 10 questions a day
 	conn.commit()
+	console.log(achievements)
 	return achievements
 
 #@app.route('/achievement_list', methods=['POST'])
