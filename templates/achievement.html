@@ -33,7 +33,7 @@
 	{% for a in achievements %}
 		console.log('{{a[3]}}')
 		console.log('{{loop.index0%10}}')
-		$("#grid_"+parseInt('{{(loop.index0/10)|round(0,"floor")}}').toString()+"_"+'{{loop.index0%10}}').attr("data-original-title", "{{a['title']}}<br>{{a['content']}}").css("background-color", grid_colors['{{a[3]}}'])
+		$("#grid_"+parseInt('{{(loop.index0/10)|round(0,"floor")}}').toString()+"_"+'{{loop.index0%10}}').attr("data-original-title", "{{a['title']}}<br>{{a['content']}}").css("background-color", grid_colors['{{a["num"]}}'])
 	{% endfor %}
 	$(".grid").outerHeight(function(){
 		var height = $(this).width();
