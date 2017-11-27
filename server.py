@@ -102,13 +102,15 @@ def extract(user_id, rq_time = None, rating = None):
 		achievements = []
 	print("achievements")
 	print(achievements)
+	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
+	achieve_num = cur.fetchall()[0][0]*5
 	for i in rtable:
 		print(i)
 		cur.execute("SELECT image from user_info where id = ?", (i[3],))
 		image = cur.fetchone()[0]
 		req.append(image)
 
-	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, token=token, rtable=rtable, count = len(rtable), img = img, req = req, achievements = achievements)
+	return render_template("inbox.html", user_id=user_id, myexpertise = expertise, token=token, rtable=rtable, count = len(rtable), img = img, req = req, achievements = achievements, achieve_num=achieve_num)
 
 @app.route('/signup')
 def signup():
@@ -194,7 +196,7 @@ def chat():
 		url = "http://115.68.222.144:3000/chat?user_id=%s&respondent=%s&request=%s&flag=true" %(user_id,respondent,request_id)
 		msg = ("From %s\r\nTo: %s\r\nSubject:Your request is being responded\r\n\r\n %s is trying to help you. Log into chat in %s" %('donotreplyswiftyq@gmail.com',respondent_email,user_id,url))
 		s.sendmail('donotreplyswiftyq@gmail.com',respondent_email,msg)
-	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester	, question = request_obj[1], img = request_obj[2], request_time = request_obj[5])
+	return render_template("chat.html",user_id=user_id,respondent=respondent,requester=requester, question = request_obj[1], img = request_obj[2], request_time = request_obj[5])
 
 @socket_io.on("message", namespace='/chat')
 def msg(message,username):
@@ -233,7 +235,7 @@ def achievement():
 	non_achieved = cur.fetchall()
 	cur.execute("SELECT count(*) from achievement where id=? and done=?", (user_id, 1,))
 	achieve_num = cur.fetchall()
-	#print(achievements)
+	print(achievements)
 	non_to_send=[]
 	cur.execute("SELECT image from user_info where id = ?", (user_id,))
 	img = cur.fetchone()[0]
@@ -253,7 +255,8 @@ def achievement():
 	for non in non_achieved:
 		non_to_send.append(achievement_l[non[1]])
 		#print(achievement_l[non[1]])
-	return render_template("achievement.html", user_id=user_id, achievements = achievements, non_achieved = non_to_send, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
+	print(achievement_l)
+	return render_template("achievement.html", user_id=user_id, achievements = achievement_l, non_achieved = non_achieved, achieve_num = achieve_num[0][0], img = img, rtable= rtable)
 
 
 
@@ -375,6 +378,7 @@ def achievement_decision(user_id, rq_time, single_rating):
 	# 18 ask 5 questions a day
 	# 19 ask 10 questions a day
 	conn.commit()
+	console.log(achievements)
 	return achievements
 
 #@app.route('/achievement_list', methods=['POST'])

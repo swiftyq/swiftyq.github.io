@@ -98,15 +98,14 @@
 	<div class = "container" style= "margin-top: 10px">
 		<div class = "row" style = "height: 72px">
     <div class = "col-2">
-        <div class="dropdown" style = "width: 500px">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red;">
-              <div id = "text-center onboard"> <font size="+10" style = "color: white">{{rtable|length}}</font></div>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							{% for item in rtable %}
-              	<a class="dropdown-item select_requester" data-toggle = "modal" data-target="#previewtask{{loop.index0}}" val='{{loop.index0}}' val2='{{item[1]}}'>{{item[3]}}</a>
-              {% endfor %}
-            </div>
+        <div class="dropdown">
+          <div class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" style="padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red;">
+            <a href="inbox?user_id={{user_id}}">
+              <div style="font-size: -webkit-xxx-large; color:white; text-decoration: none;"> 
+               {{rtable|length}}
+              </div>
+            </a>
+          </div>
         </div>
       </div>
       <div class = "text-center col-8" style = "margin-top: 5px">
@@ -124,9 +123,8 @@
                   style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="{{ url_for('achievement', user_id = user_id)}}">Achievements</a>
-              <a class="dropdown-item" href="/">Logout</a>
+              <a class="dropdown-item" href="{{ url_for('achievement', user_id = user_id)}}" style="font-size:x-large;">Achievements</a>
+              <a class="dropdown-item" href="/" style="font-size:x-large;">Logout</a>
             </div>
         </div>
       </div>
@@ -152,6 +150,15 @@
       </div>
     </div>
   </div>
+	<div class="container" style="background-color: white;">
+		<div style="font-size : xx-large">
+			You made {{achieve_num}}% of achievements.
+		</div>
+		<div class="progress">
+			<div class="progress-bar" aria-valuenow="{{achieve_num}}" aria-valuemin="0" aria-valuemax="100" style="width: {{achieve_num}}%">
+			</div>
+		</div>
+	</div>
 	<span class= "row" style = "margin-left: 70px; margin-top: 30px; font-size: 23px"> Expertise: </span>
 	<div class = "box" style= "margin-top: 3px; margin-left:50px; width: inherit">
 		<div class = "row" style = "width: inherit">
@@ -252,6 +259,7 @@
     </div>
     </div>
     {% endfor %}
+
   </html>
 </body>
 

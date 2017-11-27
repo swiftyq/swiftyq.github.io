@@ -1,7 +1,12 @@
-
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css')
 #body_achievement{
   height: 100%;
   width: 100%;
+}
+.tooltip-inner{
+  white-space: pre-line;
+  max-width: 600px;
+  font-size: xx-large;
 }
 #html_achievement{
   font-family: 'PT Sans', sans-serif;

@@ -4,11 +4,14 @@
 
 	<meta name="apple-mobile-web-app-capable" content="yes" /> <!-- iOS fullscreen webapp -->
 	<meta name="mobile-web-app-capable" content="yes" /> <!-- Android Chrome fullscreen webapp -->
-	<link rel="stylesheet" type="text/css" href='./static/css/achievement.css' />
 	<link rel="stylesheet" type="text/css" href='./static/css/achievement_pop_up.css' />
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href='./static/css/achievement.css' />
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
 	<script type="text/javascript" src='./static/js/achievement.js'></script>
 	<script>
 	var grid_colors = ["#eeeeee",
@@ -19,17 +22,18 @@
 		$("#achievement_grid_box").append("<div id='grid_row_"+i.toString()+"' class='grid_row row'></div>")
 		for(var j=0; j<10; j++){
 
-			$("#grid_row_"+i.toString()).append("<div id='grid_"+i.toString()+"_"+j.toString()+"' class='col-sm grid'></div>")
+			$("#grid_row_"+i.toString()).append("<div id='grid_"+i.toString()+"_"+j.toString()+"' class='col-sm grid' data-toggle='tooltip' data-html='true' data-placement='bottom'></div>")
 			var rand = Math.floor(Math.random()*3)
 			//var rand2 = Math.floor(Math.random()*100000)+100000
 			//https://d30y9cdsu7xlg0.cloudfront.net/png/149821-200.png
 			$("#grid_"+i.toString()+"_"+j.toString()).append("<img class='grid_img' src='static/achievement/icon/"+(i*10+j).toString()+".png' width='0' height='0'></img>")
 		}
 	}
+	$('[data-toggle="tooltip"]').tooltip();
 	{% for a in achievements %}
 		console.log('{{a[3]}}')
 		console.log('{{loop.index0%10}}')
-		$("#grid_"+parseInt('{{(loop.index0/10)|round(0,"floor")}}').toString()+"_"+'{{loop.index0%10}}').css("background-color", grid_colors['{{a[3]}}'])
+		$("#grid_"+parseInt('{{(loop.index0/10)|round(0,"floor")}}').toString()+"_"+'{{loop.index0%10}}').attr("data-original-title", "{{a['title']}}<br>{{a['content']}}").css("background-color", grid_colors['{{a[3]}}'])
 	{% endfor %}
 	$(".grid").outerHeight(function(){
 		var height = $(this).width();
@@ -52,11 +56,11 @@
 		$("#list_image_"+'{{loop.index0}}').append("<div id='list_image_sub_"+'{{loop.index0}}'+"' class='achievement_entity_sub_image'></div>")
 		$("#list_content_"+'{{loop.index0}}').append("<div id='list_content_head_"+'{{loop.index0}}'+"' class='achievement_entity_head'></div>")
 		.append("<div id='list_content_text_"+'{{loop.index0}}'+"' class='achievement_entity_text'></div>")
-		$("#list_content_head_"+'{{loop.index0}}').text('{{non_a["title"]}}');
-		$("#list_content_text_"+'{{loop.index0}}').text('{{non_a["content"]}}');
+		$("#list_content_head_"+'{{loop.index0}}').text('{{achievements[non_a[1]]["title"]}}');
+		$("#list_content_text_"+'{{loop.index0}}').text('{{achievements[non_a[1]]["content"]}}');
 
 		//https://d30y9cdsu7xlg0.cloudfront.net/png/149821-200.png
-		$("#list_image_sub_"+'{{loop.index0}}').append("<img class='list_img' src='static/achievement/icon/"+'{{non_a["num"]}}'+".png' width='0' height='0'></img>")
+		$("#list_image_sub_"+'{{loop.index0}}').append("<img class='list_img' src='static/achievement/icon/"+'{{non_a[1]}}'+".png' width='0' height='0'></img>")
 		{% set j = j+1 %}
 	{% endfor %}
 
@@ -89,19 +93,18 @@
 	<div class = "container" style= "margin-top: 10px">
 		<div class = "row" style = "height: 72px">
     <div class = "col-2">
-        <div class="dropdown" style = "width: 500px">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red;">
-              <div id = "text-center onboard"> <font size="+10" style = "color: white">{{rtable|length}}</font></div>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-							{% for item in rtable %}
-              	<a class="dropdown-item select_requester" data-toggle = "modal" data-target="#previewtask{{loop.index0}}" val='{{loop.index0}}' val2='{{item[1]}}'>{{item[3]}}</a>
-              {% endfor %}
-            </div>
+        <div class="dropdown">
+          <div class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton" style="padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px; background-color: red;">
+            <a href="inbox?user_id={{user_id}}">
+              <div style="font-size: -webkit-xxx-large; color:white; text-decoration: none;">
+               {{rtable|length}}
+              </div>
+            </a>
+          </div>
         </div>
       </div>
       <div class = "text-center col-8" style = "margin-top: 5px">
-        <h1>Achievements</h1>
+        <h1>Task Inbox</h1>
       </div>
       <div class = "img-circle col">
           <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style = "padding: 0px 0px; margin: 0px 0px; border: none; width: 72px; height: 72px; border-radius: 2000px;">
@@ -115,9 +118,8 @@
                   style = "width:70px; height: 70px; border-radius: 2000px; border-color: gainsboro">
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="{{ url_for('inbox', user_id=user_id)}}">Inbox</a>
-              <a class="dropdown-item" href="/">Logout</a>
+              <a class="dropdown-item" href="{{ url_for('achievement', user_id = user_id)}}" style="font-size:x-large;">Achievements</a>
+              <a class="dropdown-item" href="/" style="font-size:x-large;">Logout</a>
             </div>
         </div>
       </div>
@@ -157,7 +159,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-secondary"><a href="chat?user_id={{user_id}}&respondent={{item[3]}}" style="text-decoration: none; color:inherit;">Reply</a></button>
+        <button type="button" class="btn btn-secondary"><a href="chat?user_id={{user_id}}&respondent={{item[3]}}&request={{item[0]}}" style="text-decoration: none; color:inherit;">Reply</a></button>
       </div>
       </div>
     </div>
