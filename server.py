@@ -199,6 +199,7 @@ def chat():
 	requester = False
 	flag = request.args.get("flag")
 	print (flag)
+	stmp_connect()
 	if request.args.get("flag"):
 		#request handler
 		requester = True
@@ -316,7 +317,7 @@ def request_paged(request):
 	cur.execute("SELECT email,id FROM expertise where expertise=?", (expertise.strip(),))
 	emails = cur.fetchall()
 	print (emails)
-
+	stmp_connect()
 	for i in emails:
 		if not "@" in i[0]:
 			continue
@@ -399,8 +400,11 @@ def achievement_decision(user_id, rq_time):
 #def achievement_list():
 #	return achievement_l
 
-if __name__ == '__main__':
+def stmp_connect():
 	s = smtplib.SMTP('smtp.gmail.com',587)
 	s.starttls()
 	s.login('donotreplyswiftyq@gmail.com', 'swiftyqadmin')
+
+if __name__ == '__main__':
+	stmp_connect()
 	socket_io.run(app, host='0.0.0.0', debug=True, port=3000)
