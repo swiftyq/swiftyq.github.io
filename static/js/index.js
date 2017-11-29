@@ -58,7 +58,7 @@ $( ".snd-modal-btn" ).on('click', function() {
 })
 
 $( ".trd-modal-btn" ).on('click', function() {
-  if ($("input[name='trdmodal']").val().includes("0 1 2")){
+  if ($("input[name='trdmodal']").val().includes("1 2 3")){
     $("#modal5").modal('show');
     $("#modal4").modal('hide');
   }
