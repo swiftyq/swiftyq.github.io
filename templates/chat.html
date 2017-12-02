@@ -73,7 +73,7 @@
         <div class="text-center"><small>Default will result in 3-points.</small></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" id="exit2" style = "background-color: white; color: black; border-width: 1px"><a class="exitanchor" href="/inbox?user_id={{respondent}}&under=3&sat=3&request_time={{request_time}}&request_id={{request_id}}" style = "color: black">Save and leave</a></button>
+        <button type="button" class="btn btn-default" id="exit2" style = "background-color: white; color: black; border-width: 1px"><a class="exitanchor" href="/inbox?user_id={{respondent}}&under=3&sat=3&replied={{user_id}}&request_time={{request_time}}&request_id={{request_id}}" style = "color: black">Save and leave</a></button>
       </div>
     </div>
 
@@ -137,7 +137,7 @@
   //var button = $(document).getElementByID("exit2");
   var understood = 0;
   var username = $("#user_id").text();
- 
+
   console.log(username);
   $(document).ready(function(){
     var sock = io.connect('/chat');
@@ -165,7 +165,7 @@
         }else{
            $(".understood").css('visibility','hidden');
            $("#messages").append('<div class="container col-12"><div class="container lighter" id="msgs" style = "width: 70%; float: left;"><div class="col-12"><p id="msg_text">'+msg.message +'</p>{% if not requester %}<button type="button" id = "answer" style = "margin-bottom: 8px; background-color: green; color: white">Good!</button>{% endif %}<span class="time-right">'+msg.time+'</span></div></div></div>')
-           
+
            $('#answer').on('click', function(){
               sock.send("You have successfully answered the quiz! Good Job!",username);
               $(this).css('display','none');
@@ -200,7 +200,7 @@
                 $(this).css('display','none');
               });
             understood = 1;
-            
+
           }else if(msg.type == 'answer' && msg.username != username){
                $('#messages').append('<div class="container col-12"><div class="container system" id="msgs" style = "width: 70%; float: left; font-size: 30px"><div class="col-12">'+msg.message+'</p><button type="button" class="btn btn-secondary" id="exit" style = " background-color: white; color: black; margin-bottom: 8px; font-size: 30px; display: block" data-target="#ratingModal" data-toggle="modal" data-dismiss="modal">Exit</button><span class="time-right-sys">'+msg.time+'</span></div></div>')
                 $('#exit').on('click', function(){
@@ -254,8 +254,9 @@
     var leng_under = $.find(".fa.under.checked").length;
     var leng_sat = $.find(".fa.sat.checked").length;
     console.log(leng_under,leng_sat);
-    $(".exitanchor").attr("href","/inbox?&request_time={{request_time}}&request_id={{request_id}}&user_id={{respondent}}&replied={{user_id}}&under="+leng_under+"&sat="+leng_sat+"&request_time={{request_time}}");
+    $(".exitanchor").attr("href","/inbox?user_id={{respondent}}&under="+leng_under+"&sat="+leng_sat+"&replied={{user_id}}&request_time={{request_time}}&request_id={{request_id}}");
   })
+
   $(".fa.fa-star.sat").on('click', function() {
     $(this).prevAll(".fa.fa-star.sat").addClass("checked");
     $(this).addClass("checked");
